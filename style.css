@@ -1,0 +1,390 @@
+/* Stili di base (Reset e Font) */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4; /* Sfondo leggero */
+    color: #333;
+}
+
+/* ==================================== */
+/* 1. HEADER E NAVIGAZIONE */
+/* ==================================== */
+header {
+    /* NUOVO SFONDO: VERDE ISTITUZIONALE */
+    background-color: #006633; /* Verde Scuro */
+    color: white;
+    padding: 15px 50px;
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+}
+
+.logo h1 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+nav ul {
+    list-style: none; 
+    padding: 0;
+    margin: 0;
+    display: flex; 
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 10px;
+    transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+    /* EVIDENZIAZIONE: ROSSO SCARLATTO */
+    background-color: #CC0000; 
+    border-radius: 4px;
+}
+
+/* ==================================== */
+/* 2. CORPO PRINCIPALE (MAIN) */
+/* ==================================== */
+
+main {
+    padding: 20px;
+    max-width: 1200px; /* Limita la larghezza massima del contenuto */
+    margin: 0 auto; /* Centra il contenuto */
+}
+
+/* Stile per il Contenitore a 3 Colonne */
+.contenitore-home {
+    display: flex; /* Abilita la disposizione affiancata */
+    gap: 20px; /* Spazio tra le colonne */
+    margin-top: 20px;
+    flex-wrap: wrap; /* Permette alle colonne di andare a capo su schermi piccoli */
+}
+
+/* Modifica questa regola nel tuo file style.css */
+.colonna {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    
+    /* FIX: Distribuisce lo spazio 1/3, 1/3, 1/3 */
+    flex: 1 1 31%; 
+    
+    /* FIX: Impedisce all'iframe di spingere troppo la colonna */
+    min-width: 280px; 
+    
+    /* FIX: Aggiunge una barra di scorrimento solo alla colonna se il contenuto (iframe) è troppo largo */
+    overflow-x: auto; 
+}
+
+.box-embed {
+    border: 1px solid #ccc;
+    padding: 5px;
+    text-align: center;
+}
+.youtube-box iframe {
+    width: 100%;
+    /* Rimuoviamo la limitazione massima se vogliamo che sia dinamico */
+    height: 400px; /* Imposta un'altezza fissa ragionevole per la colonna */
+}
+
+.classifica-box iframe {
+    display: block; /* rimuove spazi indesiderati sotto l'iframe */
+}
+
+
+/* ==================================== */
+/* 3. FOOTER */
+/* ==================================== */
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 30px;
+    font-size: 0.9em;
+}
+
+/* ==================================== */
+/* SPONSOR PAGE STYLES */
+/* ==================================== */
+/* ==================================== */
+/* NUOVO BANNER CAROSELLO SPONSOR (CORRETTO) */
+/* ==================================== */
+
+.sponsor-banner {
+    padding: 40px 0;
+    text-align: center;
+}
+
+/* 1. Contenitore che nasconde la parte che non scorre */
+.slider-container {
+    overflow: hidden; 
+    margin: 20px auto;
+    max-width: 1200px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+/* 2. La Traccia: Contiene tutti gli elementi e scorre */
+.slider-track {
+    display: flex; 
+    /* LARGHEZZA TOTALE CORRETTA: 32 elementi * 250px */
+    width: calc(32 * 250px); 
+    animation: scroll-slide 40s linear infinite; 
+}
+
+/* 3. Il singolo elemento Sponsor: FIX ANTI-COMPRESSIONE */
+.sponsor-item {
+    min-width: 250px; 
+    height: 120px; 
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    transition: background-color 0.3s;
+    
+    /* FIX CRITICO: Impedisce che l'elemento si comprima */
+    flex-shrink: 0; 
+    flex-grow: 0;
+}
+
+.sponsor-item:hover {
+    background-color: #f0f0f0;
+}
+
+.sponsor-item img {
+    /* Stili per le immagini dei logo */
+    width: 100%;
+    max-height: 100px;
+    object-fit: contain;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+}
+
+.sponsor-item img:hover {
+    opacity: 1;
+}
+
+
+/* 4. DEFINIZIONE DELL'ANIMAZIONE DI SCORRIMENTO */
+@keyframes scroll-slide {
+    0% {
+        transform: translateX(0); /* Inizio: posizione iniziale */
+    }
+    100% {
+        /* TRASLAZIONE CORRETTA: Sposta a sinistra di 16 elementi * 250px */
+        transform: translateX(calc(-16 * 250px)); 
+    }
+}
+.slider-track {
+    display: flex;
+    /* NUOVO CALCOLO: 32 elementi * 250px */
+    width: calc(16 * 250px); 
+    animation: scroll-slide 40s linear infinite; 
+}
+
+/* ==================================== */
+/* SQUADRA PAGE: TEAM VS TEAM STYLES (Finale) */
+/* ==================================== */
+
+.matchup-arena {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; 
+    gap: 40px; 
+    margin-top: 30px;
+    max-width: 1000px; /* Ridotto leggermente per un look più compatto */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Stile per i due Team: RIMOZIONE BORDI E STESSO SPAZIO */
+.team {
+    flex: 1;
+    max-width: 450px;
+    padding: 0; /* Rimosso padding interno */
+    background-color: transparent; /* Rimosso sfondo bianco */
+    border: none; /* RIMOSSO BORDO NETTO */
+    border-radius: 0;
+    box-shadow: none; /* Rimosso box-shadow */
+}
+
+/* Stile per l'elemento VS centrale (nessuna modifica) */
+.vs-element {
+    font-size: 3em;
+    font-weight: bold;
+    color: #333;
+    padding: 0; 
+    margin-top: 150px;
+    line-height: 1;
+    min-width: 50px;
+}
+
+/* Immagini dei Team: AUMENTATA L'ALTEZZA */
+.team-image-box {
+    margin-top: 20px;
+}
+
+.team-image-box img {
+    width: 100%;
+    /* Garantiamo che le due immagini abbiano la stessa altezza visiva */
+    height: 400px; 
+    object-fit: cover;
+    border-radius: 4px;
+    /* BORDO LEGGERO E SOTTILE (opzionale, ma mantiene la separazione) */
+    border: 1px solid #ddd; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    
+    /* Effetto Scontro */
+    transform: scaleX(-1);
+}
+
+.team-summer .team-image-box img {
+    /* L'immagine del Team Summer rimane normale */
+    transform: none;
+}
+
+/* NUOVI STILI PER IL PUNTEGGIO: Centrato SOTTO le Immagini */
+/* (Questa sezione è posizionata direttamente sotto i team nell'HTML) */
+.punteggio-sfida {
+    /* Il contenitore principale del punteggio ora è trasparente e non ha padding */
+    margin-top: 20px;
+    padding: 0;
+    background-color: transparent;
+    border-radius: 0;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    
+    /* Utilizziamo Flexbox per affiancare i punteggi dei singoli team */
+    display: flex;
+    justify-content: center;
+    gap: 40px; /* Stesso gap dell'arena per allineare i punteggi */
+}
+
+/* Stile per i singoli contenitori di punteggio */
+.score-box-team {
+    flex: 1;
+    max-width: 450px; /* Stessa larghezza del contenitore .team */
+    padding: 15px 0;
+    font-size: 1.5em; /* Dimensione base per il testo di accompagnamento */
+    font-weight: bold;
+    display: flex; /* Flexbox per allineare punteggio e separatore */
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.score-number {
+    font-size: 2em; /* Dimensione grande per il numero */
+    font-weight: 900;
+    margin-top: 5px;
+}
+
+.score-team-prof .score-number {
+    color: #cc0000;
+}
+
+.score-team-summer .score-number {
+    color: #0044cc;
+}
+
+/* Rimuovi la sezione score-box e score-separator originali se presenti */
+.punteggio-sfida .score-box,
+.punteggio-sfida .score-separator {
+    display: none;
+}
+
+/* Media Query (mantenuto per il mobile) */
+@media (max-width: 800px) {
+    /* ... il resto del Media Query rimane invariato per la visualizzazione mobile ... */
+    .punteggio-sfida {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+.home-sponsor-banner {
+    /* Eredita la centratura del testo dal .sponsor-banner, 
+       ma per sicurezza possiamo specificarla */
+    text-align: center;
+}
+
+/* ==================================== */
+/* STILI PER LA PAGINA LO STADIO */
+/* ==================================== */
+
+/* Sezione generale dello stadio (descrizione e mappa) */
+.stadio-descrizione,
+.stadio-mappa {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+.stadio-descrizione h2,
+.stadio-mappa h2 {
+    color: #0044cc; /* Colore blu del Team Summer o un colore istituzionale */
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 10px;
+    margin-top: 0;
+}
+
+/* Stile per l'area delle informazioni (indirizzo, valutazione) */
+.stadio-info {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f7f7f7;
+    border-left: 5px solid #cc0000; /* Bordo rosso del Team Prof */
+    border-radius: 4px;
+}
+
+.stadio-info p {
+    margin: 5px 0;
+    font-size: 1em;
+}
+
+.stadio-info strong {
+    font-weight: bold;
+    color: #333;
+}
+
+/* Stile per il contenitore della mappa */
+.stadio-mappa {
+    /* Assicurati che l'iframe o il blocco della mappa abbia spazio */
+    text-align: center;
+}
+
+/* Stile per i link esterni (come Apri Indicazioni) */
+.stadio-mappa a {
+    color: #0044cc;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.stadio-mappa a:hover {
+    text-decoration: underline;
+}
+
+/* Garantisce che la mappa (che viene renderizzata come un'immagine/blocco) sia responsive */
+.stadio-mappa > img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin: 20px 0;
+}
