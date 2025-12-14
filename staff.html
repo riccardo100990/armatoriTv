@@ -1,87 +1,107 @@
 <!DOCTYPE html>
 <html lang="it">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Armatori Tv - Lo Staff</title>
-    <link rel="stylesheet" href="style.css">
-    </head>
-<body>
-
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/header.css" />
+  </head>
+  <body>
     <div id="header-placeholder">Caricamento Header...</div>
 
     <section class="contenitore-home">
-        <div class="colonna centro" style="width: 100%; max-width: 900px;">
-            <h3>Organigramma Societario e Tecnico</h3>
-            <p>Conosci le persone che rendono possibile la Tv degli Amatori Lenola.</p>
-            
-            <div class="staff-grid">
-                
-                <div class="staff-member">
-                    <img src="immagini/lenola.webp" alt="Foto di Davide Lo Stocco" class="profile-pic"> 
-                    <h4>LO STOCCO DAVIDE</h4>
-                    <p>Presidente</p>
-                </div>
+      <div class="colonna centro" style="width: 100%; max-width: 900px">
+        <h3>Organigramma Societario e Tecnico</h3>
+        <p>
+          Conosci le persone che rendono possibile la Tv degli Amatori Lenola.
+        </p>
 
-                <div class="staff-member">
-                    <img src="immagini/lenola.webp" alt="Foto di Alessandro Marrocco" class="profile-pic">
-                    <h4>MARROCCO ALESSANDRO</h4>
-                    <p>Commentatore</p>
-                </div>
+        <div class="staff-grid">
+          <div class="staff-member">
+            <img
+              src="immagini/lenola.webp"
+              alt="Foto di Davide Lo Stocco"
+              class="profile-pic"
+            />
+            <h4>LO STOCCO DAVIDE</h4>
+            <p>Presidente</p>
+          </div>
 
-                <div class="staff-member">
-                    <img src="immagini/lenola.webp" alt="Foto di Alessandro Pannozzo" class="profile-pic">
-                    <h4>PANNOZZO ALESSANDRO</h4>
-                    <p>Tecnico</p>
-                </div>
+          <div class="staff-member">
+            <img
+              src="immagini/lenola.webp"
+              alt="Foto di Alessandro Marrocco"
+              class="profile-pic"
+            />
+            <h4>MARROCCO ALESSANDRO</h4>
+            <p>Commentatore</p>
+          </div>
 
-                <div class="staff-member">
-                    <img src="immagini/lenola.webp" alt="Foto di Riccardo Ioli" class="profile-pic">
-                    <h4>RICCARDO IOLI</h4>
-                    <p>Tecnico Informatico</p>
-                </div>
+          <div class="staff-member">
+            <img
+              src="immagini/lenola.webp"
+              alt="Foto di Alessandro Pannozzo"
+              class="profile-pic"
+            />
+            <h4>PANNOZZO ALESSANDRO</h4>
+            <p>Tecnico</p>
+          </div>
 
-                <div class="staff-member">
-                    <img src="immagini/lenola.webp" alt="Foto di Luca Mastrobattista" class="profile-pic">
-                    <h4>MASTROBATTISTA LUCA</h4>
-                    <p>Consigliere</p>
-                </div>
+          <div class="staff-member">
+            <img
+              src="immagini/lenola.webp"
+              alt="Foto di Riccardo Ioli"
+              class="profile-pic"
+            />
+            <h4>RICCARDO IOLI</h4>
+            <p>Tecnico Informatico</p>
+          </div>
 
-                <div class="staff-member">
-                    <img src="immagini/lenola.webp" alt="Foto di Davide Antobenedetto" class="profile-pic">
-                    <h4>ANTOBENEDETTO DAVIDE</h4>
-                    <p>Responsabile Social</p>
-                </div>
+          <div class="staff-member">
+            <img
+              src="immagini/lenola.webp"
+              alt="Foto di Luca Mastrobattista"
+              class="profile-pic"
+            />
+            <h4>MASTROBATTISTA LUCA</h4>
+            <p>Consigliere</p>
+          </div>
 
-            </div>
-            
+          <div class="staff-member">
+            <img
+              src="immagini/lenola.webp"
+              alt="Foto di Davide Antobenedetto"
+              class="profile-pic"
+            />
+            <h4>ANTOBENEDETTO DAVIDE</h4>
+            <p>Responsabile Social</p>
+          </div>
         </div>
+      </div>
     </section>
 
     <div id="footer-placeholder">Caricamento Footer...</div>
 
-    <script>
-        // Funzione per caricare e iniettare un file HTML
-        function includeHtml(elementId, file) {
-            fetch(file)
-                .then(response => {
-                    if (!response.ok) throw new Error(`File ${file} non trovato.`);
-                    return response.text();
-                })
-                .then(html => {
-                    document.getElementById(elementId).innerHTML = html;
-                })
-                .catch(error => {
-                    console.error(`Errore nel caricamento di ${file}:`, error);
-                    document.getElementById(elementId).innerHTML = `[Errore: Impossibile caricare ${file}]`;
-                });
-        }
+    <!-- scripts -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+    <script type="module">
+      import { includeHtml } from "./js/utils/include.js";
 
-        // Carica l'Header
-        includeHtml('header-placeholder', 'header.html');
-        // Carica il Footer
-        includeHtml('footer-placeholder', 'footer.html');
+      document.addEventListener("DOMContentLoaded", () => {
+        includeHtml("header-placeholder", "header.html");
+        includeHtml("footer-placeholder", "footer.html");
+      });
     </script>
-
-</body>
+  </body>
 </html>

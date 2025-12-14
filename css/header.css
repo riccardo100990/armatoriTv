@@ -1,0 +1,40 @@
+@import url("colors.css");
+/* 1. Sfondo navbar */
+.navbar {
+  background-color: var(--color-dark) !important;
+}
+
+/* 2. Testo bianco per i link */
+.navbar .nav-link {
+  color: white !important;
+  position: relative; /* necessario per l'hover underline */
+  transition: color 0.3s;
+}
+
+/* 3. Hover: linea rossa sotto che si disegna */
+.navbar .nav-link:not(.active)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-green);
+  transition: width 0.3s ease;
+}
+
+.navbar .nav-link:hover::after {
+  width: 100%;
+}
+
+/* 4. Link attivo con sfondo rosso */
+.navbar .nav-link.active {
+  background-color: #ff1020 !important;
+  border-radius: 4px; /* opzionale, per arrotondare i bordi */
+  color: white !important; /* assicura il testo bianco */
+}
+
+.navbar-brand {
+  background-color: #333;
+  color: white;
+}

@@ -4,11 +4,50 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Armatori Tv - Home</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/header.css" />
     <link rel="stylesheet" href="classifica.css" />
   </head>
   <body>
     <div id="header-placeholder">Caricamento Header...</div>
+    <!-- <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Features</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Pricing</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav> -->
 
     <section class="contenitore-home">
       <div class="colonna sinistra">
@@ -232,192 +271,20 @@
     </section>
     <div id="footer-placeholder">Caricamento Footer...</div>
 
-    <script>
-      // Funzione per caricare e iniettare un file HTML in un elemento specifico
-      function includeHtml(elementId, file) {
-        fetch(file)
-          .then((response) => {
-            if (!response.ok) throw new Error(`File ${file} non trovato.`);
-            return response.text();
-          })
-          .then((html) => {
-            document.getElementById(elementId).innerHTML = html;
-          })
-          .catch((error) => {
-            console.error(`Errore nel caricamento di ${file}:`, error);
-            document.getElementById(
-              elementId
-            ).innerHTML = `[Errore: Impossibile caricare ${file}]`;
-          });
-      }
+    <!-- scripts -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+    <script type="module">
+      import { includeHtml } from "./js/utils/include.js";
 
-      // -----------------------------------------------------------
-      // A) Caricamento di Header e Footer
-      // -----------------------------------------------------------
-      includeHtml("header-placeholder", "header.html");
-      includeHtml("footer-placeholder", "footer.html");
-
-      // -----------------------------------------------------------
-      // B) Caricamento della Classifica
-      // -----------------------------------------------------------
-      function renderClassifica() {
-        const JSON_URL = "classifica_girone_b.json";
-
-        fetch(JSON_URL)
-          .then((res) => {
-            if (!res.ok) throw new Error("Errore caricamento JSON");
-            return res.json();
-          })
-          .then((data) => {
-            const tbody = document.getElementById("classifica-body");
-            tbody.innerHTML = data.squadre
-              .map(
-                (team) => `
-                <tr class="${team.classe_css}">
-                <td>
-                    <div class="team-info">
-                    <span class="position-number">${team.posizione}</span>
-                    <img src="${team.logo}"
-                        class="team-logo"
-                        alt="${team.squadra}"
-                        onerror="this.src='https://www.amatoricassino.it/images/default-team.png'">
-                    <span class="team-name">${team.squadra}</span>
-                    </div>
-                </td>
-                <td><span class="stat-cell points-cell">${
-                  team.punti
-                }</span></td>
-                <td>${team.giocate}</td>
-                <td><span class="stat-cell wins-cell">${team.vinte}</span></td>
-                <td><span class="stat-cell draws-cell">${
-                  team.pareggi
-                }</span></td>
-                <td><span class="stat-cell losses-cell">${
-                  team.perse
-                }</span></td>
-                <td><span class="stat-cell goals-cell">${team.gf}</span></td>
-                <td><span class="stat-cell goals-cell">${team.gs}</span></td>
-                <td>
-                    <strong style="color:${team.dr >= 0 ? "white" : "black"}">
-                    ${team.dr >= 0 ? "+" : ""}${team.dr}
-                    </strong>
-                </td>
-                </tr>
-            `
-              )
-              .join("");
-          })
-          .catch((err) => {
-            console.error(err);
-            document.getElementById("classifica-body").innerHTML = `
-                <tr><td colspan="9">Classifica non disponibile</td></tr>
-            `;
-          });
-      }
-
-      /* carico HTML e poi JSON */
-      fetch("classifica_aggiornata.html")
-        .then((r) => r.text())
-        .then((html) => {
-          document.getElementById("classifica-target").innerHTML = html;
-          renderClassifica(); // <-- ORA funziona
-        });
+      document.addEventListener("DOMContentLoaded", () => {
+        includeHtml("header-placeholder", "header.html");
+        includeHtml("footer-placeholder", "footer.html");
+      });
     </script>
-
-    <script>
-      const TEAM_DA_EVIDENZIARE = "Amatori Lenola 2023";
-
-      // Funzione per caricare e iniettare un file HTML in un elemento specifico
-      function includeHtml(elementId, file) {
-        fetch(file)
-          .then((response) => {
-            if (!response.ok) throw new Error(`File ${file} non trovato.`);
-            return response.text();
-          })
-          .then((html) => {
-            document.getElementById(elementId).innerHTML = html;
-          })
-          .catch((error) => {
-            console.error(`Errore nel caricamento di ${file}:`, error);
-            document.getElementById(
-              elementId
-            ).innerHTML = `[Errore: Impossibile caricare ${file}]`;
-          });
-      }
-
-      // -----------------------------------------------------------
-      // A) Caricamento di Header e Footer
-      // -----------------------------------------------------------
-      includeHtml("header-placeholder", "header.html");
-      includeHtml("footer-placeholder", "footer.html");
-
-      // -----------------------------------------------------------
-      // B) Caricamento della Classifica
-      // -----------------------------------------------------------
-      function renderClassifica() {
-        const JSON_URL = "classifica_girone_b.json";
-
-        fetch(JSON_URL)
-          .then((res) => {
-            if (!res.ok) throw new Error("Errore caricamento JSON");
-            return res.json();
-          })
-          .then((data) => {
-            const tbody = document.getElementById("classifica-body");
-            tbody.innerHTML = data.squadre
-              .map(
-                (team) => `
-                <tr class="${team.classe_css} ${
-                  team.squadra === TEAM_DA_EVIDENZIARE ? "highlight-team" : ""
-                }">
-                <td>
-                    <div class="team-info">
-                    <span class="position-number">${team.posizione}</span>
-                    <img src="${team.logo}"
-                        class="team-logo"
-                        alt="${team.squadra}"
-                        onerror="this.src='https://www.amatoricassino.it/images/default-team.png'">
-                    <span class="team-name">${team.squadra}</span>
-                    </div>
-                </td>
-                <td><span class="stat-cell points-cell">${
-                  team.punti
-                }</span></td>
-                <td>${team.giocate}</td>
-                <td><span class="stat-cell wins-cell">${team.vinte}</span></td>
-                <td><span class="stat-cell draws-cell">${
-                  team.pareggi
-                }</span></td>
-                <td><span class="stat-cell losses-cell">${
-                  team.perse
-                }</span></td>
-                <td><span class="stat-cell goals-cell">${team.gf}</span></td>
-                <td><span class="stat-cell goals-cell">${team.gs}</span></td>
-                <td>
-                    <strong style="color:${team.dr >= 0 ? "white" : "black"}">
-                    ${team.dr >= 0 ? "+" : ""}${team.dr}
-                    </strong>
-                </td>
-                </tr>
-            `
-              )
-              .join("");
-          })
-          .catch((err) => {
-            console.error(err);
-            document.getElementById("classifica-body").innerHTML = `
-                <tr><td colspan="9">Classifica non disponibile</td></tr>
-            `;
-          });
-      }
-
-      /* carico HTML e poi JSON */
-      fetch("classifica_aggiornata.html")
-        .then((r) => r.text())
-        .then((html) => {
-          document.getElementById("classifica-target").innerHTML = html;
-          renderClassifica(); // <-- ORA funziona
-        });
-    </script>
+    <script type="module" src="js/render_classifica.js"></script>
   </body>
 </html>

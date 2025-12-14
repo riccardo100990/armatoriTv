@@ -1,83 +1,78 @@
 <!DOCTYPE html>
 <html lang="it">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>La Squadra - Team Prof vs Team Summer</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/header.css" />
+  </head>
+  <body>
     <div id="header-placeholder">Caricamento Header...</div>
 
     <main class="sfida-team-container">
-        <h1>La Sfida: Team Prof vs Team Summer</h1>
+      <h1>La Sfida: Team Prof vs Team Summer</h1>
 
-        <section class="matchup-arena">
-            
-            <div class="team team-prof">
-                <h2 class="team-name">TEAM PROF</h2>
-                <div class="team-image-box">
-                    <img src="squadra/rovesciataProf.jpg" alt="Foto Team Prof">
-                </div>
-            </div>
+      <section class="matchup-arena">
+        <div class="team team-prof">
+          <h2 class="team-name">TEAM PROF</h2>
+          <div class="team-image-box">
+            <img src="squadra/rovesciataProf.jpg" alt="Foto Team Prof" />
+          </div>
+        </div>
 
-            <div class="vs-element">
-                <span>VS</span>
-            </div>
+        <div class="vs-element">
+          <span>VS</span>
+        </div>
 
-            <div class="team team-summer">
-                <h2 class="team-name">TEAM SUMMER</h2>
-                <div class="team-image-box">
-                    <img src="squadra/summer.jpg" alt="Foto Team Summer">
-                </div>
-            </div>
+        <div class="team team-summer">
+          <h2 class="team-name">TEAM SUMMER</h2>
+          <div class="team-image-box">
+            <img src="squadra/summer.jpg" alt="Foto Team Summer" />
+          </div>
+        </div>
+      </section>
 
-        </section>
-        
-        <section class="punteggio-sfida">
-            
-            <div class="score-box-team score-team-prof">
-                Ultimo Risultato:
-                <span class="score-number">3</span>
-            </div>
-            
-            <div style="min-width: 50px; flex-shrink: 0;"></div> 
-            
-            <div class="score-box-team score-team-summer">
-                Ultimo Risultato:
-                <span class="score-number">2</span>
-            </div>
-            
-        </section>
-        <p style="text-align: center; margin-top: 10px;">La sfida è attualmente in corso, risultato aggiornato all'ultima partita.</p>
-        
+      <section class="punteggio-sfida">
+        <div class="score-box-team score-team-prof">
+          Ultimo Risultato:
+          <span class="score-number">3</span>
+        </div>
+
+        <div style="min-width: 50px; flex-shrink: 0"></div>
+
+        <div class="score-box-team score-team-summer">
+          Ultimo Risultato:
+          <span class="score-number">2</span>
+        </div>
+      </section>
+      <p style="text-align: center; margin-top: 10px">
+        La sfida è attualmente in corso, risultato aggiornato all'ultima
+        partita.
+      </p>
     </main>
 
     <div id="footer-placeholder">Caricamento Footer...</div>
 
-    <script>
-        // Funzione per caricare e iniettare un file HTML
-        function includeHtml(elementId, file) {
-            fetch(file)
-                .then(response => {
-                    if (!response.ok) throw new Error(`File ${file} non trovato.`);
-                    return response.text();
-                })
-                .then(html => {
-                    document.getElementById(elementId).innerHTML = html;
-                })
-                .catch(error => {
-                    console.error(`Errore nel caricamento di ${file}:`, error);
-                    document.getElementById(elementId).innerHTML = `[Errore: Impossibile caricare ${file}]`;
-                });
-        }
+    <!-- scripts -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+    <script type="module">
+      import { includeHtml } from "./js/utils/include.js";
 
-        // Carica l'Header
-        includeHtml('header-placeholder', 'header.html');
-        // Carica il Footer
-        includeHtml('footer-placeholder', 'footer.html');
+      document.addEventListener("DOMContentLoaded", () => {
+        includeHtml("header-placeholder", "header.html");
+        includeHtml("footer-placeholder", "footer.html");
+      });
     </script>
-
-</body>
+  </body>
 </html>
