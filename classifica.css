@@ -1,0 +1,194 @@
+.classifica-card {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  margin: 2rem auto;
+  max-width: 1200px;
+}
+
+.classifica-header {
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  color: white;
+  padding: 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.classifica-header::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.1) 1px,
+    transparent 1px
+  );
+  background-size: 20px 20px;
+  animation: float 20s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+  }
+}
+
+.classifica-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 1;
+}
+
+.classifica-subtitle {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  margin-top: 0.5rem;
+  font-weight: 300;
+  position: relative;
+  z-index: 1;
+}
+
+.classifica-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.95rem;
+}
+
+.table-header {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.table-header th {
+  padding: 1rem 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #374151;
+  border-bottom: 3px solid #e5e7eb;
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.table-header th:first-child {
+  text-align: left;
+  min-width: 200px;
+}
+
+.team-row {
+  transition: all 0.3s ease;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.team-row td {
+  padding: 1rem 0.75rem;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.team-row td:first-child {
+  text-align: left;
+  font-weight: 600;
+}
+
+.position-champions {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  color: white !important;
+}
+
+.position-europa {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white !important;
+}
+
+.position-conference {
+  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+  color: white !important;
+}
+
+.team-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.team-logo {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #e5e7eb;
+}
+
+.team-name {
+  font-weight: 600;
+  color: white !important;
+}
+
+.stat-cell {
+  font-weight: 600;
+  padding: 0.5rem;
+  border-radius: 6px;
+}
+
+.points-cell {
+  background: linear-gradient(135deg, #fef3c7 0%, #fcd34d 100%);
+  color: #92400e;
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+
+.wins-cell {
+  background: #d1fae5;
+  color: #065f46;
+}
+.draws-cell {
+  background: #fef3c7;
+  color: #92400e;
+}
+.losses-cell {
+  background: #fee2e2;
+  color: #991b1b;
+}
+.goals-cell {
+  background: #e0e7ff;
+  color: #3730a3;
+}
+
+.position-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #f3f4f6;
+  color: #374151;
+  font-weight: 700;
+  margin-right: 0.75rem;
+  font-size: 0.9rem;
+}
+
+/* ===============================
+   Evidenzia squadra specifica
+   =============================== */
+
+/* .highlight-team .position-number {
+  background: #01ae43;
+  color: #fc171c;
+} */
