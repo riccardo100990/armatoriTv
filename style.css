@@ -388,3 +388,215 @@ footer {
     border-radius: 4px;
     margin: 20px 0;
 }
+
+/* --- Stili per correggere la Classifica Importata --- */
+
+/* 1. Correggi le dimensioni dei LOGHI delle squadre */
+/* Il selettore .classifica-container .team-logo assicura che lo stile sia applicato solo ai loghi della classifica */
+.classifica-container .team-logo {
+    width: 24px;       /* Dimensione fissa piccola */
+    height: 24px;      /* Assicura che sia quadrata */
+    object-fit: contain; /* Assicura che l'immagine non venga distorta */
+    margin-right: 8px; /* Spazio tra il logo e il nome della squadra */
+    vertical-align: middle; /* Allinea il logo con il testo */
+}
+
+/* 2. Assicura che la tabella sia al 100% dello spazio disponibile nel contenitore */
+.classifica-container .classifica-table {
+    width: 100%;
+    border-collapse: collapse; /* Rende la tabella più pulita */
+    font-size: 0.9em; /* Rendi il testo leggermente più piccolo per adattarsi */
+}
+
+/* 3. Aggiungi spaziatura e allineamento (opzionale, ma migliora la leggibilità) */
+.classifica-container th,
+.classifica-container td {
+    padding: 8px 4px;
+    text-align: center;
+    border-bottom: 1px solid #ddd; /* Separatore leggero tra le righe */
+}
+
+/* Allinea il nome della squadra a sinistra (più leggibile) */
+.classifica-container td:first-child {
+    text-align: left;
+}
+
+/* Rendi lo sfondo della testata visibile se il colore originale era scuro */
+.classifica-container .table-header {
+    background-color: #333; /* Un colore scuro di base */
+    color: white;
+}
+
+/* --- Sovrascrittura del colore della Differenza Reti (DR) --- */
+
+/* Il selettore targetta gli elementi <strong> dentro le righe della classifica */
+.classifica-container .team-row strong {
+    /* Imposta un colore che sia visibile sul tuo sfondo (es. nero, o un grigio scuro) */
+    color: #333333 !important; 
+    /* La dichiarazione !important sovrascrive lo stile inline (color: white) */
+}
+
+
+/* =================================== */
+/* STILI PAGINA PERLE (GRIGLIA TIPO INSTAGRAM) */
+/* =================================== */
+
+/* Contenitore principale: trasformato in griglia */
+.perle-video-container {
+    display: grid;
+    /* Crea 3 colonne di larghezza uguale (1fr) */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 10px; /* Spazio tra le miniature */
+    
+    max-width: 900px; /* Larghezza massima della griglia (puoi ridurla ulteriormente se vuoi) */
+    margin: 20px auto; /* Centra la griglia */
+    padding: 10px;
+}
+
+/* Rimuoviamo lo sfondo e il padding dalle singole card per fare risaltare solo i video */
+.perla-item {
+    background-color: transparent; 
+    box-shadow: none;
+    padding: 0; /* Rimuove il padding interno */
+    text-align: center;
+}
+
+/* Nascondiamo i titoli e le descrizioni per lo stile Instagram */
+.perla-item h2,
+.perla-item p {
+    display: block; 
+    /* Se vuoi che il titolo appaia sotto, metti display: block; */
+}
+
+/* Wrapper del tag <video> */
+.video-wrapper {
+    width: 100%;
+    /* Rendi il contenitore quadrato */
+    aspect-ratio: 1 / 1; 
+    overflow: hidden; /* Nasconde eventuali eccessi se il video non è quadrato */
+    margin-bottom: 0;
+}
+
+/* Il tag <video> stesso */
+.video-wrapper video {
+    width: 100%; 
+    height: 100%;
+    /* Assicura che il video riempia il quadrato senza distorsioni, tagliando i bordi */
+    object-fit: cover; 
+    border-radius: 0;
+    display: block; 
+}
+
+/* =================================== */
+/* MEDIA QUERY: Ottimizzazione per Mobile (Max 768px) */
+/* =================================== */
+
+@media (max-width: 768px) {
+    
+    /* 1. LAYOUT BASE E FONT */
+    body {
+        font-size: 15px; /* Rimpicciolisci leggermente il testo base */
+    }
+    
+    main {
+        padding: 10px; /* Riduci il padding del contenuto principale */
+    }
+    
+    /* 2. HEADER E NAVIGAZIONE (Cruciale) */
+    header {
+        /* Permette al logo e al menu di impilarsi */
+        flex-direction: column; 
+        padding: 15px 10px; /* Riduci il padding laterale */
+        text-align: center;
+    }
+    
+    nav ul {
+        /* Il menu diventa verticale */
+        flex-direction: column; 
+        margin-top: 10px;
+    }
+    
+    nav ul li {
+        margin: 5px 0; /* Aggiunge spazio verticale tra i link */
+    }
+    
+    /* 3. LAYOUT A COLONNE (Contenitore-Home) */
+    .contenitore-home {
+        /* Le colonne passano a singola riga su mobile */
+        flex-direction: column; 
+        gap: 15px;
+    }
+    
+    .colonna {
+        /* La colonna occupa tutta la larghezza */
+        flex: 1 1 100%; 
+        min-width: unset; /* Rimuove il min-width per adattarsi completamente */
+        /* Rimuovi la scrollbar che avevamo messo per l'iframe in caso di overflow */
+        overflow-x: hidden; 
+    }
+
+    /* 4. PAGINA SQUADRA (Sfida Team VS Team) */
+    .matchup-arena {
+        /* Team VS Team si impilano verticalmente */
+        flex-direction: column; 
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .team,
+    .score-box-team {
+        max-width: 90%; /* Limita l'area del team a 90% per un po' di margine */
+        width: 100%;
+    }
+    
+    .vs-element {
+        margin: 10px 0; /* Riduci lo spazio VS */
+        font-size: 2em;
+    }
+    
+    .team-image-box img {
+        height: 300px; /* Riduci l'altezza delle immagini dei team */
+    }
+
+    /* 5. PAGINA STAFF (Se hai la griglia staff-grid) */
+    .staff-grid {
+        /* Passa lo Staff ad una colonna singola per maggiore chiarezza */
+        grid-template-columns: 1fr; 
+        gap: 15px;
+    }
+}
+
+
+/* Regole specifiche per schermi molto stretti (smartphone piccoli) */
+@media (max-width: 500px) {
+    
+    /* Griglia Perle (Miniature Instagram) - Passa a 2 colonne */
+    .perle-video-container {
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 5px;
+    }
+    
+    /* Footer */
+    footer {
+        padding: 10px;
+    }
+}
+
+img {
+    max-width: 100%; /* Impedisce alle immagini di superare la larghezza del loro contenitore */
+    height: auto;
+}
+
+
+
+/* Stili specifici per le immagini dello Staff */
+.staff-member img.profile-pic {
+    /* Larghezza attuale: 100px. Cambia questi valori. */
+    width: 80px; /* Esempio: Riduci a 80 pixel */
+    height: 80px; /* Mantieni la stessa altezza per restare un cerchio perfetto */
+    
+    border-radius: 50%; /* Immagine tonda */
+    object-fit: cover;
+    margin-bottom: 10px;
+    border: 3px solid #007bff; /* Bordo colorato */
+}

@@ -3,32 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Armatori Tv - Home</title>
+    <title>Armatori Tv - Lo Staff</title>
     <link rel="stylesheet" href="style.css">
-</head>
+    </head>
 <body>
 
-    <header>
-        <header>
-            <div class="logo">
-                <a href="index.html">
-                    <img src="immagini/armatoriTv.jpg" alt="Logo della Squadra" class="logo-img">
-                </a>
-                <div style="color: white">la tv degli amatori lenola</div> 
+    <div id="header-placeholder">Caricamento Header...</div>
 
+    <section class="contenitore-home">
+        <div class="colonna centro" style="width: 100%; max-width: 900px;">
+            <h3>Organigramma Societario e Tecnico</h3>
+            <p>Conosci le persone che rendono possibile la Tv degli Amatori Lenola.</p>
+            
+            <div class="staff-grid">
+                
+                <div class="staff-member">
+                    <img src="immagini/lenola.webp" alt="Foto di Davide Lo Stocco" class="profile-pic"> 
+                    <h4>LO STOCCO DAVIDE</h4>
+                    <p>Presidente</p>
                 </div>
-            <nav>
-                </nav>
-        </header>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="sponsor.html">Sponsor</a></li> 
-                <li><a href="stadio.html">Lo Stadio</a></li>
-                <li><a href="squadra.html">La Squadra</a></li>
-                <li><a href="perle.html">Le Perle</a></li>
-                <li><a href="staff.html">Lo Staff</a></li>
 
-            </ul>
-        </nav>
-    </header>
+                <div class="staff-member">
+                    <img src="immagini/lenola.webp" alt="Foto di Alessandro Marrocco" class="profile-pic">
+                    <h4>MARROCCO ALESSANDRO</h4>
+                    <p>Commentatore</p>
+                </div>
+
+                <div class="staff-member">
+                    <img src="immagini/lenola.webp" alt="Foto di Alessandro Pannozzo" class="profile-pic">
+                    <h4>PANNOZZO ALESSANDRO</h4>
+                    <p>Tecnico</p>
+                </div>
+
+                <div class="staff-member">
+                    <img src="immagini/lenola.webp" alt="Foto di Riccardo Ioli" class="profile-pic">
+                    <h4>RICCARDO IOLI</h4>
+                    <p>Tecnico Informatico</p>
+                </div>
+
+                <div class="staff-member">
+                    <img src="immagini/lenola.webp" alt="Foto di Luca Mastrobattista" class="profile-pic">
+                    <h4>MASTROBATTISTA LUCA</h4>
+                    <p>Consigliere</p>
+                </div>
+
+                <div class="staff-member">
+                    <img src="immagini/lenola.webp" alt="Foto di Davide Antobenedetto" class="profile-pic">
+                    <h4>ANTOBENEDETTO DAVIDE</h4>
+                    <p>Responsabile Social</p>
+                </div>
+
+            </div>
+            
+        </div>
+    </section>
+
+    <div id="footer-placeholder">Caricamento Footer...</div>
+
+    <script>
+        // Funzione per caricare e iniettare un file HTML
+        function includeHtml(elementId, file) {
+            fetch(file)
+                .then(response => {
+                    if (!response.ok) throw new Error(`File ${file} non trovato.`);
+                    return response.text();
+                })
+                .then(html => {
+                    document.getElementById(elementId).innerHTML = html;
+                })
+                .catch(error => {
+                    console.error(`Errore nel caricamento di ${file}:`, error);
+                    document.getElementById(elementId).innerHTML = `[Errore: Impossibile caricare ${file}]`;
+                });
+        }
+
+        // Carica l'Header
+        includeHtml('header-placeholder', 'header.html');
+        // Carica il Footer
+        includeHtml('footer-placeholder', 'footer.html');
+    </script>
+
+</body>
+</html>

@@ -8,22 +8,7 @@
 </head>
 <body>
 
-    <header>
-        <div class="logo">
-            <a href="index.html">
-                <img src="immagini/armatoriTv.jpg" alt="Logo della Squadra" class="logo-img">
-            </a>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="sponsor.html">Sponsor</a></li> 
-                <li><a href="stadio.html">Lo Stadio</a></li>
-                <li><a href="squadra.html">La Squadra</a></li>
-                <li><a href="perle.html">Le Perle</a></li>
-            </ul>
-        </nav>
-    </header>
+    <div id="header-placeholder">Caricamento Header...</div>
 
     <main>
         
@@ -57,10 +42,30 @@
 
     </main>
 
-    <footer>
-        <p>&copy; 2025 Amatori Lenola 2023. Tutti i diritti riservati.</p>
-        <p>Contatti: info@tuosito.it | Privacy Policy</p>
-    </footer>
+    <div id="footer-placeholder">Caricamento Footer...</div>
+
+    <script>
+        // Funzione per caricare e iniettare un file HTML
+        function includeHtml(elementId, file) {
+            fetch(file)
+                .then(response => {
+                    if (!response.ok) throw new Error(`File ${file} non trovato.`);
+                    return response.text();
+                })
+                .then(html => {
+                    document.getElementById(elementId).innerHTML = html;
+                })
+                .catch(error => {
+                    console.error(`Errore nel caricamento di ${file}:`, error);
+                    document.getElementById(elementId).innerHTML = `[Errore: Impossibile caricare ${file}]`;
+                });
+        }
+
+        // Carica l'Header
+        includeHtml('header-placeholder', 'header.html');
+        // Carica il Footer
+        includeHtml('footer-placeholder', 'footer.html');
+    </script>
 
 </body>
 </html>
