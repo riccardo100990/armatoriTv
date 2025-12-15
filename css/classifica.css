@@ -1,16 +1,65 @@
-.classifica-card {
-  background: white;
-  border-radius: 20px;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
-  overflow: hidden;
-  margin: 2rem auto;
-  max-width: 1200px;
+@import url("colors.css");
+
+:root {
+  /* Colori principali */
+  --color-primary: #1e3c72;
+  --color-primary-light: #2a5298;
+  --color-white: #ffffff;
+  --color-gray-50: #f8fafc;
+  --color-gray-100: #f1f5f9;
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #e2e8f0;
+  --color-gray-600: #374151;
+
+  /* Colori posizioni */
+  --color-champions: #3b82f6;
+  --color-champions-dark: #1d4ed8;
+  --color-europa: #00ad41;
+  --color-europa-dark: #059669;
+  --color-conference: #8b5cf6;
+  --color-conference-dark: #7c3aed;
+
+  /* Colori statistiche */
+  --color-points-bg: #fef3c7;
+  --color-points-text: #92400e;
+  --color-wins-bg: #d1fae5;
+  --color-wins-text: #065f46;
+  --color-draws-bg: #fef3c7;
+  --color-draws-text: #92400e;
+  --color-losses-bg: #fee2e2;
+  --color-losses-text: #991b1b;
+  --color-goals-bg: #e0e7ff;
+  --color-goals-text: #3730a3;
+
+  /* Spacing e misure */
+  --radius-sm: 6px;
+  --radius-md: 16px;
+  --radius-full: 50%;
+  --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.1);
+  --shadow-text: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
+/* ===============================
+   Card principale
+   =============================== */
+.classifica-card {
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+
+/* ===============================
+   Header con animazione
+   =============================== */
 .classifica-header {
-  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-  color: white;
-  padding: 2rem;
+  background: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    var(--color-primary-light) 100%
+  );
+  color: var(--color-white);
+  padding: 2rem 1.5rem;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -35,7 +84,7 @@
 @keyframes float {
   0%,
   100% {
-    transform: translateY(0px) rotate(0deg);
+    transform: translateY(0) rotate(0deg);
   }
   50% {
     transform: translateY(-20px) rotate(180deg);
@@ -43,16 +92,16 @@
 }
 
 .classifica-title {
-  font-size: 2.5rem;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
   font-weight: 800;
   margin: 0;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  text-shadow: var(--shadow-text);
   position: relative;
   z-index: 1;
 }
 
 .classifica-subtitle {
-  font-size: 1.2rem;
+  font-size: clamp(0.95rem, 2vw, 1.2rem);
   opacity: 0.9;
   margin-top: 0.5rem;
   font-weight: 300;
@@ -60,15 +109,31 @@
   z-index: 1;
 }
 
+.classifica-subtitle a {
+  color: #ff1020;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+  font-weight: 500;
+}
+
+.classifica-subtitle a:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+/* ===============================
+   Tabella
+   =============================== */
 .classifica-table {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-  font-size: 0.95rem;
+  font-size: clamp(0.85rem, 1.5vw, 0.95rem);
 }
 
 .table-header {
-  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  background: linear-gradient(
+    135deg,
+    var(--color-gray-50) 0%,
+    var(--color-gray-300) 100%
+  );
   position: sticky;
   top: 0;
   z-index: 10;
@@ -79,48 +144,91 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  color: #374151;
-  border-bottom: 3px solid #e5e7eb;
-  font-size: 0.8rem;
-  text-align: center;
+  color: var(--color-gray-600);
+  border-bottom: 3px solid var(--color-gray-200);
+  font-size: clamp(0.7rem, 1.2vw, 0.85rem);
+  white-space: nowrap;
 }
 
-.table-header th:first-child {
-  text-align: left;
-  min-width: 200px;
-}
-
+/* ===============================
+   Righe squadre
+   =============================== */
 .team-row {
   transition: all 0.3s ease;
-  border-bottom: 1px solid #f1f5f9;
+  border-bottom: 1px solid var(--color-gray-100);
+}
+
+.team-row:hover {
+  background: var(--color-gray-50) !important;
+  transform: translateX(4px);
 }
 
 .team-row td {
-  padding: 1rem 0.75rem;
+  padding: 0.875rem 0.75rem;
   vertical-align: middle;
-  text-align: center;
 }
 
-.team-row td:first-child {
-  text-align: left;
-  font-weight: 600;
+/* ===============================
+   Posizioni qualificazione - TUTTA LA RIGA
+   =============================== */
+.team-row.position-champions {
+  background: linear-gradient(
+    135deg,
+    var(--color-champions) 0%,
+    var(--color-champions-dark) 100%
+  ) !important;
 }
 
-.position-champions {
-  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-  color: white !important;
+.team-row.position-europa {
+  background: linear-gradient(
+    135deg,
+    var(--color-europa) 0%,
+    var(--color-europa-dark) 100%
+  ) !important;
 }
 
-.position-europa {
-  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-  color: white !important;
+.team-row.position-conference {
+  background: linear-gradient(
+    135deg,
+    var(--color-conference) 0%,
+    var(--color-conference-dark) 100%
+  ) !important;
 }
 
-.position-conference {
-  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
-  color: white !important;
+/* Testo bianco per le posizioni colorate */
+.team-row.position-champions,
+.team-row.position-champions td,
+.team-row.position-europa,
+.team-row.position-europa td,
+.team-row.position-conference,
+.team-row.position-conference td {
+  color: var(--color-white) !important;
 }
 
+.team-row.position-champions .team-name,
+.team-row.position-europa .team-name,
+.team-row.position-conference .team-name {
+  color: var(--color-white) !important;
+}
+
+.team-row.position-champions .position-number,
+.team-row.position-europa .position-number,
+.team-row.position-conference .position-number {
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--color-white) !important;
+}
+
+/* Celle statistiche nelle righe colorate - rendile trasparenti */
+.team-row.position-champions .stat-cell,
+.team-row.position-europa .stat-cell,
+.team-row.position-conference .stat-cell {
+  background: rgba(255, 255, 255, 0.15) !important;
+  color: var(--color-white) !important;
+}
+
+/* ===============================
+   Info squadra
+   =============================== */
 .team-info {
   display: flex;
   align-items: center;
@@ -130,44 +238,20 @@
 .team-logo {
   width: 32px;
   height: 32px;
-  border-radius: 50%;
+  min-width: 32px;
+  border-radius: var(--radius-full);
   object-fit: cover;
-  border: 2px solid #e5e7eb;
+  border: 2px solid var(--color-gray-200);
+  transition: transform 0.3s ease;
+}
+
+.team-row:hover .team-logo {
+  transform: scale(1.1);
 }
 
 .team-name {
   font-weight: 600;
-  color: white !important;
-}
-
-.stat-cell {
-  font-weight: 600;
-  padding: 0.5rem;
-  border-radius: 6px;
-}
-
-.points-cell {
-  background: linear-gradient(135deg, #fef3c7 0%, #fcd34d 100%);
-  color: #92400e;
-  font-weight: 800;
-  font-size: 1.1rem;
-}
-
-.wins-cell {
-  background: #d1fae5;
-  color: #065f46;
-}
-.draws-cell {
-  background: #fef3c7;
-  color: #92400e;
-}
-.losses-cell {
-  background: #fee2e2;
-  color: #991b1b;
-}
-.goals-cell {
-  background: #e0e7ff;
-  color: #3730a3;
+  font-size: clamp(0.85rem, 1.5vw, 1rem);
 }
 
 .position-number {
@@ -176,19 +260,138 @@
   justify-content: center;
   width: 28px;
   height: 28px;
-  border-radius: 50%;
-  background: #f3f4f6;
-  color: #374151;
+  min-width: 28px;
+  border-radius: var(--radius-full);
+  background: var(--color-gray-100);
+  color: var(--color-gray-600);
   font-weight: 700;
   margin-right: 0.75rem;
   font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+/* ===============================
+   Celle statistiche
+   =============================== */
+.stat-cell {
+  font-weight: 600;
+  padding: 0.5rem;
+  border-radius: var(--radius-sm);
+  transition: transform 0.2s ease;
+  white-space: nowrap;
+  display: inline-block;
+}
+
+.stat-cell:hover {
+  transform: scale(1.05);
+}
+
+.points-cell {
+  background: linear-gradient(135deg, var(--color-points-bg) 0%, #fcd34d 100%);
+  color: var(--color-points-text);
+  font-weight: 800;
+  font-size: clamp(1rem, 2vw, 1.1rem);
+}
+
+.wins-cell {
+  background: var(--color-wins-bg);
+  color: var(--color-wins-text);
+}
+
+.draws-cell {
+  background: var(--color-draws-bg);
+  color: var(--color-draws-text);
+}
+
+.losses-cell {
+  background: var(--color-losses-bg);
+  color: var(--color-losses-text);
+}
+
+.goals-cell {
+  background: var(--color-goals-bg);
+  color: var(--color-goals-text);
 }
 
 /* ===============================
    Evidenzia squadra specifica
    =============================== */
+.highlight-team {
+  background: rgba(0, 173, 65, 0.05) !important;
+}
 
-/* .highlight-team .position-number {
-  background: #01ae43;
-  color: #fc171c;
-} */
+.highlight-team .position-number {
+  background: #00ad41;
+  color: #ff1020;
+  box-shadow: 0 0 0 3px rgba(0, 173, 65, 0.2);
+}
+
+.team-row.position-champions,
+.team-row.position-champions > td {
+  background: linear-gradient(
+    135deg,
+    var(--color-champions) 0%,
+    var(--color-champions-dark) 100%
+  ) !important;
+}
+
+.team-row.position-europa,
+.team-row.position-europa > td {
+  background: linear-gradient(
+    135deg,
+    var(--color-europa) 0%,
+    var(--color-europa-dark) 100%
+  ) !important;
+}
+
+.team-row.position-conference,
+.team-row.position-conference > td {
+  background: linear-gradient(
+    135deg,
+    var(--color-conference) 0%,
+    var(--color-conference-dark) 100%
+  ) !important;
+}
+
+/* ===============================
+   Responsive - Mobile first
+   =============================== */
+@media (max-width: 767.98px) {
+  .classifica-header {
+    padding: 1.5rem 1rem;
+  }
+
+  .team-logo {
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+  }
+
+  .position-number {
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    font-size: 0.75rem;
+    margin-right: 0.5rem;
+  }
+
+  .team-info {
+    gap: 0.5rem;
+  }
+
+  .table-header th,
+  .team-row td {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .stat-cell {
+    padding: 0.4rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .classifica-card {
+    margin: 0;
+  }
+}

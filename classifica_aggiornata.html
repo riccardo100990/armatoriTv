@@ -1,31 +1,36 @@
-<link rel="stylesheet" href="/css/classifica.css" />
+<div class="classifica-card">
+  <div class="classifica-header">
+    <h1 class="classifica-title">Girone B</h1>
+    <p class="classifica-subtitle mb-0">
+      Classifica Campionato recuperata dal
+      <a
+        href="https://www.amatoricassino.it/girone-b/classifica"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        sito ufficiale Amatori Cassino
+      </a>
+    </p>
+  </div>
 
-<div class="classifica-container">
-  <div class="classifica-card">
-    <div class="classifica-header">
-      <h1 class="classifica-title">Girone B</h1>
-      <p class="classifica-subtitle">Classifica Campionato</p>
-    </div>
-
-    <div class="table-responsive">
-      <table class="classifica-table">
-        <thead class="table-header">
-          <tr>
-            <th>Squadra</th>
-            <th>Pt</th>
-            <th>G</th>
-            <th>V</th>
-            <th>N</th>
-            <th>P</th>
-            <th>GF</th>
-            <th>GS</th>
-            <th>DR</th>
-          </tr>
-        </thead>
-        <tbody id="classifica-body">
-          <!-- riempita da JS -->
-        </tbody>
-      </table>
-    </div>
+  <div class="table-responsive">
+    <table class="classifica-table table table-hover mb-0">
+      <thead class="table-header">
+        <tr>
+          <th scope="col" class="text-start">Squadra</th>
+          <th scope="col" class="text-center">Pt</th>
+          <th scope="col" class="text-center d-none d-md-table-cell">G</th>
+          <th scope="col" class="text-center d-none d-lg-table-cell">V</th>
+          <th scope="col" class="text-center d-none d-lg-table-cell">N</th>
+          <th scope="col" class="text-center d-none d-lg-table-cell">P</th>
+          <th scope="col" class="text-center d-none d-md-table-cell">GF</th>
+          <th scope="col" class="text-center d-none d-md-table-cell">GS</th>
+          <th scope="col" class="text-center">DR</th>
+        </tr>
+      </thead>
+      <tbody id="classifica-body">
+        <!-- Riempito dinamicamente da JS -->
+      </tbody>
+    </table>
   </div>
 </div>

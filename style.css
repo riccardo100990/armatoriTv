@@ -11,19 +11,18 @@ body {
 /* 2. CORPO PRINCIPALE (MAIN) */
 /* ==================================== */
 
-main {
+/* main {
   padding: 20px;
-  max-width: 1200px; /* Limita la larghezza massima del contenuto */
-  margin: 0 auto; /* Centra il contenuto */
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-/* Stile per il Contenitore a 3 Colonne */
 .contenitore-home {
-  display: flex; /* Abilita la disposizione affiancata */
-  gap: 20px; /* Spazio tra le colonne */
+  display: flex;
+  gap: 20px;
   margin-top: 20px;
-  flex-wrap: wrap; /* Permette alle colonne di andare a capo su schermi piccoli */
-}
+  flex-wrap: wrap;
+} */
 
 /* Modifica questa regola nel tuo file style.css */
 .colonna {
@@ -56,88 +55,6 @@ main {
 .classifica-box iframe {
   display: block; /* rimuove spazi indesiderati sotto l'iframe */
 }
-
-/* ==================================== */
-/* 3. FOOTER */
-/* ==================================== */
-
-footer {
-  background-color: #333;
-  color: white;
-  text-align: center;
-  padding: 15px 0;
-  margin-top: 30px;
-  font-size: 0.9em;
-}
-
-/* ==================================== */
-/* SPONSOR PAGE STYLES */
-/* ==================================== */
-/* ==================================== */
-/* NUOVO BANNER CAROSELLO SPONSOR (CORRETTO) */
-/* ==================================== */
-
-/* .sponsor-banner {
-  padding: 40px 0;
-  text-align: center;
-}
-
-.slider-container {
-  overflow: hidden;
-  margin: 20px auto;
-  max-width: 1200px;
-  background-color: #ffffff;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-}
-
-.slider-track {
-  display: flex;
-  width: calc(32 * 250px);
-  animation: scroll-slide 40s linear infinite;
-}
-
-.sponsor-item {
-  min-width: 250px;
-  height: 120px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
-  transition: background-color 0.3s;
-
-  flex-shrink: 0;
-  flex-grow: 0;
-}
-
-.sponsor-item:hover {
-  background-color: #f0f0f0;
-}
-
-.sponsor-item img {
-  width: 100%;
-  max-height: 100px;
-  object-fit: contain;
-  opacity: 0.7;
-  transition: opacity 0.3s;
-}
-
-.sponsor-item img:hover {
-  opacity: 1;
-}
-
-@keyframes scroll-slide {
-  0% {
-  }
-  100% {
-    transform: translateX(calc(-16 * 250px));
-  }
-}
-.slider-track {
-  display: flex;
-  width: calc(16 * 250px);
-  animation: scroll-slide 40s linear infinite;
-} */
 
 /* ==================================== */
 /* SQUADRA PAGE: TEAM VS TEAM STYLES (Finale) */
