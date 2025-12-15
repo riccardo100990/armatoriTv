@@ -1,0 +1,71 @@
+.sponsor-banner {
+  padding: 40px 0;
+  text-align: center;
+}
+
+/* 1. Contenitore che nasconde la parte che non scorre */
+.slider-container {
+  overflow: hidden;
+  margin: 20px auto;
+  max-width: 1200px;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+
+/* 2. La Traccia: Contiene tutti gli elementi e scorre */
+.slider-track {
+  display: flex;
+  /* LARGHEZZA TOTALE CORRETTA: 32 elementi * 250px */
+  width: calc(32 * 250px);
+  animation: scroll-slide 40s linear infinite;
+}
+
+/* 3. Il singolo elemento Sponsor: FIX ANTI-COMPRESSIONE */
+.sponsor-item {
+  min-width: 250px;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  transition: background-color 0.3s;
+
+  /* FIX CRITICO: Impedisce che l'elemento si comprima */
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.sponsor-item:hover {
+  background-color: #f0f0f0;
+}
+
+.sponsor-item img {
+  /* Stili per le immagini dei logo */
+  width: 100%;
+  max-height: 100px;
+  object-fit: contain;
+  opacity: 0.7;
+  transition: opacity 0.3s;
+}
+
+.sponsor-item img:hover {
+  opacity: 1;
+}
+
+/* 4. DEFINIZIONE DELL'ANIMAZIONE DI SCORRIMENTO */
+@keyframes scroll-slide {
+  0% {
+    transform: translateX(0); /* Inizio: posizione iniziale */
+  }
+  100% {
+    /* TRASLAZIONE CORRETTA: Sposta a sinistra di 16 elementi * 250px */
+    transform: translateX(calc(-16 * 250px));
+  }
+}
+.slider-track {
+  display: flex;
+  /* NUOVO CALCOLO: 32 elementi * 250px */
+  width: calc(16 * 250px);
+  animation: scroll-slide 40s linear infinite;
+}

@@ -12,6 +12,7 @@
     />
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/footer.css" />
   </head>
   <body>
     <div id="header-placeholder">Caricamento Header...</div>
@@ -68,11 +69,14 @@
     ></script>
     <script type="module">
       import { includeHtml } from "./js/utils/include.js";
+      import { setActiveNavLink } from "./js/navbar-active.js";
 
-      document.addEventListener("DOMContentLoaded", () => {
-        includeHtml("header-placeholder", "header.html");
-        includeHtml("footer-placeholder", "footer.html");
+      document.addEventListener("DOMContentLoaded", async () => {
+        await includeHtml("header-placeholder", "header.html");
+        await includeHtml("footer-placeholder", "footer.html");
+        setActiveNavLink(); // Non serve await qui
       });
     </script>
+    <script src="js/navbar-active.js"></script>
   </body>
 </html>

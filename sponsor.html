@@ -10,8 +10,9 @@
       integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="css/sponsor.css" />
   </head>
   <body>
     <div id="header-placeholder">Caricamento Header...</div>
@@ -43,7 +44,7 @@
             </div>
             <div class="sponsor-item">
               <a href="[LINK_4]" target="_blank"
-                ><img src="sponsor/chalet.jpg" alt="Sponsor Chaler"
+                ><img src="sponsor/chalet.jpg" alt="Sponsor Chalet"
               /></a>
             </div>
             <div class="sponsor-item">
@@ -132,7 +133,7 @@
             </div>
             <div class="sponsor-item">
               <a href="[LINK_4]" target="_blank"
-                ><img src="sponsor/chaler.jpg" alt="Sponsor Chaler"
+                ><img src="sponsor/chalet.jpg" alt="Sponsor Chalet"
               /></a>
             </div>
             <div class="sponsor-item">
@@ -153,14 +154,14 @@
             <div class="sponsor-item">
               <a href="[LINK_8]" target="_blank"
                 ><img
-                  src="sponsor/lavanderiaIlTuilipano.jpg"
+                  src="sponsor/lavanderiaIlTulipano.jpg"
                   alt="Sponsor Lavanderia Il Tulipano"
               /></a>
             </div>
             <div class="sponsor-item">
               <a href="[LINK_9]" target="_blank"
                 ><img
-                  src="sponsor/loStoccoRapprrsentanze.jpg"
+                  src="sponsor/loStoccoRappresentanze.jpg"
                   alt="Sponsor Lo Stocco Rappresentanze"
               /></a>
             </div>
@@ -220,11 +221,14 @@
     ></script>
     <script type="module">
       import { includeHtml } from "./js/utils/include.js";
+      import { setActiveNavLink } from "./js/navbar-active.js";
 
-      document.addEventListener("DOMContentLoaded", () => {
-        includeHtml("header-placeholder", "header.html");
-        includeHtml("footer-placeholder", "footer.html");
+      document.addEventListener("DOMContentLoaded", async () => {
+        await includeHtml("header-placeholder", "header.html");
+        await includeHtml("footer-placeholder", "footer.html");
+        setActiveNavLink(); // Non serve await qui
       });
     </script>
+    <script src="js/navbar-active.js"></script>
   </body>
 </html>
