@@ -29,7 +29,7 @@
 
 /* 4. Link attivo con sfondo rosso */
 .navbar .nav-link.active {
-  background-color: #ff1020 !important;
+  background-color: var(--color-red) !important;
   border-radius: 4px; /* opzionale, per arrotondare i bordi */
   color: white !important; /* assicura il testo bianco */
 }
