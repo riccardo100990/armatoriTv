@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="css/header.css" />
     <link rel="stylesheet" href="css/footer.css" />
     <link rel="stylesheet" href="css/classifica.css" />
+    <link rel="stylesheet" href="css/calendar-wheel.css" />
   </head>
   <body>
     <div id="header-placeholder">Caricamento Header...</div>
@@ -52,34 +53,25 @@
 
             <div class="card shadow-sm">
               <div class="card-body">
-                <h3 class="card-title h5 mb-3">Notizie Principali</h3>
+                <h3 class="card-title h5 mb-3 text-center">Forma Recente</h3>
 
-                <!-- Notizia 1 -->
-                <article class="border-bottom pb-3 mb-3">
-                  <h4 class="h6 mb-2 fw-bold">Titolo Notizia 1</h4>
-                  <p class="text-muted small mb-2">
-                    Breve riassunto della notizia più calda del momento...
-                  </p>
-                  <a href="#" class="btn btn-sm btn-outline-primary">
-                    Leggi tutto →
-                  </a>
-                </article>
+                <div
+                  id="recent-form"
+                  class="d-flex justify-content-center gap-2 mb-3"
+                >
+                  <!-- cerchi W L D -->
+                </div>
 
-                <!-- Notizia 2 -->
-                <article class="border-bottom pb-3 mb-3">
-                  <h4 class="h6 mb-2 fw-bold">Titolo Notizia 2</h4>
-                  <p class="text-muted small mb-2">
-                    Un'altra importante notizia sulla squadra...
-                  </p>
-                  <a href="#" class="btn btn-sm btn-outline-primary">
-                    Leggi tutto →
-                  </a>
-                </article>
+                <div class="wheel-wrapper">
+                  <button id="prev-btn" class="wheel-btn">‹</button>
 
-                <div class="text-center mt-3">
-                  <a href="#" class="btn btn-primary btn-sm">
-                    Tutte le notizie
-                  </a>
+                  <div class="wheel-container">
+                    <div id="wheel" class="wheel">
+                      <!-- match cards -->
+                    </div>
+                  </div>
+
+                  <button id="next-btn" class="wheel-btn">›</button>
                 </div>
               </div>
             </div>
@@ -107,5 +99,7 @@
       });
     </script>
     <script type="module" src="js/render_classifica.js"></script>
+    <script type="module" src="js/render_form_and_next_match.js"></script>
+    <script type="module" src="js/render_calendar.js"></script>
   </body>
 </html>

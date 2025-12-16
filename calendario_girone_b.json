@@ -1,0 +1,179 @@
+{
+  "team": "Amatori Lenola 2023",
+  "played": [
+    {
+      "girone": "B",
+      "giornata": 1,
+      "data": "04-10-2025",
+      "casa": "Amatori Lenola 2023",
+      "trasferta": "F.C. Vallemaio 2022",
+      "risultato": "4 - 2",
+      "campo": "Lenola",
+      "esito": "W"
+    },
+    {
+      "girone": "B",
+      "giornata": 2,
+      "data": "11-10-2025",
+      "casa": "Amatori Lenola 2023",
+      "trasferta": "Coreno Legends",
+      "risultato": "3 - 0",
+      "campo": "Lenola",
+      "esito": "W"
+    },
+    {
+      "girone": "B",
+      "giornata": 3,
+      "data": "18-10-2025",
+      "casa": "F.C. Spigno",
+      "trasferta": "Amatori Lenola 2023",
+      "risultato": "1 - 1",
+      "campo": "Spigno Saturnia",
+      "esito": "D"
+    },
+    {
+      "girone": "B",
+      "giornata": 4,
+      "data": "25-10-2025",
+      "casa": "Amatori Lenola 2023",
+      "trasferta": "Virtus Scauri Amatori",
+      "risultato": "1 - 1",
+      "campo": "Lenola",
+      "esito": "D"
+    },
+    {
+      "girone": "B",
+      "giornata": 5,
+      "data": "09-11-2025",
+      "casa": "Amatori Lenola 2023",
+      "trasferta": "F.C. Pilone",
+      "risultato": "0 - 2",
+      "campo": "Lenola",
+      "esito": "L"
+    },
+    {
+      "girone": "B",
+      "giornata": 6,
+      "data": "15-11-2025",
+      "casa": "Felcese Football Club",
+      "trasferta": "Amatori Lenola 2023",
+      "risultato": "1 - 1",
+      "campo": "Sant'Angelo",
+      "esito": "D"
+    },
+    {
+      "girone": "B",
+      "giornata": 7,
+      "data": "22-11-2025",
+      "casa": "Amatori Lenola 2023",
+      "trasferta": "AC Castelnovese",
+      "risultato": "4 - 0",
+      "campo": "Lenola",
+      "esito": "W"
+    },
+    {
+      "girone": "B",
+      "giornata": 8,
+      "data": "29-11-2025",
+      "casa": "A.C. Lido la Conchiglia",
+      "trasferta": "Amatori Lenola 2023",
+      "risultato": "0 - 4",
+      "campo": "Lenola",
+      "esito": "W"
+    },
+    {
+      "girone": "B",
+      "giornata": 9,
+      "data": "06-12-2025",
+      "casa": "AM Simonelli",
+      "trasferta": "Amatori Lenola 2023",
+      "risultato": "0 - 2",
+      "campo": "Scauri",
+      "esito": "W"
+    },
+    {
+      "girone": "B",
+      "giornata": 10,
+      "data": "13-12-2025",
+      "casa": "Amatori Lenola 2023",
+      "trasferta": "F.C. Spigno",
+      "risultato": "0 - 0",
+      "campo": "Lenola",
+      "esito": "D"
+    }
+  ],
+  "upcoming": [
+    {
+      "girone": "B",
+      "giornata": 11,
+      "data": "20-12-2025",
+      "casa": "Virtus Scauri Amatori",
+      "trasferta": "Amatori Lenola 2023",
+      "risultato": "VS",
+      "campo": "Scauri"
+    },
+    {
+      "girone": "B",
+      "giornata": 12,
+      "data": "03-01-2026",
+      "casa": "Amatori Lenola 2023",
+      "trasferta": "AM Simonelli",
+      "risultato": "VS",
+      "campo": "Lenola"
+    },
+    {
+      "girone": "B",
+      "giornata": 13,
+      "data": "11-01-2026",
+      "casa": "Amatori Lenola 2023",
+      "trasferta": "Felcese Football Club",
+      "risultato": "VS",
+      "campo": "Lenola"
+    },
+    {
+      "girone": "B",
+      "giornata": 14,
+      "data": "17-01-2026",
+      "casa": "F.C. Pilone",
+      "trasferta": "Amatori Lenola 2023",
+      "risultato": "VS",
+      "campo": "Cerri Aprano"
+    },
+    {
+      "girone": "B",
+      "giornata": 15,
+      "data": "24-01-2026",
+      "casa": "Amatori Lenola 2023",
+      "trasferta": "A.C. Lido la Conchiglia",
+      "risultato": "VS",
+      "campo": "Lenola"
+    },
+    {
+      "girone": "B",
+      "giornata": 16,
+      "data": "31-01-2026",
+      "casa": "F.C. Vallemaio 2022",
+      "trasferta": "Amatori Lenola 2023",
+      "risultato": "VS",
+      "campo": "Vallemaio"
+    },
+    {
+      "girone": "B",
+      "giornata": 17,
+      "data": "07-02-2026",
+      "casa": "AC Castelnovese",
+      "trasferta": "Amatori Lenola 2023",
+      "risultato": "VS",
+      "campo": "Coreno Ausonio"
+    },
+    {
+      "girone": "B",
+      "giornata": 18,
+      "data": "14-02-2026",
+      "casa": "Coreno Legends",
+      "trasferta": "Amatori Lenola 2023",
+      "risultato": "VS",
+      "campo": "Coreno Ausonio"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+.wheel-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.wheel-container {
+  overflow: hidden;
+  width: 100%;
+  max-width: 360px;
+}
+
+.wheel {
+  display: flex;
+  transition: transform 0.35s ease;
+}
+
+.wheel-item {
+  min-width: 100%;
+  padding: 16px;
+}
+
+.wheel-card {
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  padding: 20px;
+  text-align: center;
+  background: #fff;
+}
+
+.wheel-card.next {
+  border: 2px solid #0d6efd;
+}
+
+.wheel-btn {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #0d6efd;
+}
+
+.wheel-btn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
