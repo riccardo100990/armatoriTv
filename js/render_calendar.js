@@ -1,4 +1,4 @@
-const DATA_URL = "calendario_girone_b.json";
+const DATA_URL = "./data/calendario_girone_b.json";
 
 let currentIndex = 0;
 let matches = [];

@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function renderClassifica() {
-  fetch("classifica_girone_b.json")
+  fetch("./data/classifica_girone_b.json")
     .then((r) => r.json())
     .then((data) => {
       const tbody = document.getElementById("classifica-body");

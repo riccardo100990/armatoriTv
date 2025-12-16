@@ -3,11 +3,14 @@ from bs4 import BeautifulSoup
 import json
 from datetime import datetime
 import re
+import os
 
+dir = os.path.dirname(__file__)
 CLASSIFICA_URL = "https://www.amatoricassino.it/girone-b/classifica"
-CLASSIFICA_OUTPUT_FILE = "../classifica_girone_b.json"
 CALENDARIO_URL = "https://www.amatoricassino.it/girone-b/calendario"
-CALENDARIO_OUTPUT_FILE = "../calendario_girone_b.json"
+
+CLASSIFICA_OUTPUT_FILE = os.path.realpath(os.path.join(dir, "..", "data", "classifica_girone_b.json"))
+CALENDARIO_OUTPUT_FILE = os.path.realpath(os.path.join(dir, "..", "data", "calendario_girone_b.json"))
 
 
 def clean_int(text):
@@ -76,16 +79,7 @@ def scrape_classifica():
     with open(CLASSIFICA_OUTPUT_FILE, "w", encoding="utf-8") as f:
         json.dump(output, f, indent=2, ensure_ascii=False)
 
-    print(f"Classifica salvata in {CLASSIFICA_OUTPUT_FILE}")
 
-
-
-
-import requests
-import re
-from bs4 import BeautifulSoup
-
-CALENDARIO_URL = "https://www.amatoricassino.it/girone-b/calendario"
 
 def scrape_calendar():
     team_name = "Amatori Lenola 2023"
@@ -183,5 +177,5 @@ def scrape_calendar():
 
 
 if __name__ == "__main__":
-    # scrape_classifica()
+    scrape_classifica()
     scrape_calendar()

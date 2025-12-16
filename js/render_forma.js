@@ -1,4 +1,4 @@
-const DATA_URL = "./calendario_girone_b.json";
+const DATA_URL = "./data/calendario_girone_b.json";
 
 function esitoToClass(esito) {
   if (esito === "W") return "bg-success";
