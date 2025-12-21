@@ -100,18 +100,19 @@
       "risultato": "0 - 0",
       "campo": "Lenola",
       "esito": "D"
-    }
-  ],
-  "upcoming": [
+    },
     {
       "girone": "B",
       "giornata": 11,
       "data": "20-12-2025",
       "casa": "Virtus Scauri Amatori",
       "trasferta": "Amatori Lenola 2023",
-      "risultato": "VS",
-      "campo": "Scauri"
-    },
+      "risultato": "2 - 0",
+      "campo": "Scauri",
+      "esito": "L"
+    }
+  ],
+  "upcoming": [
     {
       "girone": "B",
       "giornata": 12,

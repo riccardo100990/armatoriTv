@@ -4,7 +4,7 @@ export async function renderSponsors() {
   if (!container) return;
 
   // fetch JSON dinamicamente (compatibile ovunque)
-  const res = await fetch("./sponsor/sponsor_list.json"); // -> adatta il path
+  const res = await fetch("./data/sponsor_list.json"); // -> adatta il path
   if (!res.ok) {
     container.innerHTML =
       '<div class="col text-center">Impossibile caricare gli sponsor</div>';

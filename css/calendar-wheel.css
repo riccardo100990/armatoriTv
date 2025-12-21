@@ -3,45 +3,211 @@
   align-items: center;
   justify-content: center;
   gap: 12px;
+  padding: 20px;
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  margin: 20px 0;
 }
 
 .wheel-container {
   overflow: hidden;
   width: 100%;
-  max-width: 360px;
+  max-width: 400px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .wheel {
   display: flex;
-  transition: transform 0.35s ease;
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .wheel-item {
   min-width: 100%;
-  padding: 16px;
+  padding: 20px;
 }
 
 .wheel-card {
-  border-radius: 14px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  padding: 25px;
   text-align: center;
-  background: #fff;
+  background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.wheel-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #ff1020 0%, #ff6b6b 100%);
+}
+
+.wheel-card.played {
+  opacity: 0.9;
 }
 
 .wheel-card.next {
-  border: 2px solid #0d6efd;
+  border: 2px solid #ff1020;
+  box-shadow: 0 0 20px rgba(255, 16, 32, 0.3);
+  transform: translateY(-5px);
+}
+
+.wheel-card h5 {
+  color: #1e3c72;
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.wheel-card .fw-bold {
+  color: #333;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  padding: 10px;
+  background: rgba(30, 60, 114, 0.05);
+  border-radius: 10px;
+  border-left: 4px solid #ff1020;
+}
+
+.wheel-card p {
+  color: #555;
+  font-size: 1rem;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.wheel-card .fw-semibold {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #ff1020;
+  margin-top: 15px;
+  padding: 12px;
+  background: rgba(255, 16, 32, 0.1);
+  border-radius: 12px;
+  border: 2px dashed rgba(255, 16, 32, 0.3);
 }
 
 .wheel-btn {
-  background: none;
-  border: none;
-  font-size: 2rem;
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  font-size: 2.5rem;
   cursor: pointer;
-  color: #0d6efd;
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+
+.wheel-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: #ff1020;
+  color: #ff1020;
+  transform: scale(1.1);
+}
+
+.wheel-btn:active:not(:disabled) {
+  transform: scale(0.95);
 }
 
 .wheel-btn:disabled {
-  opacity: 0.3;
-  cursor: default;
+  opacity: 0.2;
+  cursor: not-allowed;
+}
+
+/* Indicatori di progresso */
+.wheel-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 15px;
+}
+
+.wheel-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.wheel-indicator.active {
+  background: #ff1020;
+  transform: scale(1.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .wheel-wrapper {
+    padding: 15px;
+    gap: 8px;
+  }
+
+  .wheel-container {
+    max-width: 320px;
+  }
+
+  .wheel-card {
+    padding: 20px;
+  }
+
+  .wheel-card h5 {
+    font-size: 1.1rem;
+  }
+
+  .wheel-card .fw-bold {
+    font-size: 1.1rem;
+  }
+
+  .wheel-btn {
+    width: 45px;
+    height: 45px;
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .wheel-wrapper {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .wheel-container {
+    order: 1;
+  }
+
+  .wheel-buttons {
+    order: 2;
+    display: flex;
+    gap: 20px;
+  }
+
+  .wheel-card .fw-bold {
+    font-size: 1rem;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .wheel-card p {
+    font-size: 0.9rem;
+  }
 }

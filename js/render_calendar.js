@@ -5,18 +5,43 @@ let matches = [];
 
 function buildMatchCard(match, team) {
   const opponent = match.casa === team ? match.trasferta : match.casa;
+  const cardClass = match.stato === "Da giocare" ? "next" : "played";
 
   return `
-    <div class="wheel-card ${match.stato === "Da giocare" ? "next" : ""}">
+    <div class="wheel-card ${cardClass}">
       <h5>Giornata ${match.giornata}</h5>
-      <p class="fw-bold mb-1">${team} vs ${opponent}</p>
-      <p class="mb-1">📅 ${match.data}</p>
-      <p class="mb-2">📍 ${match.campo}</p>
+      <h6>📅 ${match.data}</h6>
+      <p class="fw-bold mb-1">
+        <span class="team-home">${match.casa === team ? team : opponent}</span>
+        <span class="vs"> vs </span>
+        <span class="team-away">${match.casa === team ? opponent : team}</span>
+      </p>
+  
       <p class="fw-semibold">
         ${match.risultato ? "⚽ " + match.risultato : "⏳ Da giocare"}
       </p>
+    
     </div>
   `;
+}
+
+function createIndicators(count) {
+  const indicatorsContainer = document.getElementById("wheel-indicators");
+  if (!indicatorsContainer) return;
+
+  indicatorsContainer.innerHTML = "";
+
+  for (let i = 0; i < count; i++) {
+    const indicator = document.createElement("div");
+    indicator.className = `wheel-indicator ${
+      i === currentIndex ? "active" : ""
+    }`;
+    indicator.addEventListener("click", () => {
+      currentIndex = i;
+      updateWheel();
+    });
+    indicatorsContainer.appendChild(indicator);
+  }
 }
 
 function updateWheel() {
@@ -26,6 +51,12 @@ function updateWheel() {
   document.getElementById("prev-btn").disabled = currentIndex === 0;
   document.getElementById("next-btn").disabled =
     currentIndex === matches.length - 1;
+
+  // Aggiorna indicatori
+  const indicators = document.querySelectorAll(".wheel-indicator");
+  indicators.forEach((indicator, index) => {
+    indicator.classList.toggle("active", index === currentIndex);
+  });
 }
 
 async function initWheel() {
@@ -42,6 +73,8 @@ async function initWheel() {
     .map((m) => `<div class="wheel-item">${buildMatchCard(m, data.team)}</div>`)
     .join("");
 
+  // Crea indicatori
+  createIndicators(matches.length);
   updateWheel();
 
   document.getElementById("prev-btn").onclick = () => {

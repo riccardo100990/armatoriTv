@@ -13,14 +13,26 @@
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="css/header.css" />
     <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="css/rosa.css" />
   </head>
   <body>
     <div id="header-placeholder">Caricamento Header...</div>
 
     <main class="sfida-team-container">
-      <h1>La Sfida: Team Prof vs Team Summer</h1>
+      <section>
+        <img
+          src="immagini/squadra.jpg"
+          alt="La nostra squadra"
+          class="team-photo"
+        />
+      </section>
+      <section>
+        <h2>La rosa degli Armatori</h2>
+        <div class="players-container"></div>
+      </section>
 
       <section class="matchup-arena">
+        <h1>La Sfida: Team Prof vs Team Summer</h1>
         <div class="team team-prof">
           <h2 class="team-name">TEAM PROF</h2>
           <div class="team-image-box">
@@ -78,5 +90,6 @@
       });
     </script>
     <script src="js/navbar-active.js"></script>
+    <script src="js/render_rosa.js"></script>
   </body>
 </html>

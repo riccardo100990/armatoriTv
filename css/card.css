@@ -1,0 +1,81 @@
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+  }
+}
+
+/* ===============================
+   Card principale
+   =============================== */
+.card {
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+
+/* ===============================
+   Header con animazione
+   =============================== */
+.card-header {
+  background: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    var(--color-primary-light) 100%
+  );
+  color: var(--color-white);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-header::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.1) 1px,
+    transparent 1px
+  );
+  background-size: 20px 20px;
+  animation: float 20s ease-in-out infinite;
+}
+
+.card-title {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 800;
+  margin: 0;
+  text-shadow: var(--shadow-text);
+  position: relative;
+  z-index: 1;
+}
+
+.card-subtitle {
+  font-size: clamp(0.95rem, 2vw, 1.2rem);
+  opacity: 0.9;
+  margin-top: 0.5rem;
+  font-weight: 300;
+  position: relative;
+  z-index: 1;
+}
+
+.card-subtitle a {
+  color: #ff1020;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+  font-weight: 500;
+}
+
+.card-subtitle a:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}

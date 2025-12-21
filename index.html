@@ -11,6 +11,7 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/card.css" />
     <link rel="stylesheet" href="css/header.css" />
     <link rel="stylesheet" href="css/footer.css" />
     <link rel="stylesheet" href="css/classifica.css" />
@@ -20,10 +21,24 @@
     <div id="header-placeholder">Caricamento Header...</div>
 
     <main class="container my-4 my-lg-5">
-      <div class="row g-4">
-        <div class="col-lg-6 col-12">
-          <div id="classifica-target">
-            <div class="text-center py-5">
+      <!-- <h2>
+        I dati di classifica e calendario sono recuperati dal
+        <a
+          href="https://www.amatoricassino.it/girone-b/classifica"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          sito ufficiale Amatori Cassino
+      </h2> -->
+
+      <div class="row g-4 row-cols-1 row-cols-lg-2">
+        <!-- Colonna sinistra: Classifica -->
+        <div class="col d-flex flex-column">
+          <div id="classifica-target" class="h-100">
+            <!-- Spinner temporaneo -->
+            <div
+              class="text-center py-5 h-100 d-flex flex-column justify-content-center"
+            >
               <div class="spinner-border text-primary" role="status">
                 <span class="visually-hidden">Caricamento...</span>
               </div>
@@ -32,48 +47,54 @@
           </div>
         </div>
 
-        <div class="col-lg-6 col-12">
-          <div class="d-flex flex-column gap-4">
-            <div class="card shadow-sm">
-              <div class="card-body">
-                <h3 class="card-title h5 mb-2">Ultimi Video e Live!</h3>
-                <p class="card-text text-muted mb-3">
-                  Guarda i momenti salienti della squadra.
-                </p>
-                <div class="ratio ratio-16x9">
-                  <iframe
-                    src="https://www.youtube.com/embed/videoseries?list=UUai4jGthClf8IfXxA3qnzPw"
-                    title="Ultimi Caricamenti del Canale Amatori Lenola 2023"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen
-                  ></iframe>
-                </div>
+        <!-- Colonna destra: Video e Calendario -->
+        <div class="col d-flex flex-column gap-4">
+          <!-- Card Video -->
+          <div class="card shadow-sm flex-grow-1">
+            <div class="card-header">
+              <h1 class="card-title h5 mb-0">Ultimi Video e Live!</h1>
+              <!-- <p class="card-subtitle mb-0 text-muted">
+                Guarda i momenti salienti della squadra
+              </p> -->
+            </div>
+            <div class="card-body p-0">
+              <div class="ratio ratio-16x9">
+                <iframe
+                  src="https://www.youtube.com/embed/videoseries?list=UUai4jGthClf8IfXxA3qnzPw"
+                  title="Ultimi Caricamenti del Canale Amatori Lenola 2023"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen
+                  style="border: none"
+                ></iframe>
               </div>
             </div>
+          </div>
 
-            <div class="card shadow-sm">
-              <div class="card-body">
-                <h3 class="card-title h5 mb-3 text-center">Forma Recente</h3>
-
-                <div
-                  id="recent-form"
-                  class="d-flex justify-content-center gap-2 mb-3"
-                >
-                  <!-- cerchi W L D -->
-                </div>
-
-                <div class="wheel-wrapper">
-                  <button id="prev-btn" class="wheel-btn">‹</button>
-
-                  <div class="wheel-container">
-                    <div id="wheel" class="wheel">
-                      <!-- match cards -->
-                    </div>
-                  </div>
-
-                  <button id="next-btn" class="wheel-btn">›</button>
-                </div>
+          <!-- Card Calendario -->
+          <div class="card shadow-sm flex-grow-1">
+            <div class="card-header">
+              <h1 class="card-title h5 mb-0">Forma Recente e Calendario</h1>
+              <!-- <p class="card-subtitle mb-0 text-muted">
+                Prossime partite e forma
+              </p> -->
+            </div>
+            <div class="card-body p-3 d-flex flex-column">
+              <div
+                id="recent-form"
+                class="d-flex justify-content-center gap-2 mb-3"
+              >
+                <!-- cerchi W L D -->
               </div>
+
+              <div class="wheel-wrapper">
+                <button id="prev-btn" class="wheel-btn">‹</button>
+                <div class="wheel-container">
+                  <div id="wheel" class="wheel"></div>
+                </div>
+                <button id="next-btn" class="wheel-btn">›</button>
+              </div>
+
+              <div class="wheel-indicators mt-2" id="wheel-indicators"></div>
             </div>
           </div>
         </div>
