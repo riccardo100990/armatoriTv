@@ -26,47 +26,157 @@
           class="team-photo"
         />
       </section>
-      <section>
+
+      <section class="rosa-section">
         <h2>La rosa degli Armatori</h2>
         <div class="players-container"></div>
       </section>
 
-      <section class="matchup-arena">
+      <!-- Sezione Statistiche Individuali -->
+      <section class="statistiche-section">
+        <h2>Statistiche Individuali</h2>
+        <div class="statistiche-container">
+          <div class="filters">
+            <button class="filter-btn active" data-filter="all">Tutti</button>
+            <button class="filter-btn" data-filter="P">Portieri</button>
+            <button class="filter-btn" data-filter="D">Difensori</button>
+            <button class="filter-btn" data-filter="C">Centrocampisti</button>
+            <button class="filter-btn" data-filter="A">Attaccanti</button>
+          </div>
+          <div class="stats-table-container">
+            <table class="stats-table">
+              <thead>
+                <tr>
+                  <th>Giocatore</th>
+                  <th>Ruolo</th>
+                  <th>Goal</th>
+                  <th>Assist</th>
+                  <th>Punti Totali</th>
+                </tr>
+              </thead>
+              <tbody id="stats-body">
+                <!-- Popolato da JavaScript -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sezione Sfida Team Prof vs Team Summer -->
+      <section class="matchup-section">
         <h1>La Sfida: Team Prof vs Team Summer</h1>
-        <div class="team team-prof">
-          <h2 class="team-name">TEAM PROF</h2>
-          <div class="team-image-box">
-            <img src="squadra/rovesciataProf.jpg" alt="Foto Team Prof" />
+
+        <div class="teams-container">
+          <!-- Team Prof -->
+          <div class="team-box team-prof">
+            <div class="team-header">
+              <h2 class="team-name">TEAM PROF</h2>
+              <div class="team-score">
+                <span class="score-label">Ultimo Risultato:</span>
+                <span class="score-number">3</span>
+              </div>
+            </div>
+            <div class="team-image-container">
+              <img src="squadra/rovesciataProf.jpg" alt="Foto Team Prof" />
+              <div class="team-desc">
+                <h3>Formazione Tipica</h3>
+                <ul>
+                  <li>Giocatori più esperti</li>
+                  <li>Tattica consolidata</li>
+                  <li>Gioco posizionale</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- VS Separator -->
+          <div class="vs-container">
+            <div class="vs-circle">
+              <span class="vs-text">VS</span>
+              <div class="vs-stats">
+                <div class="vs-stat">
+                  <span class="vs-stat-label">Punti Totali</span>
+                  <span class="vs-stat-value">12 - 8</span>
+                </div>
+                <div class="vs-stat">
+                  <span class="vs-stat-label">Partite Giocate</span>
+                  <span class="vs-stat-value">5</span>
+                </div>
+                <div class="vs-stat">
+                  <span class="vs-stat-label">Vittorie</span>
+                  <span class="vs-stat-value">3 - 2</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Team Summer -->
+          <div class="team-box team-summer">
+            <div class="team-header">
+              <h2 class="team-name">TEAM SUMMER</h2>
+              <div class="team-score">
+                <span class="score-label">Ultimo Risultato:</span>
+                <span class="score-number">2</span>
+              </div>
+            </div>
+            <div class="team-image-container">
+              <img src="squadra/summer.jpg" alt="Foto Team Summer" />
+              <div class="team-desc">
+                <h3>Formazione Tipica</h3>
+                <ul>
+                  <li>Giovani promettenti</li>
+                  <li>Gioco offensivo</li>
+                  <li>Velocità e dinamismo</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div class="vs-element">
-          <span>VS</span>
-        </div>
-
-        <div class="team team-summer">
-          <h2 class="team-name">TEAM SUMMER</h2>
-          <div class="team-image-box">
-            <img src="squadra/summer.jpg" alt="Foto Team Summer" />
-          </div>
+        <!-- Tabella Confronto -->
+        <div class="confronto-container">
+          <h3>Confronto Generale</h3>
+          <table class="confronto-table">
+            <thead>
+              <tr>
+                <th>Statistica</th>
+                <th>Team Prof</th>
+                <th>Team Summer</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Goal Totali</td>
+                <td class="team-prof">18</td>
+                <td class="team-summer">14</td>
+              </tr>
+              <tr>
+                <td>Assist Totali</td>
+                <td class="team-prof">12</td>
+                <td class="team-summer">15</td>
+              </tr>
+              <tr>
+                <td>Media Goal/Partita</td>
+                <td class="team-prof">3.6</td>
+                <td class="team-summer">2.8</td>
+              </tr>
+              <tr>
+                <td>Partite Vinte</td>
+                <td class="team-prof">3</td>
+                <td class="team-summer">2</td>
+              </tr>
+              <tr>
+                <td>Partite Pareggiate</td>
+                <td class="team-prof">0</td>
+                <td class="team-summer">0</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </section>
 
-      <section class="punteggio-sfida">
-        <div class="score-box-team score-team-prof">
-          Ultimo Risultato:
-          <span class="score-number">3</span>
-        </div>
-
-        <div style="min-width: 50px; flex-shrink: 0"></div>
-
-        <div class="score-box-team score-team-summer">
-          Ultimo Risultato:
-          <span class="score-number">2</span>
-        </div>
-      </section>
-      <p style="text-align: center; margin-top: 10px">
-        La sfida è attualmente in corso, risultato aggiornato all'ultima
+      <p class="update-note">
+        La sfida è attualmente in corso, risultati aggiornati all'ultima
         partita.
       </p>
     </main>
@@ -91,5 +201,6 @@
     </script>
     <script src="js/navbar-active.js"></script>
     <script src="js/render_rosa.js"></script>
+    <script src="js/render_statistiche.js" type="module"></script>
   </body>
 </html>
