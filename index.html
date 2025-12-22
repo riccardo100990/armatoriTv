@@ -15,22 +15,47 @@
     <link rel="stylesheet" href="css/header.css" />
     <link rel="stylesheet" href="css/footer.css" />
     <link rel="stylesheet" href="css/classifica.css" />
-    <link rel="stylesheet" href="css/calendar-wheel.css" />
+    <link rel="stylesheet" href="css/calendar.css" />
   </head>
   <body>
     <div id="header-placeholder">Caricamento Header...</div>
 
     <main class="container my-4 my-lg-5">
-      <!-- <h2>
-        I dati di classifica e calendario sono recuperati dal
-        <a
-          href="https://www.amatoricassino.it/girone-b/classifica"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          sito ufficiale Amatori Cassino
-      </h2> -->
+      <!-- Card Video -->
+      <!-- <div class="card shadow-sm">
+        <div class="card-header">
+          <h1 class="card-title h5 mb-0">Ultimi Video e Live!</h1>
+        </div>
+        <div class="card-body p-0">
+          <div class="ratio ratio-16x9">
+            <iframe
+              src="https://www.youtube.com/embed/videoseries?list=UUai4jGthClf8IfXxA3qnzPw"
+              title="Ultimi Caricamenti del Canale Amatori Lenola 2023"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+              style="border: none"
+            ></iframe>
+          </div>
+        </div>
+      </div> -->
 
+      <!-- Titolo sopra le colonne -->
+      <div class="row mt-4 mb-3">
+        <div class="col-12">
+          <h2 class="text-center text-muted">
+            I dati di classifica e calendario sono recuperati dal
+            <a
+              href="https://www.amatoricassino.it/girone-b/classifica"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              sito ufficiale Amatori Cassino
+            </a>
+          </h2>
+        </div>
+      </div>
+
+      <!-- Due colonne -->
       <div class="row g-4 row-cols-1 row-cols-lg-2">
         <!-- Colonna sinistra: Classifica -->
         <div class="col d-flex flex-column">
@@ -50,12 +75,9 @@
         <!-- Colonna destra: Video e Calendario -->
         <div class="col d-flex flex-column gap-4">
           <!-- Card Video -->
-          <div class="card shadow-sm flex-grow-1">
+          <div class="card shadow-sm">
             <div class="card-header">
               <h1 class="card-title h5 mb-0">Ultimi Video e Live!</h1>
-              <!-- <p class="card-subtitle mb-0 text-muted">
-                Guarda i momenti salienti della squadra
-              </p> -->
             </div>
             <div class="card-body p-0">
               <div class="ratio ratio-16x9">
@@ -69,32 +91,18 @@
               </div>
             </div>
           </div>
-
           <!-- Card Calendario -->
           <div class="card shadow-sm flex-grow-1">
             <div class="card-header">
               <h1 class="card-title h5 mb-0">Forma Recente e Calendario</h1>
-              <!-- <p class="card-subtitle mb-0 text-muted">
-                Prossime partite e forma
-              </p> -->
             </div>
             <div class="card-body p-3 d-flex flex-column">
-              <div
-                id="recent-form"
-                class="d-flex justify-content-center gap-2 mb-3"
-              >
-                <!-- cerchi W L D -->
-              </div>
-
-              <div class="wheel-wrapper">
-                <button id="prev-btn" class="wheel-btn">‹</button>
-                <div class="wheel-container">
-                  <div id="wheel" class="wheel"></div>
+              <div id="calendar-wrapper">
+                <div class="wheel-viewport">
+                  <div id="wheel"></div>
                 </div>
-                <button id="next-btn" class="wheel-btn">›</button>
+                <div id="wheel-indicators" aria-hidden="false"></div>
               </div>
-
-              <div class="wheel-indicators mt-2" id="wheel-indicators"></div>
             </div>
           </div>
         </div>

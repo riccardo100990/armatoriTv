@@ -26,6 +26,8 @@
     135deg,
     var(--color-primary) 0%,
     var(--color-primary-light) 100%
+      /* var(--color-red) 0%,
+    var(--color-green) 100% */
   );
   color: var(--color-white);
   padding: 2rem 1.5rem;
@@ -68,12 +70,12 @@
   z-index: 1;
 }
 
-.card-subtitle a {
+/* .card-subtitle a {
   color: #ff1020;
   text-decoration: none;
   transition: opacity 0.3s ease;
   font-weight: 500;
-}
+} */
 
 .card-subtitle a:hover {
   opacity: 0.8;

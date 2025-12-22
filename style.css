@@ -456,3 +456,24 @@ img {
   margin-bottom: 10px;
   border: 3px solid #007bff; /* Bordo colorato */
 }
+
+/* Per ridurre l'altezza solo su dispositivi grandi */
+@media (min-width: 992px) {
+  .card .ratio-16x9 {
+    max-height: 400px;
+  }
+}
+
+/* Per mantenere il rapporto su mobile */
+@media (max-width: 991px) {
+  .card .ratio-16x9 {
+    max-height: 300px;
+  }
+}
+
+a {
+  color: #ff1020;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+  font-weight: 500;
+}
