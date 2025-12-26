@@ -820,3 +820,140 @@
     font-size: 1.5rem;
   }
 }
+
+/* ===============================
+   View Switcher
+   =============================== */
+.view-switcher {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.view-btn {
+  padding: 0.75rem 1.5rem;
+  border: 2px solid #ddd;
+  background: white;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  min-width: 200px;
+}
+
+.view-btn:hover {
+  border-color: var(--color-dark);
+  transform: translateY(-2px);
+}
+
+.view-btn.active {
+  background: var(--color-dark);
+  color: white;
+  border-color: var(--color-dark);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Team colors per le card nella visualizzazione team */
+.team-card.prof .role-title {
+  background: linear-gradient(135deg, #4da9fd, #2b8fe8);
+}
+
+.team-card.summer .role-title {
+  background: linear-gradient(135deg, #e21e3e, #c71632);
+}
+
+.team-card.undefined .role-title {
+  background: linear-gradient(135deg, #666, #444);
+}
+
+/* Responsive per i bottoni */
+@media (max-width: 768px) {
+  .view-btn {
+    min-width: 160px;
+    padding: 0.6rem 1.2rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .view-switcher {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .view-btn {
+    width: 100%;
+    max-width: 250px;
+  }
+}
+
+/* ===============================
+   Stili per la visualizzazione team
+   =============================== */
+
+/* Badge team piccoli nella visualizzazione per ruolo */
+.mini-team-badge {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+}
+
+.mini-team-badge.prof-badge {
+  background: #4da9fd;
+  color: white;
+}
+
+.mini-team-badge.summer-badge {
+  background: #e21e3e;
+  color: white;
+}
+
+.mini-team-badge.undefined-badge {
+  background: #666;
+  color: white;
+}
+
+/* Badge ruolo nella visualizzazione per team */
+.player-role-badge {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  margin-left: 0.5rem;
+  color: white;
+  vertical-align: middle;
+}
+
+/* Layout diverso per le visualizzazioni */
+.players-container.role-view {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.players-container.team-view {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 1024px) {
+  .players-container.role-view {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .players-container.team-view {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .players-container.role-view,
+  .players-container.team-view {
+    grid-template-columns: 1fr;
+  }
+}

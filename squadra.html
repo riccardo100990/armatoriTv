@@ -27,8 +27,20 @@
         />
       </section>
 
+      <!-- Dopo il titolo "La rosa degli Armatori" aggiungi: -->
       <section class="rosa-section">
         <h2>La rosa degli Armatori</h2>
+
+        <!-- Bottoni per cambiare visualizzazione -->
+        <div class="view-switcher">
+          <button class="view-btn active" data-view="role">
+            Visualizzazione per Ruolo
+          </button>
+          <button class="view-btn" data-view="team">
+            Visualizzazione per Team
+          </button>
+        </div>
+
         <div class="players-container"></div>
       </section>
 
@@ -199,8 +211,9 @@
         setActiveNavLink();
       });
     </script>
-    <script src="js/navbar-active.js"></script>
-    <script src="js/render_rosa.js"></script>
-    <script src="js/render_statistiche.js" type="module"></script>
+    <script src="js/navbar-active.js" type="module"></script>
+    <!-- <script src="js/render_rosa.js"></script>
+    <script src="js/render_statistiche.js" type="module"></script> -->
+    <script src="js/team.js" type="module"></script>
   </body>
 </html>

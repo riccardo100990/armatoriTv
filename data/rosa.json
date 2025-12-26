@@ -1,26 +1,121 @@
 {
-  "Matteo Raffaele De Silvestri": { "goals": [], "assist": [], "ruolo": "P" },
-  "Gianluigi Panno": { "goals": [], "assist": [], "ruolo": "C" },
-  "Giuseppe Tatarelli": { "goals": [], "assist": [], "ruolo": "D" },
-  "Vincenzo Speranza": { "goals": [], "assist": [], "ruolo": "D" },
-  "Gianmarco Frattarelli": { "goals": [], "assist": [], "ruolo": "D" },
-  "Luca Mastrobattista": { "goals": [], "assist": [], "ruolo": "C" },
-  "Alessandro Pannozzo": { "goals": [], "assist": [], "ruolo": "D" },
-  "Gianluigi Piccione": { "goals": [1, 1], "assist": [], "ruolo": "A" },
-  "Luigi Quinto": { "goals": [], "assist": [], "ruolo": "C" },
-  "Francesco Carroccia": { "goals": [], "assist": [], "ruolo": "A" },
-  "Stefano Capodiferro": { "goals": [], "assist": [], "ruolo": "A" },
-  "Abdi Sacid Ahmed": { "goals": [], "assist": [], "ruolo": "A" },
-  "Pasquale Antonio Tribuzio": { "goals": [], "assist": [], "ruolo": "" },
-  "Antonio Mastrobattista": { "goals": [], "assist": [], "ruolo": "C" },
-  "Giacomo Magnafico": { "goals": [], "assist": [], "ruolo": "P" },
-  "Riccardo Ioli": { "goals": [], "assist": [], "ruolo": "D" },
-  "Ivan Magnafico": { "goals": [], "assist": [], "ruolo": "D" },
-  "Lorenzo Rizzi": { "goals": [], "assist": [], "ruolo": "A" },
-  "Gianmarco Di Manno": { "goals": [], "assist": [], "ruolo": "D" },
-  "Diego Benito De Filippis": { "goals": [], "assist": [], "ruolo": "A" },
-  "Giovanni Lo Stocco": { "goals": [], "assist": [], "ruolo": "A" },
-  "Piero Lo Stocco": { "goals": [], "assist": [], "ruolo": "D" },
-  "Vasco Iacovelli": { "goals": [], "assist": [], "ruolo": "C" },
-  "Alessio Manzi": { "goals": [], "assist": [], "ruolo": "C" }
+  "Matteo Raffaele De Silvestri": {
+    "goals": [],
+    "assist": [],
+    "ruolo": "P",
+    "team": "prof"
+  },
+  "Gianluigi Panno": {
+    "goals": [],
+    "assist": [],
+    "ruolo": "C",
+    "team": "prof"
+  },
+  "Giuseppe Tatarelli": {
+    "goals": [],
+    "assist": [],
+    "ruolo": "D",
+    "team": "prof"
+  },
+  "Vincenzo Speranza": {
+    "goals": [],
+    "assist": [],
+    "ruolo": "D",
+    "team": "summer"
+  },
+  "Gianmarco Frattarelli": {
+    "goals": [],
+    "assist": [],
+    "ruolo": "D",
+    "team": "prof"
+  },
+  "Luca Mastrobattista": {
+    "goals": [],
+    "assist": [],
+    "ruolo": "C",
+    "team": "prof"
+  },
+  "Alessandro Pannozzo": {
+    "goals": [],
+    "assist": [],
+    "ruolo": "D",
+    "team": "prof"
+  },
+  "Gianluigi Piccione": {
+    "goals": [1, 1],
+    "assist": [],
+    "ruolo": "A",
+    "team": "prof"
+  },
+  "Luigi Quinto": { "goals": [], "assist": [], "ruolo": "C", "team": "prof" },
+  "Francesco Carroccia": {
+    "goals": [],
+    "assist": [],
+    "ruolo": "A",
+    "team": "undefined"
+  },
+  "Stefano Capodiferro": {
+    "goals": [],
+    "assist": [],
+    "ruolo": "A",
+    "team": "prof"
+  },
+  "Abdi Sacid Ahmed": {
+    "goals": [],
+    "assist": [],
+    "ruolo": "A",
+    "team": "prof"
+  },
+  "Pasquale Antonio Tribuzio": {
+    "goals": [],
+    "assist": [],
+    "ruolo": "C",
+    "team": "prof"
+  },
+  "Antonio Mastrobattista": {
+    "goals": [],
+    "assist": [],
+    "ruolo": "C",
+    "team": "prof"
+  },
+  "Giacomo Magnafico": {
+    "goals": [],
+    "assist": [],
+    "ruolo": "P",
+    "team": "prof"
+  },
+  "Riccardo Ioli": { "goals": [], "assist": [], "ruolo": "D", "team": "prof" },
+  "Ivan Magnafico": { "goals": [], "assist": [], "ruolo": "D", "team": "prof" },
+  "Lorenzo Rizzi": { "goals": [], "assist": [], "ruolo": "A", "team": "prof" },
+  "Gianmarco Di Manno": {
+    "goals": [],
+    "assist": [],
+    "ruolo": "D",
+    "team": "prof"
+  },
+  "Diego Benito De Filippis": {
+    "goals": [],
+    "assist": [],
+    "ruolo": "A",
+    "team": "prof"
+  },
+  "Giovanni Lo Stocco": {
+    "goals": [],
+    "assist": [],
+    "ruolo": "A",
+    "team": "prof"
+  },
+  "Piero Lo Stocco": {
+    "goals": [],
+    "assist": [],
+    "ruolo": "D",
+    "team": "prof"
+  },
+  "Vasco Iacovelli": {
+    "goals": [],
+    "assist": [],
+    "ruolo": "C",
+    "team": "prof"
+  },
+  "Alessio Manzi": { "goals": [], "assist": [], "ruolo": "C", "team": "prof" }
 }
