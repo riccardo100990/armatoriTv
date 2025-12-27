@@ -3,94 +3,71 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Armatori Tv - Le Perle</title>
+    <title>Armatori TV – Le Perle</title>
+
+    <!-- Bootstrap -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
       crossorigin="anonymous"
     />
+
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="css/header.css" />
     <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="css/perle.css" />
   </head>
+
   <body>
     <div id="header-placeholder">Caricamento Header...</div>
 
-    <main>
-      <h1>Le Perle di Armatori TV</h1>
-      <p style="text-align: center; margin-bottom: 30px">
-        Una collezione dei momenti più epici o sfortunati della nostra squadra.
-      </p>
+    <section class="contenitore-home">
+      <div class="colonna">
+        <h3 class="perle-title">Le Perle di Armatori TV</h3>
+        <p class="perle-subtitle">
+          Una collezione dei momenti più epici o sfortunati della nostra squadra.
+        </p>
 
-      <section class="perle-video-container">
-        <article class="perla-item">
-          <h2>⚽ Rovesciata della Meteora GP10 vs Simonelli</h2>
-          <div class="video-wrapper">
-            <video
-              controls
-              preload="metadata"
-              title="Rovesciata della Meteora"
-              class="responsive-video"
-            >
-              <source src="video/rovesciatagp10.mp4" type="video/mp4" />
-              Il tuo browser non supporta il tag video.
-            </video>
-          </div>
-          <p>
-            l'incredibile rovesciata di GP10, un momento di pura magia contro
-            Simonelli.
-          </p>
-        </article>
+        <div class="perle-video-container">
+          <article class="perla-item">
+            <div class="video-wrapper">
+              <iframe
+                src="https://www.youtube.com/embed/aPLRE_IiRGI"
+                title="Rovesciata della Meteora"
+                allowfullscreen>
+              </iframe>
+            </div>
+          </article>
 
-        <article class="perla-item">
-          <h2>🎤 Marione Commentatore e il Prof Sprecone</h2>
-          <div class="video-wrapper">
-            <video
-              controls
-              preload="metadata"
-              title="Marione Commentatore"
-              class="responsive-video"
-            >
-              <source src="video/marione.mp4" type="video/mp4" />
-              Il tuo browser non supporta il tag video.
-            </video>
-          </div>
-          <p>
-            Quando il commento è più spettacolare dell'azione! Non perdetevi la
-            reazione di Marione al tiro clamorosamente sprecato del Prof.
-          </p>
-        </article>
+          <article class="perla-item">
+            <div class="video-wrapper">
+              <iframe
+                src="https://www.youtube.com/embed/k37_l8pi4w4"
+                title="Marione Commentatore"
+                allowfullscreen>
+              </iframe>
+            </div>
+          </article>
 
-        <article class="perla-item">
-          <h2>🔍 Trova le Differenze (Prof Hakan)</h2>
-          <div class="video-wrapper">
-            <video
-              controls
-              preload="metadata"
-              title="Prof Hakan"
-              class="responsive-video"
-            >
-              <source src="video/profHakan.mp4" type="video/mp4" />
-              Il tuo browser non supporta il tag video.
-            </video>
-          </div>
-          <p>
-            Un video che mette alla prova la vostra vista e la vostra memoria.
-            Riuscirete a trovare tutte le differenze tra le due azioni?
-          </p>
-        </article>
-      </section>
-    </main>
+          <article class="perla-item">
+            <div class="video-wrapper">
+              <iframe
+                src="https://www.youtube.com/embed/cPSJrCBJwmE"
+                title="Trova le Differenze"
+                allowfullscreen>
+              </iframe>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
 
     <div id="footer-placeholder">Caricamento Footer...</div>
 
-    <!-- scripts -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-      crossorigin="anonymous"
-    ></script>
+    <!-- Script -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
     <script type="module">
       import { includeHtml } from "./js/utils/include.js";
       import { setActiveNavLink } from "./js/navbar-active.js";

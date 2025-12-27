@@ -13,39 +13,19 @@
     <link rel="stylesheet" href="css/header.css" />
     <link rel="stylesheet" href="css/footer.css" />
     <link rel="stylesheet" href="css/sponsor.css" />
-    <style>
-      .sponsor-item {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 120px;
-        padding: 10px;
-        background: #fff;
-      }
-
-      .sponsor-logo {
-        max-height: 80px;
-        max-width: 100%;
-        object-fit: contain;
-        transition: transform 0.25s ease, filter 0.25s ease;
-      }
-
-      /* Hover elegante: leggero boost */
-      .sponsor-item:hover .sponsor-logo {
-        transform: scale(1.1);
-        filter: brightness(1.05) contrast(1.1);
-      }
-    </style>
+    
   </head>
   <body>
     <div id="header-placeholder">Caricamento Header...</div>
 
     <main class="container py-5">
-      <h1 class="text-center mb-5">I Nostri Partner Ufficiali</h1>
+      <h1 class="sponsor-title text-center">I Nostri Partner Ufficiali</h1>
 
       <section class="sponsor-grid">
-        <h2 class="text-center mb-4">Ringraziamo i nostri sponsor</h2>
-
+        <h2 class="sponsor-section-title text-center">
+          Ringraziamo i nostri sponsor
+        </h2>
+        
         <div class="row row-cols-2 row-cols-md-4 g-4" id="sponsors-container">
           <div class="col text-center">
             <p>Caricamento sponsor...</p>

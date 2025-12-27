@@ -1,71 +1,118 @@
-.sponsor-banner {
-  padding: 40px 0;
-  text-align: center;
+/* =================================== */
+/* PAGINA SPONSOR */
+/* =================================== */
+
+/* Titolo principale */
+.sponsor-title {
+  border-left: 6px solid #ff1020;
+  font-size: 2rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding-left: 15px;
+  margin-bottom: 40px;
+  color: #222;
 }
 
-/* 1. Contenitore che nasconde la parte che non scorre */
-.slider-container {
-  overflow: hidden;
-  margin: 20px auto;
-  max-width: 1200px;
-  background-color: #ffffff;
-  border: 1px solid #ddd;
-  border-radius: 10px;
+/* Titolo sezione */
+.sponsor-section-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #333;
 }
 
-/* 2. La Traccia: Contiene tutti gli elementi e scorre */
-.slider-track {
-  display: flex;
-  /* LARGHEZZA TOTALE CORRETTA: 32 elementi * 250px */
-  width: calc(32 * 250px);
-  animation: scroll-slide 40s linear infinite;
-}
+/* =================================== */
+/* CARD SPONSOR */
+/* =================================== */
 
-/* 3. Il singolo elemento Sponsor: FIX ANTI-COMPRESSIONE */
 .sponsor-item {
-  min-width: 250px;
-  height: 120px;
   display: flex;
-  justify-content: center;
   align-items: center;
-  padding: 10px;
-  transition: background-color 0.3s;
-
-  /* FIX CRITICO: Impedisce che l'elemento si comprima */
-  flex-shrink: 0;
-  flex-grow: 0;
+  justify-content: center;
+  height: 120px;
+  padding: 15px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
+/* Hover card */
 .sponsor-item:hover {
-  background-color: #f0f0f0;
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
-.sponsor-item img {
-  /* Stili per le immagini dei logo */
-  width: 100%;
-  max-height: 100px;
+/* Logo sponsor */
+.sponsor-logo {
+  max-height: 80px;
+  max-width: 100%;
   object-fit: contain;
-  opacity: 0.7;
-  transition: opacity 0.3s;
+  transition: transform 0.25s ease, filter 0.25s ease;
 }
 
-.sponsor-item img:hover {
-  opacity: 1;
+/* Hover logo */
+.sponsor-item:hover .sponsor-logo {
+  transform: scale(1.1);
+  filter: brightness(1.05) contrast(1.1);
 }
 
-/* 4. DEFINIZIONE DELL'ANIMAZIONE DI SCORRIMENTO */
-@keyframes scroll-slide {
-  0% {
-    transform: translateX(0); /* Inizio: posizione iniziale */
+/* =================================== */
+/* TESTO RINGRAZIAMENTO */
+/* =================================== */
+
+.ringraziamento {
+  font-size: 1rem;
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* =================================== */
+/* ANIMAZIONE ENTRATA */
+/* =================================== */
+
+.sponsor-item {
+  opacity: 0;
+  animation: fadeUp 0.6s ease forwards;
+}
+
+.sponsor-item:nth-child(1) { animation-delay: 0.05s; }
+.sponsor-item:nth-child(2) { animation-delay: 0.1s; }
+.sponsor-item:nth-child(3) { animation-delay: 0.15s; }
+.sponsor-item:nth-child(4) { animation-delay: 0.2s; }
+.sponsor-item:nth-child(5) { animation-delay: 0.25s; }
+.sponsor-item:nth-child(6) { animation-delay: 0.3s; }
+.sponsor-item:nth-child(7) { animation-delay: 0.35s; }
+.sponsor-item:nth-child(8) { animation-delay: 0.4s; }
+
+/* Keyframes */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
   }
-  100% {
-    /* TRASLAZIONE CORRETTA: Sposta a sinistra di 16 elementi * 250px */
-    transform: translateX(calc(-16 * 250px));
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
-.slider-track {
-  display: flex;
-  /* NUOVO CALCOLO: 32 elementi * 250px */
-  width: calc(16 * 250px);
-  animation: scroll-slide 40s linear infinite;
+
+/* =================================== */
+/* RESPONSIVE */
+/* =================================== */
+
+@media (max-width: 768px) {
+  .sponsor-title {
+    font-size: 1.6rem;
+  }
+
+  .sponsor-item {
+    height: 100px;
+  }
+
+  .sponsor-logo {
+    max-height: 65px;
+  }
 }

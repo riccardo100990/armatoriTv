@@ -1,0 +1,131 @@
+/* =================================== */
+/* STILI PAGINA STAFF – COERENTI CON HOME */
+/* =================================== */
+
+/* Centratura contenuto */
+.contenitore-home {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  /* ================================ */
+  /* TITOLO PAGINA STAFF */
+  /* ================================ */
+  
+  .staff-title {
+    border-left: 6px solid #007bff;
+    font-size: 2rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    color: #222;
+    padding-left: 15px;
+  }
+  
+  .staff-subtitle {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 35px;
+    max-width: 600px;
+  }
+  
+  /* ================================ */
+  /* GRIGLIA STAFF */
+  /* ================================ */
+  
+  .staff-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+  }
+  
+  /* ================================ */
+  /* CARD STAFF */
+  /* ================================ */
+  
+  .staff-member {
+    background-color: #ffffff;
+    padding: 25px 15px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  
+    /* Animazione ingresso */
+    animation: fadeUp 0.6s ease forwards;
+    opacity: 0;
+  }
+  
+  .staff-member:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Immagine profilo */
+  .staff-member img.profile-pic {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #007bff;
+    margin-bottom: 10px;
+  }
+  
+  /* Nome */
+  .staff-member h4 {
+    margin: 12px 0 4px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #333;
+    text-transform: uppercase;
+  }
+  
+  /* Ruolo */
+  .staff-member p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  /* ================================ */
+  /* ANIMAZIONE */
+  /* ================================ */
+  
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Delay progressivo */
+  .staff-member:nth-child(1) { animation-delay: 0.1s; }
+  .staff-member:nth-child(2) { animation-delay: 0.2s; }
+  .staff-member:nth-child(3) { animation-delay: 0.3s; }
+  .staff-member:nth-child(4) { animation-delay: 0.4s; }
+  .staff-member:nth-child(5) { animation-delay: 0.5s; }
+  .staff-member:nth-child(6) { animation-delay: 0.6s; }
+  .staff-member:nth-child(7) { animation-delay: 0.7s; }
+  .staff-member:nth-child(8) { animation-delay: 0.8s; }
+  
+  /* ================================ */
+  /* MOBILE */
+  /* ================================ */
+  
+  @media (max-width: 768px) {
+    .staff-title {
+      font-size: 1.6rem;
+    }
+  
+    .staff-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  

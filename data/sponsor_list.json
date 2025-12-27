@@ -2,7 +2,7 @@
   "sponsors": [
     {
       "name": "Bar Centro Valle",
-      "link": "[LINK_1]",
+      "link": "https://www.facebook.com/profile.php/?id=100054241401930",
       "img": "sponsor/barCentroValle.jpg",
       "scale": 0.8
     },
@@ -20,7 +20,7 @@
     },
     {
       "name": "Chalet",
-      "link": "[LINK_4]",
+      "link": "https://www.instagram.com/chaletsulcolle/",
       "img": "sponsor/chalet.jpg",
       "scale": 2
     },
@@ -50,19 +50,19 @@
     },
     {
       "name": "Lo Stocco Rappresentanze",
-      "link": "[LINK_9]",
+      "link": "https://www.pierolostocco.it/",
       "img": "sponsor/loStoccoRappresentanze.jpg",
       "scale": 1.1
     },
     {
       "name": "Mp Tende",
-      "link": "[LINK_10]",
+      "link": "https://www.facebook.com/p/Mp-tende-100063655986130/",
       "img": "sponsor/mpTende.jpg",
       "scale": 1.1
     },
     {
       "name": "Petrol Gamma",
-      "link": "[LINK_11]",
+      "link": "https://www.petrolgamma.com/",
       "img": "sponsor/petrolGamma.jpg",
       "scale": 1.1
     },
@@ -74,13 +74,13 @@
     },
     {
       "name": "Tintart",
-      "link": "[LINK_13]",
+      "link": "http://www.tintartdecori.com/",
       "img": "sponsor/tintart.jpg",
       "scale": 1.1
     },
     {
       "name": "Toto Edicola",
-      "link": "[LINK_14]",
+      "link": "https://www.facebook.com/TotoEdicola/",
       "img": "sponsor/totoEdicola.jpg",
       "scale": 1.1
     },

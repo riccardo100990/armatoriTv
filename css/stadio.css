@@ -1,0 +1,88 @@
+/* =================================== */
+/* STILI PAGINA STADIO */
+/* =================================== */
+
+/* Contenitore principale centrato */
+.contenitore-stadio {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  /* Titolo pagina */
+  .stadio-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #222;
+    border-left: 6px solid #007bff;
+    padding-left: 15px;
+    position: relative;
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+  
+  .stadio-title:hover {
+    transform: translateY(-4px);
+    color: #007bff;
+  }
+  
+  /* Card descrizione e mappa */
+  .stadio-descrizione,
+  .stadio-mappa {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    padding: 25px 20px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  
+  .stadio-descrizione:hover,
+  .stadio-mappa:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  }
+  
+  /* Titoli sezioni */
+  .stadio-descrizione h2,
+  .stadio-mappa h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #007bff;
+    margin-bottom: 15px;
+  }
+  
+  /* Map container responsive */
+  .map-embed-container {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+  
+  /* Link indicazioni */
+  .stadio-mappa a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: opacity 0.3s ease;
+  }
+  
+  .stadio-mappa a:hover {
+    opacity: 0.8;
+  }
+  
+  /* Media Query mobile */
+  @media (max-width: 768px) {
+    .stadio-title {
+      font-size: 1.8rem;
+      padding-left: 10px;
+    }
+  
+    .stadio-descrizione,
+    .stadio-mappa {
+      padding: 20px 15px;
+    }
+  }
+  
