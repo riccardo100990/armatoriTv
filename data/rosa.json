@@ -1,121 +1,242 @@
 {
   "Matteo Raffaele De Silvestri": {
-    "goals": [],
-    "assist": [],
+    "goals": 0,
+    "assist": 0,
+    "ammonizioni": 0,
+    "espulsioni": 0,
+    "clean_sheet": 0,
+    "mvp_armatori_tv": 0,
     "ruolo": "P",
-    "team": "prof"
+    "team": ""
   },
   "Gianluigi Panno": {
-    "goals": [],
-    "assist": [],
+    "goals": 2,
+    "assist": 5,
+    "ammonizioni": 1,
+    "espulsioni": 1,
+    "clean_sheet": 0,
+    "mvp_armatori_tv": 0,
     "ruolo": "C",
     "team": "prof"
   },
   "Giuseppe Tatarelli": {
-    "goals": [],
-    "assist": [],
+    "goals": 0,
+    "assist": 0,
+    "ammonizioni": 0,
+    "espulsioni": 0,
+    "clean_sheet": 0,
+    "mvp_armatori_tv": 0,
     "ruolo": "D",
     "team": "prof"
   },
   "Vincenzo Speranza": {
-    "goals": [],
-    "assist": [],
+    "goals": 0,
+    "assist": 0,
+    "ammonizioni": 0,
+    "espulsioni": 0,
+    "clean_sheet": 0,
+    "mvp_armatori_tv": 0,
     "ruolo": "D",
     "team": "summer"
   },
   "Gianmarco Frattarelli": {
-    "goals": [],
-    "assist": [],
+    "goals": 0,
+    "assist": 0,
+    "ammonizioni": 0,
+    "espulsioni": 0,
+    "clean_sheet": 0,
+    "mvp_armatori_tv": 0,
     "ruolo": "D",
-    "team": "prof"
+    "team": "summer"
   },
   "Luca Mastrobattista": {
-    "goals": [],
-    "assist": [],
+    "goals": 0,
+    "assist": 0,
+    "ammonizioni": 0,
+    "espulsioni": 0,
+    "clean_sheet": 0,
+    "mvp_armatori_tv": 0,
     "ruolo": "C",
     "team": "prof"
   },
   "Alessandro Pannozzo": {
-    "goals": [],
-    "assist": [],
+    "goals": 0,
+    "assist": 0,
+    "ammonizioni": 0,
+    "espulsioni": 0,
+    "clean_sheet": 0,
+    "mvp_armatori_tv": 0,
     "ruolo": "D",
-    "team": "prof"
+    "team": "summer"
   },
   "Gianluigi Piccione": {
-    "goals": [1, 1],
-    "assist": [],
+    "goals": 3,
+    "assist": 0,
+    "ammonizioni": 0,
+    "espulsioni": 0,
+    "clean_sheet": 0,
+    "mvp_armatori_tv": 0,
     "ruolo": "A",
-    "team": "prof"
+    "team": "summer"
   },
-  "Luigi Quinto": { "goals": [], "assist": [], "ruolo": "C", "team": "prof" },
+  "Luigi Quinto": {
+    "goals": 0,
+    "assist": 0,
+    "ammonizioni": 0,
+    "espulsioni": 0,
+    "clean_sheet": 0,
+    "mvp_armatori_tv": 0,
+    "ruolo": "C",
+    "team": "summer"
+  },
   "Francesco Carroccia": {
-    "goals": [],
-    "assist": [],
+    "goals": 0,
+    "assist": 0,
+    "ammonizioni": 0,
+    "espulsioni": 0,
+    "clean_sheet": 0,
+    "mvp_armatori_tv": 0,
     "ruolo": "A",
-    "team": "undefined"
+    "team": "summer"
   },
   "Stefano Capodiferro": {
-    "goals": [],
-    "assist": [],
+    "goals": 0,
+    "assist": 0,
+    "ammonizioni": 0,
+    "espulsioni": 0,
+    "clean_sheet": 0,
+    "mvp_armatori_tv": 0,
     "ruolo": "A",
-    "team": "prof"
+    "team": ""
   },
   "Abdi Sacid Ahmed": {
-    "goals": [],
-    "assist": [],
+    "goals": 0,
+    "assist": 0,
+    "ammonizioni": 0,
+    "espulsioni": 0,
+    "clean_sheet": 0,
+    "mvp_armatori_tv": 0,
     "ruolo": "A",
-    "team": "prof"
+    "team": ""
   },
   "Pasquale Antonio Tribuzio": {
-    "goals": [],
-    "assist": [],
+    "goals": 0,
+    "assist": 0,
+    "ammonizioni": 0,
+    "espulsioni": 0,
+    "clean_sheet": 0,
+    "mvp_armatori_tv": 0,
     "ruolo": "C",
-    "team": "prof"
+    "team": "summer"
   },
   "Antonio Mastrobattista": {
-    "goals": [],
-    "assist": [],
+    "goals": 0,
+    "assist": 0,
+    "ammonizioni": 0,
+    "espulsioni": 0,
+    "clean_sheet": 0,
+    "mvp_armatori_tv": 0,
     "ruolo": "C",
-    "team": "prof"
+    "team": "summer"
   },
   "Giacomo Magnafico": {
-    "goals": [],
-    "assist": [],
+    "goals": 0,
+    "assist": 0,
+    "ammonizioni": 0,
+    "espulsioni": 0,
+    "clean_sheet": 0,
+    "mvp_armatori_tv": 0,
     "ruolo": "P",
     "team": "prof"
   },
-  "Riccardo Ioli": { "goals": [], "assist": [], "ruolo": "D", "team": "prof" },
-  "Ivan Magnafico": { "goals": [], "assist": [], "ruolo": "D", "team": "prof" },
-  "Lorenzo Rizzi": { "goals": [], "assist": [], "ruolo": "A", "team": "prof" },
-  "Gianmarco Di Manno": {
-    "goals": [],
-    "assist": [],
+  "Riccardo Ioli": {
+    "goals": 0,
+    "assist": 0,
+    "ammonizioni": 0,
+    "espulsioni": 0,
+    "clean_sheet": 0,
+    "mvp_armatori_tv": 0,
     "ruolo": "D",
     "team": "prof"
   },
+  "Ivan Magnafico": {
+    "goals": 0,
+    "assist": 0,
+    "ammonizioni": 0,
+    "espulsioni": 0,
+    "clean_sheet": 0,
+    "mvp_armatori_tv": 0,
+    "ruolo": "D",
+    "team": "prof"
+  },
+  "Lorenzo Rizzi": {
+    "goals": 0,
+    "assist": 0,
+    "ammonizioni": 0,
+    "espulsioni": 0,
+    "clean_sheet": 0,
+    "mvp_armatori_tv": 0,
+    "ruolo": "A",
+    "team": ""
+  },
+  "Gianmarco Di Manno": {
+    "goals": 0,
+    "assist": 0,
+    "ammonizioni": 0,
+    "espulsioni": 0,
+    "clean_sheet": 0,
+    "mvp_armatori_tv": 0,
+    "ruolo": "D",
+    "team": ""
+  },
   "Diego Benito De Filippis": {
-    "goals": [],
-    "assist": [],
+    "goals": 0,
+    "assist": 0,
+    "ammonizioni": 0,
+    "espulsioni": 0,
+    "clean_sheet": 0,
+    "mvp_armatori_tv": 0,
     "ruolo": "A",
     "team": "prof"
   },
   "Giovanni Lo Stocco": {
-    "goals": [],
-    "assist": [],
+    "goals": 0,
+    "assist": 0,
+    "ammonizioni": 0,
+    "espulsioni": 0,
+    "clean_sheet": 0,
+    "mvp_armatori_tv": 0,
     "ruolo": "A",
-    "team": "prof"
+    "team": ""
   },
   "Piero Lo Stocco": {
-    "goals": [],
-    "assist": [],
+    "goals": 0,
+    "assist": 0,
+    "ammonizioni": 0,
+    "espulsioni": 0,
+    "clean_sheet": 0,
+    "mvp_armatori_tv": 0,
     "ruolo": "D",
-    "team": "prof"
+    "team": ""
   },
   "Vasco Iacovelli": {
-    "goals": [],
-    "assist": [],
+    "goals": 0,
+    "assist": 0,
+    "ammonizioni": 0,
+    "espulsioni": 0,
+    "clean_sheet": 0,
+    "mvp_armatori_tv": 0,
     "ruolo": "C",
-    "team": "prof"
+    "team": ""
   },
-  "Alessio Manzi": { "goals": [], "assist": [], "ruolo": "C", "team": "prof" }
+  "Alessio Manzi": {
+    "goals": 0,
+    "assist": 0,
+    "ammonizioni": 0,
+    "espulsioni": 0,
+    "clean_sheet": 0,
+    "mvp_armatori_tv": 0,
+    "ruolo": "C",
+    "team": ""
+  }
 }

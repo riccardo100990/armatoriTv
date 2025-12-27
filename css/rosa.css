@@ -1,532 +1,69 @@
 @import url("colors.css");
 
+/* ===============================
+   Variabili globali
+   =============================== */
 :root {
-  /* Colori base */
   --color-white: #ffffff;
   --color-dark: #333333;
 
-  /* Colori ruoli fantacalcio */
   --color-portieri: #faa626;
-  --color-portieri-dark: #e89510;
   --color-difensori: #61c517;
-  --color-difensori-dark: #4fa312;
   --color-centrocampisti: #4da9fd;
-  --color-centrocampisti-dark: #2b8fe8;
   --color-attaccanti: #e21e3e;
-  --color-attaccanti-dark: #c71632;
 
-  /* Spacing e misure */
   --radius-sm: 8px;
   --radius-md: 16px;
   --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.1);
-  --shadow-text: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 /* ===============================
-   Container principale
+   Layout generale
    =============================== */
 .sfida-team-container {
   max-width: 100%;
   margin: 0 auto;
-  padding: 0;
 }
 
-.sfida-team-container > section:not(:first-child) {
+.sfida-team-container > section:not(.img-container) {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem 1rem;
 }
 
-/* ===============================
-   Foto squadra - Full width
-   =============================== */
-.team-photo {
-  width: 100%;
-  max-width: 100%;
-  height: 400px;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-  margin: 0 0 3rem 0;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-
-/* ===============================
-   Titolo sezione rosa
-   =============================== */
-.sfida-team-container h2 {
+h2 {
   text-align: center;
-  font-size: clamp(1.5rem, 4vw, 2rem);
   font-weight: 800;
   margin-bottom: 2rem;
   color: var(--color-dark);
 }
 
 /* ===============================
-   Container card giocatori - 4 COLONNE
+   Foto squadra
+   =============================== */
+.team-photo {
+  width: 100%;
+  display: block;
+  margin-bottom: 3rem;
+  object-fit: cover;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* ===============================
+   Rosa giocatori
    =============================== */
 .players-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
-  margin-bottom: 3rem;
 }
 
 /* ===============================
-   Card ruolo base
-   =============================== */
-.role-card {
-  background: var(--color-white);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-card);
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.role-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-}
-
-/* ===============================
-   Header card con animazione
-   =============================== */
-.role-title {
-  padding: 1.5rem;
-  text-align: center;
-  font-size: 1.25rem;
-  font-weight: 800;
-  color: var(--color-white);
-  text-shadow: var(--shadow-text);
-  position: relative;
-  overflow: hidden;
-}
-
-.role-title::before {
-  content: "";
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(
-    circle,
-    rgba(255, 255, 255, 0.1) 1px,
-    transparent 1px
-  );
-  background-size: 20px 20px;
-  animation: float 20s ease-in-out infinite;
-}
-
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-20px) rotate(180deg);
-  }
-}
-
-/* ===============================
-   Colori per ruolo
-   =============================== */
-.role-card.P .role-title {
-  background: linear-gradient(
-    135deg,
-    var(--color-portieri) 0%,
-    var(--color-portieri-dark) 100%
-  );
-}
-
-.role-card.D .role-title {
-  background: linear-gradient(
-    135deg,
-    var(--color-difensori) 0%,
-    var(--color-difensori-dark) 100%
-  );
-}
-
-.role-card.C .role-title {
-  background: linear-gradient(
-    135deg,
-    var(--color-centrocampisti) 0%,
-    var(--color-centrocampisti-dark) 100%
-  );
-}
-
-.role-card.A .role-title {
-  background: linear-gradient(
-    135deg,
-    var(--color-attaccanti) 0%,
-    var(--color-attaccanti-dark) 100%
-  );
-}
-
-/* ===============================
-   Lista giocatori
-   =============================== */
-.player-name {
-  padding: 0.875rem 1.25rem;
-  border-bottom: 1px solid #f0f0f0;
-  font-weight: 500;
-  color: var(--color-dark);
-  transition: background-color 0.2s ease;
-}
-
-.player-name:last-child {
-  border-bottom: none;
-}
-
-.player-name:hover {
-  background-color: #f8f9fa;
-}
-
-/* Indicatore colorato per ruolo */
-.role-card.P .player-name {
-  border-left: 4px solid var(--color-portieri);
-}
-
-.role-card.D .player-name {
-  border-left: 4px solid var(--color-difensori);
-}
-
-.role-card.C .player-name {
-  border-left: 4px solid var(--color-centrocampisti);
-}
-
-.role-card.A .player-name {
-  border-left: 4px solid var(--color-attaccanti);
-}
-
-/* ===============================
-   Sezione sfida Team Prof vs Summer
-   =============================== */
-.matchup-arena {
-  margin: 4rem auto 2rem;
-  max-width: 1200px;
-  padding: 0 1rem;
-}
-
-.matchup-arena > h1 {
-  font-size: clamp(1.75rem, 5vw, 2.5rem);
-  font-weight: 800;
-  margin-bottom: 3rem;
-  text-align: center;
-  color: var(--color-dark);
-}
-
-.matchup-arena > div {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 3rem;
-}
-
-.team {
-  flex: 1;
-  min-width: 280px;
-  max-width: 400px;
-}
-
-.team-name {
-  font-size: 1.5rem;
-  font-weight: 800;
-  margin-bottom: 1rem;
-  text-align: center;
-  color: var(--color-dark);
-}
-
-.team-image-box {
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  box-shadow: var(--shadow-card);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.team-image-box:hover {
-  transform: scale(1.05);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-}
-
-.team-image-box img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.vs-element {
-  font-size: 3rem;
-  font-weight: 900;
-  color: var(--color-dark);
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-  flex-shrink: 0;
-  padding: 0 1rem;
-}
-
-.vs-element span {
-  display: inline-block;
-  animation: pulse 2s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0%,
-  100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.1);
-  }
-}
-
-/* ===============================
-   Punteggio sfida
-   =============================== */
-.punteggio-sfida {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
-  margin: 2rem 0;
-  flex-wrap: wrap;
-}
-
-.score-box-team {
-  background: var(--color-white);
-  padding: 1.5rem 2rem;
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-card);
-  text-align: center;
-  font-weight: 600;
-  min-width: 200px;
-}
-
-.score-number {
-  display: block;
-  font-size: 3rem;
-  font-weight: 900;
-  margin-top: 0.5rem;
-}
-
-.score-team-prof .score-number {
-  color: var(--color-centrocampisti);
-}
-
-.score-team-summer .score-number {
-  color: var(--color-attaccanti);
-}
-
-/* ===============================
-   Responsive
-   =============================== */
-@media (max-width: 1024px) {
-  .players-container {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.25rem;
-  }
-
-  .team-photo {
-    height: 300px;
-  }
-}
-
-@media (max-width: 768px) {
-  .sfida-team-container > section:not(:first-child) {
-    padding: 1.5rem 1rem;
-  }
-
-  /* Immagine ridotta con bordi arrotondati su mobile */
-  .team-photo {
-    width: calc(100% - 2rem);
-    max-width: 600px;
-    height: auto;
-    margin: 1rem auto 2rem;
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-card);
-  }
-
-  .players-container {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
-  .matchup-arena {
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-
-  .team {
-    width: 100%;
-    max-width: 100%;
-  }
-
-  .vs-element {
-    font-size: 2rem;
-  }
-
-  .punteggio-sfida {
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .score-box-team {
-    width: 100%;
-    max-width: 300px;
-  }
-}
-
-@media (max-width: 480px) {
-  /* Immagine ancora più compatta su schermi piccoli */
-  .team-photo {
-    width: calc(100% - 1rem);
-    margin: 0.5rem auto 1.5rem;
-  }
-
-  .role-title {
-    padding: 1.25rem;
-    font-size: 1.1rem;
-  }
-
-  .player-name {
-    padding: 0.75rem 1rem;
-    font-size: 0.9rem;
-  }
-
-  .team-name {
-    font-size: 1.25rem;
-  }
-
-  .score-number {
-    font-size: 2.5rem;
-  }
-}
-
-/* Aggiungi queste regole al file rosa.css */
-
-/* ===============================
-   Sezione Statistiche
-   =============================== */
-.statistiche-section {
-  max-width: 1200px;
-  margin: 4rem auto;
-  padding: 0 1rem;
-}
-
-.statistiche-section h2 {
-  text-align: center;
-  font-size: clamp(1.75rem, 4vw, 2.25rem);
-  font-weight: 800;
-  margin-bottom: 2rem;
-  color: var(--color-dark);
-}
-
-.filters {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-bottom: 2rem;
-  flex-wrap: wrap;
-}
-
-.filter-btn {
-  padding: 0.5rem 1.5rem;
-  border: 2px solid #ddd;
-  background: white;
-  border-radius: 50px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.filter-btn:hover {
-  border-color: var(--color-dark);
-}
-
-.filter-btn.active {
-  background: var(--color-dark);
-  color: white;
-  border-color: var(--color-dark);
-}
-
-.stats-table-container {
-  overflow-x: auto;
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-card);
-  background: white;
-}
-
-.stats-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.stats-table th {
-  background: var(--color-dark);
-  color: white;
-  padding: 1.25rem 1rem;
-  text-align: left;
-  font-weight: 600;
-  position: sticky;
-  top: 0;
-}
-
-.stats-table td {
-  padding: 1rem;
-  border-bottom: 1px solid #f0f0f0;
-}
-
-.stats-table tbody tr:hover {
-  background-color: #f8f9fa;
-}
-
-.role-badge {
-  display: inline-block;
-  padding: 0.25rem 0.75rem;
-  border-radius: 50px;
-  color: white;
-  font-weight: 600;
-  font-size: 0.85rem;
-}
-
-.player-name {
-  font-weight: 500;
-  display: block;
-  margin-bottom: 0.25rem;
-}
-
-.player-team-badge {
-  display: inline-block;
-  padding: 0.2rem 0.5rem;
-  border-radius: 4px;
-  font-size: 0.75rem;
-  font-weight: 600;
-}
-
-.team-prof-badge {
-  background: #4da9fd;
-  color: white;
-}
-
-.team-summer-badge {
-  background: #e21e3e;
-  color: white;
-}
-
-.goals-cell,
-.assists-cell,
-.total-points {
-  font-weight: 700;
-  text-align: center;
-}
-
-/* ===============================
-   Sezione Matchup (Team Prof vs Summer)
+   Matchup Section
    =============================== */
 .matchup-section {
   max-width: 1400px;
   margin: 4rem auto;
-  padding: 0 1rem;
 }
 
 .matchup-section h1 {
@@ -542,12 +79,13 @@
   justify-content: center;
   align-items: stretch;
   gap: 2rem;
-  margin-bottom: 3rem;
 }
 
+/* ===============================
+   Team Box
+   =============================== */
 .team-box {
   flex: 1;
-  min-width: 300px;
   max-width: 500px;
   background: white;
   border-radius: var(--radius-md);
@@ -560,8 +98,11 @@
 .team-header {
   padding: 1.5rem;
   text-align: center;
-  background: linear-gradient(135deg, #4da9fd, #2b8fe8);
   color: white;
+}
+
+.team-prof .team-header {
+  background: linear-gradient(135deg, #4da9fd, #2b8fe8);
 }
 
 .team-summer .team-header {
@@ -572,19 +113,11 @@
   font-size: 1.75rem;
   font-weight: 800;
   margin-bottom: 0.5rem;
-  text-transform: uppercase;
 }
 
 .team-score {
   display: flex;
   justify-content: center;
-  align-items: baseline;
-  gap: 0.5rem;
-}
-
-.score-label {
-  font-size: 0.9rem;
-  opacity: 0.9;
 }
 
 .score-number {
@@ -592,9 +125,11 @@
   font-weight: 900;
 }
 
+/* ===============================
+   Contenuto Team
+   =============================== */
 .team-image-container {
   padding: 1.5rem;
-  flex-grow: 1;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -608,39 +143,66 @@
 }
 
 .team-desc h3 {
+  font-size: 1.25rem;
   margin-bottom: 0.75rem;
   color: var(--color-dark);
-  font-size: 1.25rem;
 }
 
-.team-desc ul {
-  list-style: none;
-  padding-left: 0;
+.team-players {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
 }
 
-.team-desc li {
-  padding: 0.25rem 0;
-  position: relative;
-  padding-left: 1.5rem;
+/* ===============================
+   Player (Team View)
+   =============================== */
+.team-player {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius-sm);
 }
 
-.team-desc li:before {
-  content: "✓";
-  position: absolute;
-  left: 0;
-  color: var(--color-centrocampisti);
-  font-weight: bold;
+.team-player:hover {
+  background: #f8f9fa;
 }
 
-.team-summer .team-desc li:before {
-  color: var(--color-attaccanti);
+.role-bar {
+  width: 6px;
+  height: 100%;
+  min-height: 22px;
+  border-radius: 3px;
+  flex-shrink: 0;
 }
 
-/* VS Container */
+.team-player-name {
+  font-weight: 500;
+  color: var(--color-dark);
+}
+
+.role-P .role-bar {
+  background: var(--color-portieri);
+}
+.role-D .role-bar {
+  background: var(--color-difensori);
+}
+.role-C .role-bar {
+  background: var(--color-centrocampisti);
+}
+.role-A .role-bar {
+  background: var(--color-attaccanti);
+}
+
+/* ===============================
+   VS CENTRALE
+   =============================== */
 .vs-container {
   display: flex;
   align-items: center;
-  padding: 0 1rem;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 .vs-circle {
@@ -650,11 +212,9 @@
   background: white;
   border: 4px solid var(--color-dark);
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   box-shadow: var(--shadow-card);
-  position: relative;
 }
 
 .vs-text {
@@ -663,34 +223,9 @@
   color: var(--color-dark);
 }
 
-.vs-stats {
-  position: absolute;
-  bottom: -60px;
-  width: 100%;
-  text-align: center;
-  background: white;
-  padding: 0.75rem;
-  border-radius: var(--radius-sm);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.vs-stat {
-  margin: 0.25rem 0;
-}
-
-.vs-stat-label {
-  font-size: 0.75rem;
-  color: #666;
-  display: block;
-}
-
-.vs-stat-value {
-  font-weight: 700;
-  font-size: 0.9rem;
-  color: var(--color-dark);
-}
-
-/* Tabella Confronto */
+/* ===============================
+   Confronto Table
+   =============================== */
 .confronto-container {
   max-width: 800px;
   margin: 3rem auto;
@@ -699,7 +234,6 @@
 .confronto-container h3 {
   text-align: center;
   margin-bottom: 1.5rem;
-  font-size: 1.5rem;
 }
 
 .confronto-table {
@@ -713,63 +247,42 @@
 .confronto-table th,
 .confronto-table td {
   padding: 1rem;
-  text-align: center;
   border: 1px solid #f0f0f0;
+  text-align: center;
 }
 
 .confronto-table th {
   background: var(--color-dark);
   color: white;
-  font-weight: 600;
 }
 
 .confronto-table td:first-child {
   text-align: left;
-  font-weight: 500;
 }
 
-.confronto-table tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
-
-.team-prof {
-  color: #4da9fd;
-  font-weight: 700;
-}
-
-.team-summer {
-  color: #e21e3e;
-  font-weight: 700;
-}
-
-/* Nota aggiornamento */
+/* ===============================
+   Nota finale
+   =============================== */
 .update-note {
   text-align: center;
-  margin-top: 2rem;
+  margin: 2rem auto;
   padding: 1rem;
   background: #f8f9fa;
   border-radius: var(--radius-sm);
   max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 /* ===============================
    Responsive
    =============================== */
 @media (max-width: 1024px) {
+  .players-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .teams-container {
     flex-direction: column;
     align-items: center;
-  }
-
-  .team-box {
-    width: 100%;
-    max-width: 600px;
-  }
-
-  .vs-container {
-    padding: 2rem 0;
   }
 
   .vs-circle {
@@ -778,15 +291,13 @@
 }
 
 @media (max-width: 768px) {
-  .stats-table th,
-  .stats-table td {
-    padding: 0.75rem 0.5rem;
-    font-size: 0.9rem;
+  .players-container {
+    grid-template-columns: 1fr;
   }
 
   .vs-circle {
-    width: 120px;
-    height: 120px;
+    width: 110px;
+    height: 110px;
   }
 
   .vs-text {
@@ -794,166 +305,117 @@
   }
 }
 
-@media (max-width: 480px) {
-  .teams-container {
-    gap: 1rem;
-  }
+/* ===============================
+   ROSA DEGLI ARMATORI
+   =============================== */
+.rosa-section {
+  max-width: 1200px;
+  margin: 0 auto 4rem;
+  padding: 2rem 1rem;
+}
 
-  .team-header {
-    padding: 1rem;
-  }
-
-  .team-name {
-    font-size: 1.5rem;
-  }
-
-  .score-number {
-    font-size: 2rem;
-  }
-
-  .vs-circle {
-    width: 100px;
-    height: 100px;
-  }
-
-  .vs-text {
-    font-size: 1.5rem;
-  }
+.rosa-section h2 {
+  text-align: center;
+  font-weight: 800;
+  margin-bottom: 2.5rem;
+  color: var(--color-dark);
 }
 
 /* ===============================
-   View Switcher
+   Contenitore ruoli
    =============================== */
-.view-switcher {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-bottom: 2rem;
-  flex-wrap: wrap;
-}
-
-.view-btn {
-  padding: 0.75rem 1.5rem;
-  border: 2px solid #ddd;
-  background: white;
-  border-radius: 50px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 0.95rem;
-  min-width: 200px;
-}
-
-.view-btn:hover {
-  border-color: var(--color-dark);
-  transform: translateY(-2px);
-}
-
-.view-btn.active {
-  background: var(--color-dark);
-  color: white;
-  border-color: var(--color-dark);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-/* Team colors per le card nella visualizzazione team */
-.team-card.prof .role-title {
-  background: linear-gradient(135deg, #4da9fd, #2b8fe8);
-}
-
-.team-card.summer .role-title {
-  background: linear-gradient(135deg, #e21e3e, #c71632);
-}
-
-.team-card.undefined .role-title {
-  background: linear-gradient(135deg, #666, #444);
-}
-
-/* Responsive per i bottoni */
-@media (max-width: 768px) {
-  .view-btn {
-    min-width: 160px;
-    padding: 0.6rem 1.2rem;
-    font-size: 0.85rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .view-switcher {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .view-btn {
-    width: 100%;
-    max-width: 250px;
-  }
-}
-
-/* ===============================
-   Stili per la visualizzazione team
-   =============================== */
-
-/* Badge team piccoli nella visualizzazione per ruolo */
-.mini-team-badge {
-  display: inline-block;
-  padding: 0.2rem 0.5rem;
-  border-radius: 4px;
-  font-size: 0.7rem;
-  font-weight: 600;
-  margin-left: 0.5rem;
-  vertical-align: middle;
-}
-
-.mini-team-badge.prof-badge {
-  background: #4da9fd;
-  color: white;
-}
-
-.mini-team-badge.summer-badge {
-  background: #e21e3e;
-  color: white;
-}
-
-.mini-team-badge.undefined-badge {
-  background: #666;
-  color: white;
-}
-
-/* Badge ruolo nella visualizzazione per team */
-.player-role-badge {
-  display: inline-block;
-  padding: 0.2rem 0.5rem;
-  border-radius: 4px;
-  font-size: 0.7rem;
-  font-weight: 600;
-  margin-left: 0.5rem;
-  color: white;
-  vertical-align: middle;
-}
-
-/* Layout diverso per le visualizzazioni */
 .players-container.role-view {
+  display: grid;
   grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
 }
 
-.players-container.team-view {
-  grid-template-columns: repeat(3, 1fr);
+/* ===============================
+   Card di ruolo
+   =============================== */
+.role-card {
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
+/* intestazione ruolo */
+.role-title {
+  padding: 0.75rem 1rem;
+  font-weight: 800;
+  color: white;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+/* colori per ruolo */
+.role-card.P .role-title {
+  background: var(--color-portieri);
+}
+.role-card.D .role-title {
+  background: var(--color-difensori);
+}
+.role-card.C .role-title {
+  background: var(--color-centrocampisti);
+}
+.role-card.A .role-title {
+  background: var(--color-attaccanti);
+}
+
+/* ===============================
+   Giocatore
+   =============================== */
+.role-card .player-name {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.95rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.role-card .player-name:not(:last-child) {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.role-card .player-name:hover {
+  background: #f8f9fa;
+}
+
+/* ===============================
+   Mini badge team
+   =============================== */
+.mini-team-badge {
+  font-size: 0.7rem;
+  padding: 0.2rem 0.45rem;
+  border-radius: 10px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.prof-badge {
+  background: rgba(77, 169, 253, 0.15);
+  color: #2b8fe8;
+}
+
+.summer-badge {
+  background: rgba(226, 30, 62, 0.15);
+  color: #c71632;
+}
+
+/* ===============================
+   Responsive
+   =============================== */
 @media (max-width: 1024px) {
   .players-container.role-view {
     grid-template-columns: repeat(2, 1fr);
   }
-
-  .players-container.team-view {
-    grid-template-columns: repeat(2, 1fr);
-  }
 }
 
-@media (max-width: 768px) {
-  .players-container.role-view,
-  .players-container.team-view {
+@media (max-width: 600px) {
+  .players-container.role-view {
     grid-template-columns: 1fr;
   }
 }

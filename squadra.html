@@ -19,7 +19,7 @@
     <div id="header-placeholder">Caricamento Header...</div>
 
     <main class="sfida-team-container">
-      <section>
+      <section class="img-container">
         <img
           src="immagini/squadra.jpg"
           alt="La nostra squadra"
@@ -31,21 +31,11 @@
       <section class="rosa-section">
         <h2>La rosa degli Armatori</h2>
 
-        <!-- Bottoni per cambiare visualizzazione -->
-        <div class="view-switcher">
-          <button class="view-btn active" data-view="role">
-            Visualizzazione per Ruolo
-          </button>
-          <button class="view-btn" data-view="team">
-            Visualizzazione per Team
-          </button>
-        </div>
-
         <div class="players-container"></div>
       </section>
 
       <!-- Sezione Statistiche Individuali -->
-      <section class="statistiche-section">
+      <!-- <section class="statistiche-section">
         <h2>Statistiche Individuali</h2>
         <div class="statistiche-container">
           <div class="filters">
@@ -67,12 +57,11 @@
                 </tr>
               </thead>
               <tbody id="stats-body">
-                <!-- Popolato da JavaScript -->
               </tbody>
             </table>
           </div>
         </div>
-      </section>
+      </section> -->
 
       <!-- Sezione Sfida Team Prof vs Team Summer -->
       <section class="matchup-section">
@@ -84,19 +73,15 @@
             <div class="team-header">
               <h2 class="team-name">TEAM PROF</h2>
               <div class="team-score">
-                <span class="score-label">Ultimo Risultato:</span>
+                <!-- <span class="score-label">Ultimo Risultato:</span> -->
                 <span class="score-number">3</span>
               </div>
             </div>
             <div class="team-image-container">
               <img src="squadra/rovesciataProf.jpg" alt="Foto Team Prof" />
               <div class="team-desc">
-                <h3>Formazione Tipica</h3>
-                <ul>
-                  <li>Giocatori più esperti</li>
-                  <li>Tattica consolidata</li>
-                  <li>Gioco posizionale</li>
-                </ul>
+                <h3>Giocatori</h3>
+                <div id="team-prof-players" class="team-players"></div>
               </div>
             </div>
           </div>
@@ -104,21 +89,7 @@
           <!-- VS Separator -->
           <div class="vs-container">
             <div class="vs-circle">
-              <span class="vs-text">VS</span>
-              <div class="vs-stats">
-                <div class="vs-stat">
-                  <span class="vs-stat-label">Punti Totali</span>
-                  <span class="vs-stat-value">12 - 8</span>
-                </div>
-                <div class="vs-stat">
-                  <span class="vs-stat-label">Partite Giocate</span>
-                  <span class="vs-stat-value">5</span>
-                </div>
-                <div class="vs-stat">
-                  <span class="vs-stat-label">Vittorie</span>
-                  <span class="vs-stat-value">3 - 2</span>
-                </div>
-              </div>
+              <div class="vs-text">VS</div>
             </div>
           </div>
 
@@ -127,19 +98,15 @@
             <div class="team-header">
               <h2 class="team-name">TEAM SUMMER</h2>
               <div class="team-score">
-                <span class="score-label">Ultimo Risultato:</span>
+                <!-- <span class="score-label">Ultimo Risultato:</span> -->
                 <span class="score-number">2</span>
               </div>
             </div>
             <div class="team-image-container">
               <img src="squadra/summer.jpg" alt="Foto Team Summer" />
               <div class="team-desc">
-                <h3>Formazione Tipica</h3>
-                <ul>
-                  <li>Giovani promettenti</li>
-                  <li>Gioco offensivo</li>
-                  <li>Velocità e dinamismo</li>
-                </ul>
+                <h3>Giocatori</h3>
+                <div id="team-summer-players" class="team-players"></div>
               </div>
             </div>
           </div>
@@ -157,30 +124,30 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Goal Totali</td>
-                <td class="team-prof">18</td>
-                <td class="team-summer">14</td>
+              <tr class="goals">
+                <td>Goal</td>
+                <td class="team-prof"></td>
+                <td class="team-summer"></td>
               </tr>
-              <tr>
-                <td>Assist Totali</td>
-                <td class="team-prof">12</td>
-                <td class="team-summer">15</td>
+              <tr class="assists">
+                <td>Assist</td>
+                <td class="team-prof"></td>
+                <td class="team-summer"></td>
               </tr>
-              <tr>
-                <td>Media Goal/Partita</td>
-                <td class="team-prof">3.6</td>
-                <td class="team-summer">2.8</td>
+              <tr class="ammonizioni">
+                <td>Ammonizioni</td>
+                <td class="team-prof"></td>
+                <td class="team-summer"></td>
               </tr>
-              <tr>
-                <td>Partite Vinte</td>
-                <td class="team-prof">3</td>
-                <td class="team-summer">2</td>
+              <tr class="espulsioni">
+                <td>Espulsioni</td>
+                <td class="team-prof"></td>
+                <td class="team-summer"></td>
               </tr>
-              <tr>
-                <td>Partite Pareggiate</td>
-                <td class="team-prof">0</td>
-                <td class="team-summer">0</td>
+              <tr class="porte-inviolate">
+                <td>Porte inviolate</td>
+                <td class="team-prof"></td>
+                <td class="team-summer"></td>
               </tr>
             </tbody>
           </table>
