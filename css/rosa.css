@@ -277,9 +277,9 @@ h2 {
     align-items: center;
   }
 
-  .vs-circle {
+  /* .vs-circle {
     transform: rotate(90deg);
-  }
+  } */
 }
 
 @media (max-width: 768px) {
