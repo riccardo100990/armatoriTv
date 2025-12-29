@@ -18,16 +18,16 @@
     font-weight: 800;
     text-transform: uppercase;
     color: #222;
-    border-left: 6px solid #007bff;
+    border-left: 6px solid #00ad41;
     padding-left: 15px;
     position: relative;
     transition: transform 0.3s ease, color 0.3s ease;
   }
   
-  .stadio-title:hover {
+  /* .stadio-title:hover {
     transform: translateY(-4px);
     color: #007bff;
-  }
+  } */
   
   /* Card descrizione e mappa */
   .stadio-descrizione,
@@ -39,12 +39,12 @@
     transition: transform 0.25s ease, box-shadow 0.25s ease;
   }
   
-  .stadio-descrizione:hover,
+  /* .stadio-descrizione:hover,
   .stadio-mappa:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0,0,0,0.15);
   }
-  
+   */
   /* Titoli sezioni */
   .stadio-descrizione h2,
   .stadio-mappa h2 {
