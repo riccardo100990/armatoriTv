@@ -1,6 +1,8 @@
 from bs4 import BeautifulSoup
 
 # usata per estrarre marcatori e ammonizioni
+# curl https://www.amatoricassino.it/marcatori -o tmp.html 
+# curl https://www.amatoricassino.it/provvedimenti -o tmp.html 
 
 with open("tmp.html", "r", encoding="utf-8") as f:
     soup = BeautifulSoup(f, "html")
