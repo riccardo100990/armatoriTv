@@ -11,7 +11,7 @@
   },
   "Gianluigi Panno": {
     "goals": 0,
-    "assist": 0,
+    "assist": 2,
     "ammonizioni": 0,
     "espulsioni": 0,
     "clean_sheet": 0,
@@ -161,11 +161,11 @@
   },
   "Ivan Magnafico": {
     "goals": 0,
-    "assist": 0,
+    "assist": 2,
     "ammonizioni": 0,
     "espulsioni": 0,
     "clean_sheet": 0,
-    "mvp_armatori_tv": 0,
+    "mvp_armatori_tv": 1,
     "ruolo": "D",
     "team": "prof"
   },

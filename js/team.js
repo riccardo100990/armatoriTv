@@ -283,6 +283,7 @@ function calculateTeamStats(rosa) {
       ammonizioni: 0,
       espulsioni: 0,
       clean_sheet: 0,
+      mvp_armatori_tv: 0,
     },
     summer: {
       goals: 0,
@@ -290,6 +291,7 @@ function calculateTeamStats(rosa) {
       ammonizioni: 0,
       espulsioni: 0,
       clean_sheet: 0,
+      mvp_armatori_tv: 0,
     },
   };
 
@@ -301,6 +303,7 @@ function calculateTeamStats(rosa) {
     stats[team].assist += player.assist || 0;
     stats[team].ammonizioni += player.ammonizioni || 0;
     stats[team].espulsioni += player.espulsioni || 0;
+    stats[team].mvp_armatori_tv += player.mvp_armatori_tv || 0;
 
     // porte inviolate SOLO per portieri
     if (player.ruolo === "P") {
@@ -318,6 +321,7 @@ function renderConfrontoTable(teamStats) {
     ammonizioni: "ammonizioni",
     espulsioni: "espulsioni",
     "porte-inviolate": "clean_sheet",
+    "mvp-armatori-tv": "mvp_armatori_tv",
   };
 
   Object.entries(mapping).forEach(([rowClass, statKey]) => {
@@ -338,7 +342,8 @@ function calculateTeamScore(teamStat) {
     teamStat.assist * 1 +
     teamStat.clean_sheet * 1 -
     teamStat.ammonizioni * 0.5 -
-    teamStat.espulsioni * 1;
+    teamStat.espulsioni * 1 +
+    teamStat.mvp_armatori_tv * 1;
 
   // sempre una cifra decimale (6.0, 6.5, ecc.)
   return Number(score.toFixed(1));
