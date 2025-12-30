@@ -56,3 +56,27 @@ h1 {
   margin-bottom: 3rem;
   color: var(--color-dark);
 }
+
+.page-title {
+  border-left: 6px solid #00ad41;
+  font-size: 2rem;
+  font-weight: 800;
+  /* text-transform: uppercase; */
+  letter-spacing: 1px;
+  padding-left: 15px;
+  margin-bottom: 40px;
+  color: #222;
+}
+
+.page-subtitle {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 35px;
+  max-width: 600px;
+}
+
+@media (max-width: 768px) {
+  .page-title {
+    font-size: 1.6rem;
+  }
+}
