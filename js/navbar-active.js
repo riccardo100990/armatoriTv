@@ -2,7 +2,7 @@ export function setActiveNavLink() {
   // Rimuovi il DOMContentLoaded da qui!
   const currentPage = window.location.pathname.split("/").pop() || "index.html";
 
-  document.querySelectorAll(".nav-link").forEach((link) => {
+  document.querySelectorAll(".main-navbar .nav-link").forEach((link) => {
     const linkPage = link.getAttribute("href");
     if (
       linkPage === currentPage ||
