@@ -24,9 +24,9 @@
 }
 
 /* Video iframe più compatto */
-.card-body .ratio iframe {
+/* .card-body .ratio iframe {
   height: 250px;
-}
+} */
 
 /* Card che devono crescere */
 .card.flex-grow-1 {
