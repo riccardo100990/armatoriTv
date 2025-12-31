@@ -18,8 +18,13 @@
       integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
       crossorigin="anonymous"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+    />
     <!-- CSS locali -->
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/home.css" />
     <link rel="stylesheet" href="css/card.css" />
     <link rel="stylesheet" href="css/classifica.css" />
     <link rel="stylesheet" href="css/calendar.css" />
@@ -31,75 +36,114 @@
     <div id="header-placeholder">Caricamento Header...</div>
 
     <main class="container my-4 my-lg-5">
-      <!-- Avviso fonte dati -->
-      <div class="row mb-3">
-        <div class="col-12">
-          <!-- <h1 class="text-center text-muted"> -->
-          <h1 class="page-title">
-            I dati di classifica e calendario sono aggiornati dal
-            <a
-              href="https://www.amatoricassino.it/girone-b/classifica"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              sito ufficiale Amatori Cassino
-            </a>
-          </h1>
-        </div>
-      </div>
+      <section class="home-hero text-center">
+        <h1 class="page-title">
+          Armatori TV
+          <span class="home-title-accent">La voce degli Amatori Lenola</span>
+        </h1>
 
-      <!-- Due colonne uguali -->
-      <div class="row g-4 row-cols-1 row-cols-lg-2">
-        <!-- Colonna sinistra: Classifica -->
-        <div class="col d-flex flex-column">
-          <div id="classifica-target" class="h-100">
-            <div
-              class="text-center py-5 h-100 d-flex flex-column justify-content-center"
-            >
-              <div class="spinner-border text-primary" role="status">
-                <span class="visually-hidden">Caricamento...</span>
-              </div>
-              <p class="mt-3 text-muted">Caricamento Classifica...</p>
-            </div>
+        <div class="home-social">
+          <a
+            href="https://www.youtube.com/@ArmatoriTV"
+            target="_blank"
+            class="btn btn-outline-danger"
+            aria-label="YouTube Armatori TV"
+          >
+            <i class="bi bi-youtube"></i>
+          </a>
+
+          <a
+            href="https://www.facebook.com/people/Amatori-Lenola/61551777111115/"
+            target="_blank"
+            class="btn btn-outline-primary"
+            aria-label="Facebook Armatori TV"
+          >
+            <i class="bi bi-facebook"></i>
+          </a>
+
+          <a
+            href="https://www.instagram.com/amatori_lenola?igsh=Y2E1bm83dGV6emlr"
+            target="_blank"
+            class="btn btn-outline-instagram"
+            aria-label="Instagram Armatori TV"
+          >
+            <i class="bi bi-instagram"></i>
+          </a>
+        </div>
+      </section>
+
+      <!-- sezione per i dati di classifica e calendario -->
+      <section>
+        <!-- Avviso fonte dati -->
+        <div class="row mb-3">
+          <div class="col-12">
+            <!-- <h1 class="text-center text-muted"> -->
+            <h3>
+              I dati di classifica e calendario sono aggiornati dal
+              <a
+                href="https://www.amatoricassino.it/girone-b/classifica"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                sito ufficiale Amatori Cassino
+              </a>
+            </h3>
           </div>
         </div>
 
-        <!-- Colonna destra: Video + Calendario -->
-        <div class="col d-flex flex-column gap-4">
-          <!-- Card Video -->
-          <div class="card shadow-sm flex-grow-1">
-            <div class="card-header">
-              <h1 class="card-title h5 mb-0">Ultime Live e Video</h1>
-            </div>
-            <div class="card-body p-0">
-              <div class="ratio ratio-16x9">
-                <iframe
-                  src="https://www.youtube.com/embed/videoseries?list=PLfSsFRyiyUaj_NMZimn7ka2Ln4mQwS4M2"
-                  title="Ultime Live e Video ARMATORI TV"
-                  allowfullscreen
-                  style="border: none"
-                >
-                </iframe>
-              </div>
-            </div>
-          </div>
-
-          <!-- Card Calendario -->
-          <div class="card shadow-sm flex-grow-1">
-            <div class="card-header">
-              <h1 class="card-title h5 mb-0">Calendario</h1>
-            </div>
-            <div class="card-body p-3 d-flex flex-column">
-              <div id="calendar-wrapper">
-                <div class="wheel-viewport">
-                  <div id="wheel"></div>
+        <!-- Due colonne uguali -->
+        <div class="row g-4 row-cols-1 row-cols-lg-2">
+          <!-- Colonna sinistra: Classifica -->
+          <div class="col d-flex flex-column">
+            <div id="classifica-target" class="h-100">
+              <div
+                class="text-center py-5 h-100 d-flex flex-column justify-content-center"
+              >
+                <div class="spinner-border text-primary" role="status">
+                  <span class="visually-hidden">Caricamento...</span>
                 </div>
-                <div id="wheel-indicators" aria-hidden="false"></div>
+                <p class="mt-3 text-muted">Caricamento Classifica...</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Colonna destra: Video + Calendario -->
+          <div class="col d-flex flex-column gap-4">
+            <!-- Card Video -->
+            <div class="card shadow-sm flex-grow-1">
+              <div class="card-header">
+                <h1 class="card-title h5 mb-0">Ultime Live e Video</h1>
+              </div>
+              <div class="card-body p-0">
+                <div class="ratio ratio-16x9">
+                  <iframe
+                    src="https://www.youtube.com/embed/videoseries?list=PLfSsFRyiyUaj_NMZimn7ka2Ln4mQwS4M2"
+                    title="Ultime Live e Video ARMATORI TV"
+                    allowfullscreen
+                    style="border: none"
+                  >
+                  </iframe>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card Calendario -->
+            <div class="card shadow-sm flex-grow-1">
+              <div class="card-header">
+                <h1 class="card-title h5 mb-0">Calendario</h1>
+              </div>
+              <div class="card-body p-3 d-flex flex-column">
+                <div id="calendar-wrapper">
+                  <div class="wheel-viewport">
+                    <div id="wheel"></div>
+                  </div>
+                  <div id="wheel-indicators" aria-hidden="false"></div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </main>
 
     <div id="footer-placeholder">Caricamento Footer...</div>
@@ -123,7 +167,7 @@
     </script>
 
     <script type="module" src="js/render_classifica.js"></script>
-    <script type="module" src="js/render_forma.js"></script>
+
     <script type="module" src="js/render_calendar.js"></script>
   </body>
 </html>
