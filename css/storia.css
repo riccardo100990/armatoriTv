@@ -1,0 +1,60 @@
+/* Storia - Stili specifici */
+.contenitore-storia {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  min-height: 100vh;
+}
+
+.divider {
+  width: 80px;
+  height: 4px;
+  border-radius: 2px;
+}
+
+.img-wrapper {
+  transition: transform 0.3s ease;
+  border: 5px solid white;
+}
+
+.img-wrapper:hover {
+  transform: translateY(-5px);
+}
+
+.card {
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1) !important;
+}
+
+blockquote {
+  color: #2c3e50;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+blockquote::before {
+  content: "“";
+  font-size: 4rem;
+  color: #0d6efd;
+  opacity: 0.3;
+  position: absolute;
+  left: -0.5rem;
+  top: -1.5rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .page-title {
+    font-size: 2.2rem;
+  }
+
+  .card {
+    padding: 1.5rem !important;
+  }
+
+  blockquote {
+    font-size: 1.3rem;
+  }
+}

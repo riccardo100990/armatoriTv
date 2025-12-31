@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Armatori Tv - Lo Staff</title>
+    <link
+      rel="icon"
+      href="immagini/armatoriTv.jpg"
+      type="image/png"
+      sizes="32x32"
+    />
+
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      crossorigin="anonymous"
+    />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="css/storia.css" />
+  </head>
+
+  <body>
+    <div id="header-placeholder">Caricamento Header...</div>
+
+    <section class="contenitore-storia py-5">
+      <div class="container">
+        <h1 class="page-title">La nostra storia</h1>
+
+        <!-- Contenuto a due colonne (immagine + testo) -->
+        <div class="row align-items-center justify-content-center g-5">
+          <!-- Colonna Testo -->
+          <div class="col-12 col-md-6 col-lg-7">
+            <div class="card border-0 bg-light shadow-sm p-4 p-md-5">
+              <div class="card-body">
+                <p class="card-text fs-5 lh-lg">
+                  ARMATORI TV nasce nel 2023 da un’idea semplice ma potente:
+                  <i>non lasciare mai nessuno fuori dal campo</i>.
+                </p>
+
+                <p class="card-text fs-5 lh-lg mt-4">
+                  È l’intuizione di <strong>Davide Lo Stocco</strong>, che
+                  osservando l’entusiasmo e la partecipazione del pubblico alle
+                  partite casalinghe, immagina un modo nuovo e divertente per
+                  far vivere le emozioni della squadra anche quando si gioca
+                  lontano da casa.
+                </p>
+
+                <p class="card-text fs-5 lh-lg mt-4">
+                  Al suo fianco arrivano subito
+                  <strong>Alessandro Marrocco</strong> e
+                  <strong>Alessandro Pannozzo</strong>: insieme danno vita ad
+                  ARMATORI TV, il primo vero canale dedicato a una squadra
+                  amatoriale di calcio. Un progetto nato con passione, cresciuto
+                  grazie al lavoro di squadra e rafforzato nel tempo
+                  dall’ingresso di nuovi collaboratori.
+                </p>
+                <p class="card-text fs-5 lh-lg mt-4">
+                  Con l’arrivo su YouTube, ARMATORI TV diventa una voce
+                  riconoscibile e un punto di riferimento per Lenola e non solo.
+                  Le partite degli Amatori Lenola superano i confini del campo:
+                  arrivano nelle case dei lenolesi all’estero, nei bar, nelle
+                  attività commerciali e ovunque ci sia qualcuno che vuole
+                  sentirsi parte della squadra.
+                </p>
+                <p class="card-text fs-5 lh-lg mt-4">
+                  Oggi ARMATORI TV è una realtà solida e viva, ma soprattutto è
+                  un progetto che guarda avanti. Perché
+                  <strong>ogni partita raccontata è una storia condivisa</strong
+                  >, e ogni sfida futura è un’emozione pronta a essere vissuta
+                  insieme.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div id="footer-placeholder">Caricamento Footer...</div>
+
+    <!-- Script -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script type="module">
+      import { includeHtml } from "./js/utils/include.js";
+      import { setActiveNavLink } from "./js/navbar-active.js";
+
+      document.addEventListener("DOMContentLoaded", async () => {
+        await includeHtml("header-placeholder", "header.html");
+        await includeHtml("footer-placeholder", "footer.html");
+        setActiveNavLink();
+      });
+    </script>
+  </body>
+</html>
