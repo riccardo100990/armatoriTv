@@ -1,3 +1,4 @@
+@import url("colors.css");
 /* ================================ */
 /* STILI GLOBALI BASE */
 /* ================================ */
@@ -58,14 +59,31 @@ h1 {
 }
 
 .page-title {
-  border-left: 6px solid #00ad41;
   font-size: 2rem;
   font-weight: 800;
-  /* text-transform: uppercase; */
-  letter-spacing: 1px;
-  padding-left: 15px;
-  margin-bottom: 40px;
   color: #222;
+  margin: 0 auto 40px auto; /* Centra il blocco stesso */
+  padding-bottom: 10px;
+
+  display: table; /* Fondamentale: il titolo diventa largo quanto il testo */
+  position: relative;
+  text-align: center;
+}
+
+.page-title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0; /* Parte dall'inizio del testo */
+  width: 100%; /* Copre il 100% della larghezza del testo */
+  height: 4px;
+  background: linear-gradient(
+    to right,
+    var(--color-red, red),
+    var(--color-green, green)
+  );
+  /* background: var(--color-green); */
+  border-radius: 2px;
 }
 
 .page-subtitle {
@@ -73,6 +91,30 @@ h1 {
   color: #666;
   margin-bottom: 35px;
   max-width: 600px;
+}
+
+.footer-social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.footer-social p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+.footer-social a {
+  color: #ccc;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.footer-social a:hover {
+  color: #fff;
+  transform: scale(1.15);
 }
 
 @media (max-width: 768px) {

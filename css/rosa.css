@@ -407,3 +407,122 @@ h2 {
     grid-template-columns: 1fr;
   }
 }
+
+/* ===============================
+   TABS ROSA / DIRIGENZA
+   =============================== */
+
+.nav-tabs {
+  border-bottom: none;
+}
+
+.nav-tabs .nav-link {
+  font-weight: 700;
+  color: var(--color-dark);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  background-color: #f4f4f4;
+}
+
+.nav-tabs .nav-link.active {
+  color: var(--color-red);
+  border-bottom: 3px solid var(--color-green);
+}
+
+/* Layout delle 3 colonne */
+.dirigenza-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 20px 0;
+}
+
+/* Card principale di sezione */
+.dirigenza-card {
+  background: #ffffff;
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* Titoli delle sezioni con Icona */
+.dirigenza-card h3 {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #333;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.dirigenza-card h3 i {
+  /* color: var(--color-red, #ff4d4d); */
+  font-size: 1.4rem;
+}
+
+/* Lista membri */
+.member-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Mini-card interna */
+.member-item {
+  background: #fcfcfc;
+  border: 1px solid #f0f0f0;
+  border-left: 4px solid var(--color-red, #ff4d4d); /* Default rosso */
+  padding: 12px 15px;
+  border-radius: 8px;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.member-item:hover {
+  background: #fff;
+  transform: translateX(5px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Info testo */
+.member-info {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.member-role {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #999;
+  letter-spacing: 0.5px;
+  margin-bottom: 2px;
+}
+
+.member-name {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #222;
+}
+
+/* Varianti di colore per le bordature */
+.member-item.accent-green {
+  border-left-color: var(--color-green, #2ecc71);
+}
+
+.member-item.accent-gray {
+  border-left-color: #bdc3c7;
+}
+
+/* ===============================
+   Responsive Dirigenza
+   =============================== */
+
+@media (max-width: 992px) {
+  .dirigenza-wrapper {
+    grid-template-columns: 1fr;
+  }
+}

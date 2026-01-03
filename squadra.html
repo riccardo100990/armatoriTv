@@ -16,6 +16,10 @@
       integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
       crossorigin="anonymous"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+    />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/header.css" />
     <link rel="stylesheet" href="css/footer.css" />
@@ -35,39 +39,131 @@
 
       <!-- Dopo il titolo "La rosa degli Armatori" aggiungi: -->
       <section class="rosa-section">
-        <h1 class="page-title">La rosa degli Armatori</h1>
+        <h1 class="page-title mb-4">La rosa degli Amatori Lenola</h1>
+        <!-- NAV TABS -->
+        <ul class="nav nav-tabs justify-content-center mb-4" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link active"
+              id="rosa-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#rosa-pane"
+              type="button"
+              role="tab"
+            >
+              Giocatori
+            </button>
+          </li>
 
-        <div class="players-container"></div>
-      </section>
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link"
+              id="dirigenza-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#dirigenza-pane"
+              type="button"
+              role="tab"
+            >
+              Dirigenza
+            </button>
+          </li>
+        </ul>
 
-      <!-- Sezione Statistiche Individuali -->
-      <!-- <section class="statistiche-section">
-        <h2>Statistiche Individuali</h2>
-        <div class="statistiche-container">
-          <div class="filters">
-            <button class="filter-btn active" data-filter="all">Tutti</button>
-            <button class="filter-btn" data-filter="P">Portieri</button>
-            <button class="filter-btn" data-filter="D">Difensori</button>
-            <button class="filter-btn" data-filter="C">Centrocampisti</button>
-            <button class="filter-btn" data-filter="A">Attaccanti</button>
+        <!-- CONTENUTO TABS -->
+        <div class="tab-content">
+          <!-- TAB ROSA -->
+          <div
+            class="tab-pane fade show active"
+            id="rosa-pane"
+            role="tabpanel"
+            aria-labelledby="rosa-tab"
+          >
+            <div class="players-container"></div>
           </div>
-          <div class="stats-table-container">
-            <table class="stats-table">
-              <thead>
-                <tr>
-                  <th>Giocatore</th>
-                  <th>Ruolo</th>
-                  <th>Goal</th>
-                  <th>Assist</th>
-                  <th>Punti Totali</th>
-                </tr>
-              </thead>
-              <tbody id="stats-body">
-              </tbody>
-            </table>
+
+          <!-- TAB DIRIGENZA -->
+          <div
+            class="tab-pane fade"
+            id="dirigenza-pane"
+            role="tabpanel"
+            aria-labelledby="dirigenza-tab"
+          >
+            <div class="dirigenza-wrapper">
+              <div class="dirigenza-card">
+                <h3><i class="bi bi-briefcase me-2"></i>Dirigenza</h3>
+                <div class="member-list">
+                  <div class="member-item">
+                    <div class="member-info">
+                      <span class="member-role">Presidente</span>
+                      <span class="member-name">Alessandro Marrocco</span>
+                    </div>
+                  </div>
+                  <div class="member-item">
+                    <div class="member-info">
+                      <span class="member-role">Direttore Generale</span>
+                      <span class="member-name">Davide Lo Stocco</span>
+                    </div>
+                  </div>
+                  <div class="member-item">
+                    <div class="member-info">
+                      <span class="member-role">Direttore Sportivo</span>
+                      <span class="member-name">Leone Grossi</span>
+                    </div>
+                  </div>
+                  <div class="member-item">
+                    <div class="member-info">
+                      <span class="member-role">Presidente onorario</span>
+                      <span class="member-name">Gino Piccione</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="dirigenza-card">
+                <h3><i class="bi bi-clipboard2-pulse me-2"></i>Area Tecnica</h3>
+                <div class="member-list">
+                  <div class="member-item accent-red">
+                    <div class="member-info">
+                      <span class="member-role">Allenatore</span>
+                      <span class="member-name">Giuseppe Antobenedetto</span>
+                    </div>
+                  </div>
+                  <div class="member-item accent-red">
+                    <div class="member-info">
+                      <span class="member-role">Vice Allenatore</span>
+                      <span class="member-name">Stefano Carroccia</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="dirigenza-card">
+                <h3><i class="bi bi-people me-2"></i>Accompagnatori</h3>
+                <div class="member-list">
+                  <div class="member-item accent-red">
+                    <div class="member-info">
+                      <span class="member-role">Staff</span>
+                      <span class="member-name">Claudio Muccitelli</span>
+                    </div>
+                  </div>
+                  <div class="member-item accent-red">
+                    <div class="member-info">
+                      <span class="member-role">Staff</span>
+                      <span class="member-name">Matteo Zizzo</span>
+                    </div>
+                  </div>
+                  <div class="member-item accent-red">
+                    <div class="member-info">
+                      <span class="member-role">Staff</span>
+                      <span class="member-name">Gaetano Piccione</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </section> -->
+      </section>
 
       <!-- Sezione Sfida Team Prof vs Team Summer -->
       <section class="matchup-section">
@@ -185,8 +281,6 @@
       });
     </script>
     <script src="js/navbar-active.js" type="module"></script>
-    <!-- <script src="js/render_rosa.js"></script>
-    <script src="js/render_statistiche.js" type="module"></script> -->
     <script src="js/team.js" type="module"></script>
   </body>
 </html>
