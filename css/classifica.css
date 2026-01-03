@@ -62,7 +62,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  color: var(--color-gray-600);
+  color: var(--color-gray-600) !important;
   border-bottom: 3px solid var(--color-gray-200);
   font-size: clamp(0.7rem, 1.2vw, 0.85rem);
   white-space: nowrap;
