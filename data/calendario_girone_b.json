@@ -110,18 +110,19 @@
       "risultato": "2 - 0",
       "campo": "Scauri",
       "esito": "L"
-    }
-  ],
-  "upcoming": [
+    },
     {
       "girone": "B",
       "giornata": 12,
       "data": "03-01-2026",
       "casa": "Amatori Lenola 2023",
       "trasferta": "AM Simonelli",
-      "risultato": "VS",
-      "campo": "Lenola"
-    },
+      "risultato": "4 - 1",
+      "campo": "Lenola",
+      "esito": "W"
+    }
+  ],
+  "upcoming": [
     {
       "girone": "B",
       "giornata": 13,

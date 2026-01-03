@@ -55,7 +55,7 @@
     "ammonizioni": 1,
     "espulsioni": 0,
     "clean_sheet": 0,
-    "mvp_armatori_tv": 0,
+    "mvp_armatori_tv": 1,
     "ruolo": "C",
     "team": "prof"
   },
@@ -70,8 +70,8 @@
     "team": "summer"
   },
   "Gianluigi Piccione": {
-    "goals": 7,
-    "assist": 0,
+    "goals": 9,
+    "assist": 2,
     "ammonizioni": 1,
     "espulsioni": 0,
     "clean_sheet": 0,
@@ -171,7 +171,7 @@
   },
   "Lorenzo Rizzi": {
     "goals": 0,
-    "assist": 0,
+    "assist": 1,
     "ammonizioni": 0,
     "espulsioni": 0,
     "clean_sheet": 0,
@@ -191,7 +191,7 @@
   },
   "Diego Benito De Filippis": {
     "goals": 1,
-    "assist": 0,
+    "assist": 1,
     "ammonizioni": 0,
     "espulsioni": 0,
     "clean_sheet": 0,
@@ -227,7 +227,7 @@
     "clean_sheet": 0,
     "mvp_armatori_tv": 0,
     "ruolo": "C",
-    "team": ""
+    "team": "prof"
   },
   "Alessio Manzi": {
     "goals": 0,
