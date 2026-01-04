@@ -95,6 +95,13 @@
       "link": "[LINK_16]",
       "img": "sponsor/ziAnnarella.jpg",
       "scale": 1.1
+    },
+    {
+      "name": "Ristorante Ai Pozzi",
+      "link": "[LINK_16]",
+      "img": "sponsor/ristorante_ai_pozzi.jpg",
+      "scale": 1.1
     }
+
   ]
 }
