@@ -120,18 +120,19 @@
       "risultato": "4 - 1",
       "campo": "Lenola",
       "esito": "W"
-    }
-  ],
-  "upcoming": [
+    },
     {
       "girone": "B",
       "giornata": 13,
       "data": "11-01-2026",
       "casa": "Amatori Lenola 2023",
       "trasferta": "Felcese Football Club",
-      "risultato": "VS",
-      "campo": "Lenola"
-    },
+      "risultato": "3 - 0",
+      "campo": "Lenola",
+      "esito": "W"
+    }
+  ],
+  "upcoming": [
     {
       "girone": "B",
       "giornata": 14,

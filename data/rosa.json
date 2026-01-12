@@ -21,7 +21,7 @@
   },
   "Giuseppe Tatarelli": {
     "goals": 0,
-    "assist": 0,
+    "assist": 1,
     "ammonizioni": 0,
     "espulsioni": 0,
     "clean_sheet": 0,
@@ -31,7 +31,7 @@
   },
   "Vincenzo Speranza": {
     "goals": 0,
-    "assist": 0,
+    "assist": 1,
     "ammonizioni": 2,
     "espulsioni": 0,
     "clean_sheet": 0,
@@ -40,7 +40,7 @@
     "team": "summer"
   },
   "Gianmarco Frattarelli": {
-    "goals": 2,
+    "goals": 3,
     "assist": 0,
     "ammonizioni": 2,
     "espulsioni": 0,
@@ -50,7 +50,7 @@
     "team": "summer"
   },
   "Luca Mastrobattista": {
-    "goals": 0,
+    "goals": 2,
     "assist": 2,
     "ammonizioni": 1,
     "espulsioni": 0,
@@ -70,8 +70,8 @@
     "team": "summer"
   },
   "Gianluigi Piccione": {
-    "goals": 9,
-    "assist": 2,
+    "goals": 10,
+    "assist": 3,
     "ammonizioni": 1,
     "espulsioni": 0,
     "clean_sheet": 0,
