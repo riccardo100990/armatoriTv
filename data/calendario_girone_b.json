@@ -130,22 +130,23 @@
       "risultato": "3 - 0",
       "campo": "Lenola",
       "esito": "W"
-    }
-  ],
-  "upcoming": [
+    },
     {
       "girone": "B",
       "giornata": 14,
       "data": "17-01-2026",
       "casa": "F.C. Pilone",
       "trasferta": "Amatori Lenola 2023",
-      "risultato": "VS",
-      "campo": "Cerri Aprano"
-    },
+      "risultato": "1 - 1",
+      "campo": "Cerri Aprano",
+      "esito": "D"
+    }
+  ],
+  "upcoming": [
     {
       "girone": "B",
       "giornata": 15,
-      "data": "24-01-2026",
+      "data": "25-01-2026",
       "casa": "Amatori Lenola 2023",
       "trasferta": "A.C. Lido la Conchiglia",
       "risultato": "VS",
@@ -163,7 +164,7 @@
     {
       "girone": "B",
       "giornata": 17,
-      "data": "07-02-2026",
+      "data": "08-02-2026",
       "casa": "AC Castelnovese",
       "trasferta": "Amatori Lenola 2023",
       "risultato": "VS",
