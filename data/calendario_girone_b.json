@@ -140,18 +140,19 @@
       "risultato": "1 - 1",
       "campo": "Cerri Aprano",
       "esito": "D"
-    }
-  ],
-  "upcoming": [
+    },
     {
       "girone": "B",
       "giornata": 15,
       "data": "25-01-2026",
       "casa": "Amatori Lenola 2023",
       "trasferta": "A.C. Lido la Conchiglia",
-      "risultato": "VS",
-      "campo": "Lenola"
-    },
+      "risultato": "1 - 1",
+      "campo": "Lenola",
+      "esito": "D"
+    }
+  ],
+  "upcoming": [
     {
       "girone": "B",
       "giornata": 16,
