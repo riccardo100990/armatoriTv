@@ -144,7 +144,7 @@
     {
       "girone": "B",
       "giornata": 15,
-      "data": "24-01-2026",
+      "data": "25-01-2026",
       "casa": "Amatori Lenola 2023",
       "trasferta": "A.C. Lido la Conchiglia",
       "risultato": "1 - 1",
@@ -154,23 +154,22 @@
     {
       "girone": "B",
       "giornata": 16,
-      "data": "01-02-2026",
+      "data": "31-01-2026",
       "casa": "F.C. Vallemaio 2022",
       "trasferta": "Amatori Lenola 2023",
       "risultato": "1 - 2",
       "campo": "Vallemaio",
       "esito": "W"
-    }
-  ],
-  "upcoming": [
+    },
     {
       "girone": "B",
       "giornata": 17,
       "data": "08-02-2026",
       "casa": "AC Castelnovese",
       "trasferta": "Amatori Lenola 2023",
-      "risultato": "VS",
-      "campo": "Coreno Ausonio"
+      "risultato": "1 - 2",
+      "campo": "Coreno Ausonio",
+      "esito": "W"
     },
     {
       "girone": "B",
@@ -178,8 +177,10 @@
       "data": "14-02-2026",
       "casa": "Coreno Legends",
       "trasferta": "Amatori Lenola 2023",
-      "risultato": "VS",
-      "campo": "Coreno Ausonio"
+      "risultato": "1 - 1",
+      "campo": "Coreno Ausonio",
+      "esito": "D"
     }
-  ]
+  ],
+  "upcoming": []
 }

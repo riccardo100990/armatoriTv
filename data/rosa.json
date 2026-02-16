@@ -30,7 +30,7 @@
     "team": "prof"
   },
   "Vincenzo Speranza": {
-    "goals": 0,
+    "goals": 1,
     "assist": 1,
     "ammonizioni": 2,
     "espulsioni": 0,
@@ -177,7 +177,7 @@
     "clean_sheet": 0,
     "mvp_armatori_tv": 0,
     "ruolo": "A",
-    "team": ""
+    "team": "prof"
   },
   "Gianmarco Di Manno": {
     "goals": 0,
@@ -220,17 +220,17 @@
     "team": ""
   },
   "Vasco Iacovelli": {
-    "goals": 2,
-    "assist": 1,
+    "goals": 3,
+    "assist": 2,
     "ammonizioni": 1,
     "espulsioni": 0,
     "clean_sheet": 0,
-    "mvp_armatori_tv": 0,
+    "mvp_armatori_tv": 1,
     "ruolo": "C",
     "team": "prof"
   },
   "Alessio Manzi": {
-    "goals": 0,
+    "goals": 2,
     "assist": 1,
     "ammonizioni": 0,
     "espulsioni": 0,
