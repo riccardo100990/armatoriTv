@@ -1,0 +1,105 @@
+{
+  "team": "Amatori Lenola 2023",
+  "played": [],
+  "upcoming": [
+    {
+      "girone": "B",
+      "giornata": 1,
+      "data": "22-02-2026",
+      "casa": "Amatori Lenola 2023",
+      "trasferta": "The Wasp Caira",
+      "risultato": "VS",
+      "campo": "Lenola"
+    },
+    {
+      "girone": "B",
+      "giornata": 2,
+      "data": "28-02-2026",
+      "casa": "Amatori Lenola 2023",
+      "trasferta": "Riposa",
+      "risultato": "VS",
+      "campo": "-"
+    },
+    {
+      "girone": "B",
+      "giornata": 3,
+      "data": "07-03-2026",
+      "casa": "Amatori Lenola 2023",
+      "trasferta": "Virtus Scauri Amatori",
+      "risultato": "VS",
+      "campo": "Lenola"
+    },
+    {
+      "girone": "B",
+      "giornata": 4,
+      "data": "14-03-2026",
+      "casa": "Atl.Roccasecca",
+      "trasferta": "Amatori Lenola 2023",
+      "risultato": "VS",
+      "campo": "Ceprano"
+    },
+    {
+      "girone": "B",
+      "giornata": 5,
+      "data": "21-03-2026",
+      "casa": "Amatori Lenola 2023",
+      "trasferta": "F.C. Spigno",
+      "risultato": "VS",
+      "campo": "Lenola"
+    },
+    {
+      "girone": "B",
+      "giornata": 6,
+      "data": "28-03-2026",
+      "casa": "Amatori Lenola 2023",
+      "trasferta": "Atletico Benito",
+      "risultato": "VS",
+      "campo": "Lenola"
+    },
+    {
+      "girone": "B",
+      "giornata": 7,
+      "data": "04-04-2026",
+      "casa": "Sanvittorese Calcio",
+      "trasferta": "Amatori Lenola 2023",
+      "risultato": "VS",
+      "campo": "San Vittore del Lazio"
+    },
+    {
+      "girone": "B",
+      "giornata": 8,
+      "data": "11-04-2026",
+      "casa": "A.S.D. Vis Sora 07",
+      "trasferta": "Amatori Lenola 2023",
+      "risultato": "VS",
+      "campo": "Stadio Tomei Sora"
+    },
+    {
+      "girone": "B",
+      "giornata": 9,
+      "data": "18-04-2026",
+      "casa": "Saggese",
+      "trasferta": "Amatori Lenola 2023",
+      "risultato": "VS",
+      "campo": "Caira"
+    },
+    {
+      "girone": "B",
+      "giornata": 10,
+      "data": "02-05-2026",
+      "casa": "Amatori Lenola 2023",
+      "trasferta": "MB Sora",
+      "risultato": "VS",
+      "campo": "Lenola"
+    },
+    {
+      "girone": "B",
+      "giornata": 11,
+      "data": "09-05-2026",
+      "casa": "Coreno Legends",
+      "trasferta": "Amatori Lenola 2023",
+      "risultato": "VS",
+      "campo": "Coreno Ausonio"
+    }
+  ]
+}
