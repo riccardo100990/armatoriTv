@@ -1,14 +1,14 @@
-const DATA_URL = "./data/calendario_girone_b.json";
+import { DEFAULT_COMPETITION } from "./competitions.js";
+
+let currentCompetition = DEFAULT_COMPETITION;
+let DATA_URL = `./data/calendario_${currentCompetition}.json`;
 
 let currentIndex = 0;
 let matches = [];
 let playedCount = 0;
 let teamName = "";
 
-/**
- * Costruisce l'HTML della card per una singola partita.
- * CON ICONE SVG
- */
+// ── Costruisce l'HTML della card per una singola partita ─────────────────────
 function buildMatchCard(match, team) {
   const opponent = match.casa === team ? match.trasferta : match.casa;
   const isHome = match.casa === team;
@@ -18,7 +18,9 @@ function buildMatchCard(match, team) {
   const scoreText = scorePresent ? match.risultato : "vs";
   const scoreClass = scorePresent ? "" : "upcoming";
 
-  const title = scorePresent ? `Risultato: ${scoreText}` : "Partita da giocare";
+  const title = scorePresent
+    ? `Risultato: ${scoreText}`
+    : "Partita da giocare";
 
   return `
     <div class="wheel-card ${cardClass}" data-giornata="${match.giornata}">
@@ -30,9 +32,9 @@ function buildMatchCard(match, team) {
             </svg>
           </button>
         </div>
-        
+
         <h5>Giornata ${match.giornata} — <small>${match.data || ""}</small></h5>
-        
+
         <div class="nav-controls" role="group" aria-label="Navigazione successiva">
           <button class="btn-next" title="Giornata successiva" aria-label="Successivo">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -51,9 +53,7 @@ function buildMatchCard(match, team) {
   `;
 }
 
-/**
- * Crea gli indicatori e li colora in base allo stato / risultato.
- */
+// ── Crea gli indicatori colorati per esito ───────────────────────────────────
 function createIndicators(matchList, team, playedLen) {
   const indicatorsContainer = document.getElementById("wheel-indicators");
   if (!indicatorsContainer) return;
@@ -106,9 +106,10 @@ function createIndicators(matchList, team, playedLen) {
   });
 }
 
-/** Aggiorna transform e stato indicatori */
+// ── Aggiorna transform e stato indicatori ────────────────────────────────────
 function updateWheel() {
   const wheel = document.getElementById("wheel");
+  if (!wheel) return;
   wheel.style.transform = `translateX(-${currentIndex * 100}%)`;
 
   const indicators = document.querySelectorAll(".wheel-indicator");
@@ -123,8 +124,25 @@ function updateWheel() {
   }
 }
 
-/** Inizializzazione principale */
+// ── Inizializzazione / re-inizializzazione ────────────────────────────────────
 async function initWheel() {
+  const wheel = document.getElementById("wheel");
+  const wrapper = document.getElementById("calendar-wrapper");
+
+  // Reset stato
+  currentIndex = 0;
+  matches = [];
+  playedCount = 0;
+  teamName = "";
+
+  if (wheel) {
+    wheel.innerHTML = `
+      <div class="wheel-item d-flex align-items-center justify-content-center py-4">
+        <div class="spinner-border spinner-border-sm text-primary" role="status"></div>
+        <span class="ms-2 text-muted">Caricamento calendario...</span>
+      </div>`;
+  }
+
   try {
     const res = await fetch(DATA_URL);
     if (!res.ok)
@@ -135,17 +153,17 @@ async function initWheel() {
     playedCount = (data.played || []).length;
     teamName = data.team || "";
 
-    currentIndex = playedCount;
+    // Posiziona sull'ultima partita giocata (o sulla prima se nessuna)
+    currentIndex = playedCount > 0 ? playedCount - 1 : 0;
 
-    const wheel = document.getElementById("wheel");
     wheel.innerHTML = matches
       .map(
         (m) => `<div class="wheel-item">${buildMatchCard(m, teamName)}</div>`
       )
       .join("");
 
-    // Listener per bottoni prev
-    document.querySelectorAll(".btn-prev").forEach((btn) => {
+    // Listener bottoni prev
+    wheel.querySelectorAll(".btn-prev").forEach((btn) => {
       btn.addEventListener("click", (e) => {
         e.stopPropagation();
         if (currentIndex > 0) {
@@ -155,8 +173,8 @@ async function initWheel() {
       });
     });
 
-    // Listener per bottoni next
-    document.querySelectorAll(".btn-next").forEach((btn) => {
+    // Listener bottoni next
+    wheel.querySelectorAll(".btn-next").forEach((btn) => {
       btn.addEventListener("click", (e) => {
         e.stopPropagation();
         if (currentIndex < matches.length - 1) {
@@ -190,9 +208,20 @@ async function initWheel() {
     );
   } catch (err) {
     console.error(err);
-    const wrapper = document.getElementById("calendar-wrapper");
-    wrapper.innerHTML = `<div style="color:#a00;padding:12px;background:#fff;border-radius:8px;">Errore caricamento calendario: ${err.message}</div>`;
+    if (wrapper) {
+      wrapper.innerHTML = `
+        <div style="color:#a00;padding:12px;background:#fff;border-radius:8px;">
+          Errore caricamento calendario: ${err.message}
+        </div>`;
+    }
   }
 }
+
+// ── Ascolto cambio competizione da render_classifica.js ──────────────────────
+document.addEventListener("competition-change", async (e) => {
+  currentCompetition = e.detail.id;
+  DATA_URL = `./data/calendario_${currentCompetition}.json`;
+  await initWheel();
+});
 
 document.addEventListener("DOMContentLoaded", initWheel);
