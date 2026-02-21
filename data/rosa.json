@@ -238,5 +238,15 @@
     "mvp_armatori_tv": 0,
     "ruolo": "C",
     "team": ""
+  },
+  "Andrea Panno": {
+    "goals": 0,
+    "assist": 0,
+    "ammonizioni": 0,
+    "espulsioni": 0,
+    "clean_sheet": 0,
+    "mvp_armatori_tv": 0,
+    "ruolo": "D",
+    "team": "Prof"
   }
 }
