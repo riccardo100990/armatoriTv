@@ -8,7 +8,7 @@ import os
 dir_base = os.path.dirname(__file__)
 
 # girone-b / premier-league / ecc
-CAMPIONATO_CORRENTE = "girone-b"
+CAMPIONATO_CORRENTE = "premier-league"
 CLASSIFICA_URL = f"https://www.amatoricassino.it/{CAMPIONATO_CORRENTE}/classifica"
 CALENDARIO_URL = f"https://www.amatoricassino.it/{CAMPIONATO_CORRENTE}/calendario"
 
