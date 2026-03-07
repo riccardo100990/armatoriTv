@@ -202,6 +202,10 @@
   border-color: #111111;
 }
 
+.wheel-indicator.rest {
+  background-color: #a0a0a0; /* grigio neutro */
+}
+
 /* Responsività: riduci padding su mobile */
 @media (max-width: 768px) {
   #calendar-wrapper {

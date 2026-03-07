@@ -60,6 +60,12 @@ function buildMatchCard(match, team) {
   `;
 }
 
+// ── Helper: controlla se una partita è un turno di riposo ────────────────────
+function isRiposoMatch(match, team) {
+  const opponent = match.casa === team ? match.trasferta : match.casa;
+  return opponent.toLowerCase() === "riposa";
+}
+
 // ── Crea gli indicatori colorati per esito ───────────────────────────────────
 function createIndicators(matchList, team, playedLen) {
   const indicatorsContainer = document.getElementById("wheel-indicators");
@@ -73,37 +79,37 @@ function createIndicators(matchList, team, playedLen) {
 
     if (i === currentIndex) indicator.classList.add("active");
 
-    if (i < playedLen) {
-      // turno di riposo
-      if (match.esito === "R") {
-        indicator.classList.add("rest");
-        indicator.title = `Giornata ${match.giornata} — Riposo`;
-      } else if (match.risultato) {
-        let parts = match.risultato.replace(/\s/g, "").split("-");
-        let home = parseInt(parts[0], 10);
-        let away = parseInt(parts[1], 10);
+    // Riposo (sia passato che futuro) — sempre grigio
+    if (isRiposoMatch(match, team)) {
+      indicator.classList.add("rest");
+      indicator.title = `Giornata ${match.giornata} — Riposo`;
+    } else if (i < playedLen) {
+      // Partita giocata — colore per esito
+      const parts = match.risultato.replace(/\s/g, "").split("-");
+      const home = parseInt(parts[0], 10);
+      const away = parseInt(parts[1], 10);
 
-        if (Number.isNaN(home) || Number.isNaN(away)) {
-          indicator.classList.add("upcoming");
-          indicator.title = `Giornata ${match.giornata} — risultato: ${match.risultato}`;
+      if (Number.isNaN(home) || Number.isNaN(away)) {
+        indicator.classList.add("upcoming");
+        indicator.title = `Giornata ${match.giornata} — risultato: ${match.risultato}`;
+      } else {
+        const isHome = match.casa === team;
+        const teamScore = isHome ? home : away;
+        const oppScore = isHome ? away : home;
+
+        if (teamScore > oppScore) {
+          indicator.classList.add("win");
+          indicator.title = `Vittoria — ${teamScore}-${oppScore}`;
+        } else if (teamScore === oppScore) {
+          indicator.classList.add("draw");
+          indicator.title = `Pareggio — ${teamScore}-${oppScore}`;
         } else {
-          const isHome = match.casa === team;
-          const teamScore = isHome ? home : away;
-          const oppScore = isHome ? away : home;
-
-          if (teamScore > oppScore) {
-            indicator.classList.add("win");
-            indicator.title = `Vittoria — ${teamScore}-${oppScore}`;
-          } else if (teamScore === oppScore) {
-            indicator.classList.add("draw");
-            indicator.title = `Pareggio — ${teamScore}-${oppScore}`;
-          } else {
-            indicator.classList.add("loss");
-            indicator.title = `Sconfitta — ${teamScore}-${oppScore}`;
-          }
+          indicator.classList.add("loss");
+          indicator.title = `Sconfitta — ${teamScore}-${oppScore}`;
         }
       }
     } else {
+      // Partita futura
       indicator.classList.add("upcoming");
       indicator.title = match.data
         ? `Prossima: ${match.data}`
