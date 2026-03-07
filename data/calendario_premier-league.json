@@ -10,9 +10,7 @@
       "risultato": "0 - 1",
       "campo": "Lenola",
       "esito": "L"
-    }
-  ],
-  "upcoming": [
+    },
     {
       "girone": "B",
       "giornata": 2,
@@ -20,8 +18,12 @@
       "casa": "Amatori Lenola 2023",
       "trasferta": "Riposa",
       "risultato": "VS",
-      "campo": "-"
-    },
+      "campo": "-",
+      "esito": "R",
+      "bonus_updated": true
+    }
+  ],
+  "upcoming": [
     {
       "girone": "B",
       "giornata": 3,
@@ -38,7 +40,7 @@
       "casa": "Atl.Roccasecca",
       "trasferta": "Amatori Lenola 2023",
       "risultato": "VS",
-      "campo": "Ceprano"
+      "campo": "Roccasecca"
     },
     {
       "girone": "B",

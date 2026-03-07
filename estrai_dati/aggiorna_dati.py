@@ -85,28 +85,22 @@ def scrape_classifica():
         json.dump(output, f, indent=2, ensure_ascii=False)
 
 
-
 def scrape_calendar():
     team_name = "Amatori Lenola 2023"
     response = requests.get(CALENDARIO_URL, timeout=10)
     response.raise_for_status()
     soup = BeautifulSoup(response.text, "html.parser")
-
     played_matches = []
     upcoming_matches = []
-
     day_cards = soup.select(".site-card")
-
     for card in day_cards:
         header = card.select_one(".day-card-header")
         if not header:
             continue
-
         # giornata
         title = header.select_one(".day-title").get_text(strip=True)
         giornata_match = re.search(r"Giornata\s+(\d+)", title)
         giornata = int(giornata_match.group(1)) if giornata_match else None
-
         # data
         date_el = header.select_one(".day-meta")
         data = None
@@ -114,26 +108,20 @@ def scrape_calendar():
             data_match = re.search(r"Data:\s*([\d-]+)", date_el.get_text())
             if data_match:
                 data = data_match.group(1)
-
         rows = card.select("tbody tr.match-row")
-
         for row in rows:
             cols = row.find_all("td")
             if len(cols) < 5:
                 continue
-
             squadra_casa = cols[0].get_text(strip=True)
             risultato = cols[1].get_text(strip=True)
             squadra_trasferta = cols[2].get_text(strip=True)
             campo = cols[3].get_text(strip=True)
-            # stato = cols[4].get_text(strip=True)
-
             # filtro squadra
             if team_name.lower() not in (
                 squadra_casa.lower() + squadra_trasferta.lower()
             ):
                 continue
-
             match_data = {
                 "girone": "B",
                 "giornata": giornata,
@@ -142,43 +130,59 @@ def scrape_calendar():
                 "trasferta": squadra_trasferta,
                 "risultato": risultato,
                 "campo": campo,
-                # "stato": stato
             }
-
             # partita giocata? (risultato tipo "2 - 1")
             score_match = re.search(r"(\d+)\s*-\s*(\d+)", risultato)
-
             if score_match:
                 gol_casa = int(score_match.group(1))
                 gol_trasferta = int(score_match.group(2))
-
                 is_home = team_name.lower() == squadra_casa.lower()
                 is_away = team_name.lower() == squadra_trasferta.lower()
-
                 if gol_casa == gol_trasferta:
                     esito = "D"
                 elif (is_home and gol_casa > gol_trasferta) or (is_away and gol_trasferta > gol_casa):
                     esito = "W"
                 else:
                     esito = "L"
-
                 match_data["esito"] = esito
                 played_matches.append(match_data)
-
             else:
-                upcoming_matches.append(match_data)
+                # controlla se è un turno di riposo con data passata
+                is_riposo = "riposa" in squadra_trasferta.lower() or "riposa" in squadra_casa.lower()
+                data_passata = False
+                if data:
+                    try:
+                        match_date = datetime.strptime(data, "%d-%m-%Y")
+                        data_passata = match_date.date() < datetime.now().date()
+                    except ValueError:
+                        pass
+                if is_riposo and data_passata:
+                    match_data["esito"] = "R"
+                    match_data["bonus_updated"] = True  # nessun bonus da aggiornare per il riposo
+                    played_matches.append(match_data)
+                else:
+                    upcoming_matches.append(match_data)
+
+    # Preserva il flag bonus_updated per le partite già presenti nel calendario
+    # (evita di sovrascrivere True con False al re-scraping)
+    try:
+        old_calendario = load_json(CALENDARIO_OUTPUT_FILE)
+        old_played = {m["giornata"]: m for m in old_calendario.get("played", [])}
+        for m in played_matches:
+            giornata = m["giornata"]
+            if giornata in old_played and old_played[giornata].get("bonus_updated"):
+                m["bonus_updated"] = True
+    except (FileNotFoundError, json.JSONDecodeError):
+        pass  # primo run, nessun file esistente
 
     d = {
         "team": team_name,
         "played": played_matches,
         "upcoming": upcoming_matches
     }
-
-
     # Scrittura JSON
     with open(CALENDARIO_OUTPUT_FILE, "w", encoding="utf-8") as f:
         json.dump(d, f, ensure_ascii=False, indent=2)
-
 
 
 # ── helpers ────────────────────────────────────────────────────────────────────
@@ -278,6 +282,13 @@ def aggiorna_bonus():
     bonus = load_json(BONUS_FILE)
     calendario = load_json(CALENDARIO_OUTPUT_FILE)
     match = get_last_match(calendario)
+
+    # ── GUARD: bonus già aggiornati o turno di riposo ─────────────────────────
+    if match.get("bonus_updated"):
+        esito = match.get("esito", "?")
+        motivo = "turno di riposo" if esito == "R" else "bonus già aggiornati per questa giornata"
+        print(f"\n  ⚠ Giornata {match['giornata']}: {motivo}. Nessuna azione necessaria.")
+        return
 
     n_gol = gol_segnati(match)
     n_subiti = gol_subiti(match)
@@ -383,13 +394,16 @@ def aggiorna_bonus():
         bonus[changes["mvp"]]["mvp_armatori_tv"] += 1
 
     save_json(BONUS_FILE, bonus)
+
+    # ── SEGNA I BONUS COME AGGIORNATI NEL CALENDARIO ─────────────────────────
+    match["bonus_updated"] = True
+    save_json(CALENDARIO_OUTPUT_FILE, calendario)
+
     print("\n  ✓ Bonus aggiornati e salvati correttamente!")
     print("═" * 50 + "\n")
 
     # ── SALVA RIEPILOGO IN NOTE ────────────────────────────────────────────────
     salva_riepilogo(riepilogo)
-
-
 
 
 if __name__ == "__main__":
