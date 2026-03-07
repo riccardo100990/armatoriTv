@@ -21,18 +21,20 @@
       "campo": "-",
       "esito": "R",
       "bonus_updated": true
-    }
-  ],
-  "upcoming": [
+    },
     {
       "girone": "B",
       "giornata": 3,
       "data": "07-03-2026",
       "casa": "Amatori Lenola 2023",
       "trasferta": "Virtus Scauri Amatori",
-      "risultato": "VS",
-      "campo": "Lenola"
-    },
+      "risultato": "3 - 2",
+      "campo": "Lenola",
+      "esito": "W",
+      "bonus_updated": true
+    }
+  ],
+  "upcoming": [
     {
       "girone": "B",
       "giornata": 4,
