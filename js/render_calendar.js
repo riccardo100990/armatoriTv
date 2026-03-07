@@ -11,16 +11,17 @@ let teamName = "";
 // ── Costruisce l'HTML della card per una singola partita ─────────────────────
 function buildMatchCard(match, team) {
   const opponent = match.casa === team ? match.trasferta : match.casa;
+  const isRiposo = opponent.toLowerCase() === "riposa";
   const isHome = match.casa === team;
-  const cardClass = match.stato === "Da giocare" ? "next" : "played";
+  const cardClass = match.esito ? "played" : "next";
 
-  const scorePresent = !!match.risultato;
-  const scoreText = scorePresent ? match.risultato : "vs";
-  const scoreClass = scorePresent ? "" : "upcoming";
-
-  const title = scorePresent
-    ? `Risultato: ${scoreText}`
-    : "Partita da giocare";
+  const scoreText = isRiposo ? "Riposa" : (match.risultato || "vs");
+  const scoreClass = (!match.risultato || isRiposo) ? "upcoming" : "";
+  const title = isRiposo
+    ? "Turno di riposo"
+    : match.risultato
+      ? `Risultato: ${match.risultato}`
+      : "Partita da giocare";
 
   return `
     <div class="wheel-card ${cardClass}" data-giornata="${match.giornata}">
@@ -44,11 +45,17 @@ function buildMatchCard(match, team) {
         </div>
       </div>
 
-      <p class="match-line" title="${title}">
-        <span class="team-home">${isHome ? team : opponent}</span>
-        <span class="score ${scoreClass}">${scoreText}</span>
-        <span class="team-away">${isHome ? opponent : team}</span>
-      </p>
+      ${isRiposo ? `
+        <p class="match-line riposo" title="${title}">
+          <span class="score upcoming">Turno di riposo</span>
+        </p>
+      ` : `
+        <p class="match-line" title="${title}">
+          <span class="team-home">${isHome ? team : opponent}</span>
+          <span class="score ${scoreClass}">${scoreText}</span>
+          <span class="team-away">${isHome ? opponent : team}</span>
+        </p>
+      `}
     </div>
   `;
 }
@@ -66,28 +73,34 @@ function createIndicators(matchList, team, playedLen) {
 
     if (i === currentIndex) indicator.classList.add("active");
 
-    if (i < playedLen && match.risultato) {
-      let parts = match.risultato.replace(/\s/g, "").split("-");
-      let home = parseInt(parts[0], 10);
-      let away = parseInt(parts[1], 10);
+    if (i < playedLen) {
+      // turno di riposo
+      if (match.esito === "R") {
+        indicator.classList.add("rest");
+        indicator.title = `Giornata ${match.giornata} — Riposo`;
+      } else if (match.risultato) {
+        let parts = match.risultato.replace(/\s/g, "").split("-");
+        let home = parseInt(parts[0], 10);
+        let away = parseInt(parts[1], 10);
 
-      if (Number.isNaN(home) || Number.isNaN(away)) {
-        indicator.classList.add("upcoming");
-        indicator.title = `Giornata ${match.giornata} — risultato: ${match.risultato}`;
-      } else {
-        const isHome = match.casa === team;
-        const teamScore = isHome ? home : away;
-        const oppScore = isHome ? away : home;
-
-        if (teamScore > oppScore) {
-          indicator.classList.add("win");
-          indicator.title = `Vittoria — ${teamScore}-${oppScore}`;
-        } else if (teamScore === oppScore) {
-          indicator.classList.add("draw");
-          indicator.title = `Pareggio — ${teamScore}-${oppScore}`;
+        if (Number.isNaN(home) || Number.isNaN(away)) {
+          indicator.classList.add("upcoming");
+          indicator.title = `Giornata ${match.giornata} — risultato: ${match.risultato}`;
         } else {
-          indicator.classList.add("loss");
-          indicator.title = `Sconfitta — ${teamScore}-${oppScore}`;
+          const isHome = match.casa === team;
+          const teamScore = isHome ? home : away;
+          const oppScore = isHome ? away : home;
+
+          if (teamScore > oppScore) {
+            indicator.classList.add("win");
+            indicator.title = `Vittoria — ${teamScore}-${oppScore}`;
+          } else if (teamScore === oppScore) {
+            indicator.classList.add("draw");
+            indicator.title = `Pareggio — ${teamScore}-${oppScore}`;
+          } else {
+            indicator.classList.add("loss");
+            indicator.title = `Sconfitta — ${teamScore}-${oppScore}`;
+          }
         }
       }
     } else {
