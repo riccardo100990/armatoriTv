@@ -32,18 +32,19 @@
       "campo": "Lenola",
       "esito": "W",
       "bonus_updated": true
-    }
-  ],
-  "upcoming": [
+    },
     {
       "girone": "B",
       "giornata": 4,
       "data": "14-03-2026",
       "casa": "Atl.Roccasecca",
       "trasferta": "Amatori Lenola 2023",
-      "risultato": "VS",
-      "campo": "Roccasecca"
-    },
+      "risultato": "2 - 1",
+      "campo": "Roccasecca",
+      "esito": "L"
+    }
+  ],
+  "upcoming": [
     {
       "girone": "B",
       "giornata": 5,
