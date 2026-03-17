@@ -1,6 +1,6 @@
 {
   "girone": "B",
-  "aggiornato_al": "2026-03-15T16:46:36.711554Z",
+  "aggiornato_al": "2026-03-17T22:12:34.364854Z",
   "squadre": [
     {
       "posizione": 1,
@@ -102,20 +102,6 @@
     },
     {
       "posizione": 8,
-      "squadra": "Sanvittorese Calcio",
-      "logo": "https://www.amatoricassino.it/uploads/sanvittorese.webp",
-      "punti": 3,
-      "giocate": 4,
-      "vinte": 1,
-      "pareggi": 0,
-      "perse": 3,
-      "gf": 5,
-      "gs": 8,
-      "dr": -3,
-      "classe_css": "team-row position-europa"
-    },
-    {
-      "posizione": 9,
       "squadra": "Virtus Scauri Amatori",
       "logo": "https://www.amatoricassino.it/uploads/virtus.webp",
       "punti": 3,
@@ -126,10 +112,10 @@
       "gf": 6,
       "gs": 9,
       "dr": -3,
-      "classe_css": "team-row position-conference"
+      "classe_css": "team-row position-europa"
     },
     {
-      "posizione": 10,
+      "posizione": 9,
       "squadra": "Amatori Lenola 2023",
       "logo": "https://www.amatoricassino.it/uploads/lenola.webp",
       "punti": 3,
@@ -140,6 +126,20 @@
       "gf": 4,
       "gs": 5,
       "dr": -1,
+      "classe_css": "team-row position-conference"
+    },
+    {
+      "posizione": 10,
+      "squadra": "Sanvittorese Calcio",
+      "logo": "https://www.amatoricassino.it/uploads/sanvittorese.webp",
+      "punti": 3,
+      "giocate": 4,
+      "vinte": 1,
+      "pareggi": 0,
+      "perse": 3,
+      "gf": 5,
+      "gs": 8,
+      "dr": -3,
       "classe_css": "team-row position-conference"
     },
     {

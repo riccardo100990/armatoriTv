@@ -331,7 +331,7 @@ def aggiorna_bonus():
         changes["gol"].append((scorer, assister))
 
     # ── AMMONIZIONI / ESPULSIONI ──────────────────────────────────────────────
-    print("\n── AMMONIZIONI ──────────────────────────────────────")
+    """print("\n── AMMONIZIONI ──────────────────────────────────────")
     show_players(bonus)
     changes["ammoniti"] = pick_players_multi(
         bonus, "\nGiocatori ammoniti? (numeri/nomi separati da virgola, invio = nessuno): "
@@ -341,7 +341,26 @@ def aggiorna_bonus():
         print("  (solo tra gli ammoniti o dirette)")
         changes["espulsi"] = pick_players_multi(
             bonus, "Giocatori espulsi? (invio = nessuno): "
-        )
+        )"""
+
+    # ── AMMONIZIONI / ESPULSIONI ──────────────────────────────────────────────
+    print("\n── AMMONIZIONI ──────────────────────────────────────")
+    show_players(bonus)
+    changes["ammoniti"] = pick_players_multi(
+        bonus, "\nGiocatori ammoniti? (numeri/nomi separati da virgola, invio = nessuno): "
+    )
+
+    print("\n── ESPULSIONI ───────────────────────────────────────")
+    show_players(bonus)
+    print("  (doppio giallo tra gli ammoniti, o rosso diretto per chiunque)")
+    changes["espulsi"] = pick_players_multi(
+        bonus, "Giocatori espulsi? (invio = nessuno): "
+    )
+
+    # Avvisa se un espulso non era tra gli ammoniti (rosso diretto)
+    for name in changes["espulsi"]:
+        if name not in changes["ammoniti"]:
+            print(f"  ⚠ {name} espulso con rosso diretto (non era tra gli ammoniti)")
 
     # ── MVP ───────────────────────────────────────────────────────────────────
     print("\n── MVP ARMATORI TV ──────────────────────────────────")

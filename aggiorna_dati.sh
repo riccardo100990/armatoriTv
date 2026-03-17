@@ -1,5 +1,5 @@
 #!/bin/bash
-set -ex
+set -e
 
 # ── aggiorna i branch ────────────────────────────────────────
 git checkout master
