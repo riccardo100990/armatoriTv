@@ -43,18 +43,19 @@
       "campo": "Roccasecca",
       "esito": "L",
       "bonus_updated": true
-    }
-  ],
-  "upcoming": [
+    },
     {
       "girone": "B",
       "giornata": 5,
       "data": "21-03-2026",
       "casa": "Amatori Lenola 2023",
       "trasferta": "F.C. Spigno",
-      "risultato": "VS",
-      "campo": "Lenola"
-    },
+      "risultato": "0 - 1",
+      "campo": "Lenola",
+      "esito": "L"
+    }
+  ],
+  "upcoming": [
     {
       "girone": "B",
       "giornata": 6,
