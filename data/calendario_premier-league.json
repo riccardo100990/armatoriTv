@@ -53,18 +53,20 @@
       "risultato": "0 - 1",
       "campo": "Lenola",
       "esito": "L"
-    }
-  ],
-  "upcoming": [
+    },
     {
       "girone": "B",
       "giornata": 6,
       "data": "28-03-2026",
       "casa": "Amatori Lenola 2023",
       "trasferta": "Atletico Benito",
-      "risultato": "VS",
-      "campo": "Lenola"
-    },
+      "risultato": "1 - 2",
+      "campo": "Lenola",
+      "esito": "L",
+      "bonus_updated": true
+    }
+  ],
+  "upcoming": [
     {
       "girone": "B",
       "giornata": 7,
