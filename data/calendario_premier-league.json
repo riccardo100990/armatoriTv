@@ -64,18 +64,19 @@
       "campo": "Lenola",
       "esito": "L",
       "bonus_updated": true
-    }
-  ],
-  "upcoming": [
+    },
     {
       "girone": "B",
       "giornata": 7,
       "data": "04-04-2026",
       "casa": "Sanvittorese Calcio",
       "trasferta": "Amatori Lenola 2023",
-      "risultato": "VS",
-      "campo": "San Vittore del Lazio"
-    },
+      "risultato": "3 - 3",
+      "campo": "San Vittore del Lazio",
+      "esito": "D"
+    }
+  ],
+  "upcoming": [
     {
       "girone": "B",
       "giornata": 8,
