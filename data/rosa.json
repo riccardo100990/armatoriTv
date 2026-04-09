@@ -50,12 +50,12 @@
     "team": "summer"
   },
   "Luca Mastrobattista": {
-    "goals": 3,
+    "goals": 5,
     "assist": 2,
     "ammonizioni": 1,
     "espulsioni": 0,
     "clean_sheet": 0,
-    "mvp_armatori_tv": 1,
+    "mvp_armatori_tv": 2,
     "ruolo": "C",
     "team": "prof"
   },
@@ -71,7 +71,7 @@
   },
   "Gianluigi Piccione": {
     "goals": 14,
-    "assist": 5,
+    "assist": 6,
     "ammonizioni": 2,
     "espulsioni": 0,
     "clean_sheet": 0,
@@ -153,7 +153,7 @@
     "goals": 1,
     "assist": 1,
     "ammonizioni": 2,
-    "espulsioni": 0,
+    "espulsioni": 1,
     "clean_sheet": 0,
     "mvp_armatori_tv": 0,
     "ruolo": "D",
@@ -190,8 +190,8 @@
     "team": ""
   },
   "Diego Benito De Filippis": {
-    "goals": 1,
-    "assist": 1,
+    "goals": 2,
+    "assist": 2,
     "ammonizioni": 0,
     "espulsioni": 0,
     "clean_sheet": 0,
@@ -252,7 +252,7 @@
   "Arcano Marrocco": {
     "goals": 1,
     "assist": 0,
-    "ammonizioni": 0,
+    "ammonizioni": 1,
     "espulsioni": 0,
     "clean_sheet": 0,
     "mvp_armatori_tv": 1,
