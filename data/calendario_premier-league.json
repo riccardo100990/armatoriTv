@@ -75,18 +75,20 @@
       "campo": "San Vittore del Lazio",
       "esito": "D",
       "bonus_updated": true
-    }
-  ],
-  "upcoming": [
+    },
     {
       "girone": "B",
       "giornata": 8,
       "data": "11-04-2026",
       "casa": "A.S.D. Vis Sora 07",
       "trasferta": "Amatori Lenola 2023",
-      "risultato": "VS",
-      "campo": "Stadio Tomei Sora"
-    },
+      "risultato": "2 - 3",
+      "campo": "Stadio Tomei Sora",
+      "esito": "W",
+      "bonus_updated": true
+    }
+  ],
+  "upcoming": [
     {
       "girone": "B",
       "giornata": 9,
