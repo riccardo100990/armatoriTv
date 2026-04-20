@@ -86,18 +86,19 @@
       "campo": "Stadio Tomei Sora",
       "esito": "W",
       "bonus_updated": true
-    }
-  ],
-  "upcoming": [
+    },
     {
       "girone": "B",
       "giornata": 9,
       "data": "18-04-2026",
       "casa": "Saggese",
       "trasferta": "Amatori Lenola 2023",
-      "risultato": "VS",
-      "campo": "Caira"
-    },
+      "risultato": "1 - 1",
+      "campo": "Caira",
+      "esito": "D"
+    }
+  ],
+  "upcoming": [
     {
       "girone": "B",
       "giornata": 10,
