@@ -96,18 +96,20 @@
       "risultato": "1 - 1",
       "campo": "Caira",
       "esito": "D"
-    }
-  ],
-  "upcoming": [
+    },
     {
       "girone": "B",
       "giornata": 10,
       "data": "02-05-2026",
       "casa": "Amatori Lenola 2023",
       "trasferta": "MB Sora",
-      "risultato": "VS",
-      "campo": "Lenola"
-    },
+      "risultato": "2 - 0",
+      "campo": "Lenola",
+      "esito": "W",
+      "bonus_updated": true
+    }
+  ],
+  "upcoming": [
     {
       "girone": "B",
       "giornata": 11,
