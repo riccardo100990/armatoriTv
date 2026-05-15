@@ -107,17 +107,17 @@
       "campo": "Lenola",
       "esito": "W",
       "bonus_updated": true
-    }
-  ],
-  "upcoming": [
+    },
     {
       "girone": "B",
       "giornata": 11,
       "data": "09-05-2026",
       "casa": "Coreno Legends",
       "trasferta": "Amatori Lenola 2023",
-      "risultato": "VS",
-      "campo": "Coreno Ausonio"
+      "risultato": "2 - 0",
+      "campo": "Coreno Ausonio",
+      "esito": "L"
     }
-  ]
+  ],
+  "upcoming": []
 }
