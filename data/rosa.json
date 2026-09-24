@@ -1,54 +1,4 @@
 {
-   "Matteo Raffaele De Silvestri": {
-      "goals": 0,
-      "assist": 0,
-      "ammonizioni": 0,
-      "espulsioni": 0,
-      "clean_sheet": 0,
-      "mvp_armatori_tv": 0,
-      "ruolo": "P",
-      "team": ""
-   },
-   "Gianluigi Panno": {
-      "goals": 0,
-      "assist": 0,
-      "ammonizioni": 0,
-      "espulsioni": 0,
-      "clean_sheet": 0,
-      "mvp_armatori_tv": 0,
-      "ruolo": "C",
-      "team": "prof"
-   },
-   "Giuseppe Tatarelli": {
-      "goals": 0,
-      "assist": 0,
-      "ammonizioni": 0,
-      "espulsioni": 0,
-      "clean_sheet": 0,
-      "mvp_armatori_tv": 0,
-      "ruolo": "D",
-      "team": "prof"
-   },
-   "Vincenzo Speranza": {
-      "goals": 0,
-      "assist": 0,
-      "ammonizioni": 0,
-      "espulsioni": 0,
-      "clean_sheet": 0,
-      "mvp_armatori_tv": 0,
-      "ruolo": "D",
-      "team": "summer"
-   },
-   "Gianmarco Frattarelli": {
-      "goals": 0,
-      "assist": 0,
-      "ammonizioni": 0,
-      "espulsioni": 0,
-      "clean_sheet": 0,
-      "mvp_armatori_tv": 0,
-      "ruolo": "D",
-      "team": "summer"
-   },
    "Luca Mastrobattista": {
       "goals": 0,
       "assist": 0,
@@ -59,7 +9,7 @@
       "ruolo": "C",
       "team": "prof"
    },
-   "Alessandro Pannozzo": {
+   "Gianfranco Grossi": {
       "goals": 0,
       "assist": 0,
       "ammonizioni": 0,
@@ -67,37 +17,7 @@
       "clean_sheet": 0,
       "mvp_armatori_tv": 0,
       "ruolo": "D",
-      "team": "summer"
-   },
-   "Gianluigi Piccione": {
-      "goals": 0,
-      "assist": 0,
-      "ammonizioni": 0,
-      "espulsioni": 0,
-      "clean_sheet": 0,
-      "mvp_armatori_tv": 0,
-      "ruolo": "A",
-      "team": "summer"
-   },
-   "Luigi Quinto": {
-      "goals": 0,
-      "assist": 0,
-      "ammonizioni": 0,
-      "espulsioni": 0,
-      "clean_sheet": 0,
-      "mvp_armatori_tv": 0,
-      "ruolo": "C",
-      "team": "summer"
-   },
-   "Francesco Carroccia": {
-      "goals": 0,
-      "assist": 0,
-      "ammonizioni": 0,
-      "espulsioni": 0,
-      "clean_sheet": 0,
-      "mvp_armatori_tv": 0,
-      "ruolo": "A",
-      "team": "summer"
+      "team": ""
    },
    "Stefano Capodiferro": {
       "goals": 0,
@@ -109,7 +29,67 @@
       "ruolo": "A",
       "team": "summer"
    },
-   "Abdi Sacid Ahmed": {
+   "Matteo De Silvestri": {
+      "goals": 0,
+      "assist": 0,
+      "ammonizioni": 0,
+      "espulsioni": 0,
+      "clean_sheet": 0,
+      "mvp_armatori_tv": 0,
+      "ruolo": "P",
+      "team": ""
+   },
+   "Vasco Iacoveli": {
+      "goals": 0,
+      "assist": 0,
+      "ammonizioni": 0,
+      "espulsioni": 0,
+      "clean_sheet": 0,
+      "mvp_armatori_tv": 0,
+      "ruolo": "C",
+      "team": ""
+   },
+   "Ivan Tullio": {
+      "goals": 0,
+      "assist": 0,
+      "ammonizioni": 0,
+      "espulsioni": 0,
+      "clean_sheet": 0,
+      "mvp_armatori_tv": 0,
+      "ruolo": "D",
+      "team": ""
+   },
+   "Tiziano Panno": {
+      "goals": 0,
+      "assist": 0,
+      "ammonizioni": 0,
+      "espulsioni": 0,
+      "clean_sheet": 0,
+      "mvp_armatori_tv": 0,
+      "ruolo": "P",
+      "team": ""
+   },
+   "Gianluigi Piccione": {
+      "goals": 0,
+      "assist": 0,
+      "ammonizioni": 0,
+      "espulsioni": 0,
+      "clean_sheet": 0,
+      "mvp_armatori_tv": 0,
+      "ruolo": "A",
+      "team": "summer"
+   },
+   "Andrea Panno": {
+      "goals": 0,
+      "assist": 0,
+      "ammonizioni": 0,
+      "espulsioni": 0,
+      "clean_sheet": 0,
+      "mvp_armatori_tv": 0,
+      "ruolo": "D",
+      "team": "prof"
+   },
+   "Alex Grossi": {
       "goals": 0,
       "assist": 0,
       "ammonizioni": 0,
@@ -119,7 +99,17 @@
       "ruolo": "A",
       "team": ""
    },
-   "Pasquale Antonio Tribuzio": {
+   "Emanuele Guglietta": {
+      "goals": 0,
+      "assist": 0,
+      "ammonizioni": 0,
+      "espulsioni": 0,
+      "clean_sheet": 0,
+      "mvp_armatori_tv": 0,
+      "ruolo": "D",
+      "team": ""
+   },
+   "Luigi Quinto": {
       "goals": 0,
       "assist": 0,
       "ammonizioni": 0,
@@ -128,26 +118,6 @@
       "mvp_armatori_tv": 0,
       "ruolo": "C",
       "team": "summer"
-   },
-   "Antonio Mastrobattista": {
-      "goals": 0,
-      "assist": 0,
-      "ammonizioni": 0,
-      "espulsioni": 0,
-      "clean_sheet": 0,
-      "mvp_armatori_tv": 0,
-      "ruolo": "C",
-      "team": "summer"
-   },
-   "Giacomo Magnafico": {
-      "goals": 0,
-      "assist": 0,
-      "ammonizioni": 0,
-      "espulsioni": 0,
-      "clean_sheet": 0,
-      "mvp_armatori_tv": 0,
-      "ruolo": "P",
-      "team": "prof"
    },
    "Riccardo Ioli": {
       "goals": 0,
@@ -159,7 +129,47 @@
       "ruolo": "D",
       "team": "prof"
    },
-   "Ivan Magnafico": {
+   "Gianluigi Panno": {
+      "goals": 0,
+      "assist": 0,
+      "ammonizioni": 0,
+      "espulsioni": 0,
+      "clean_sheet": 0,
+      "mvp_armatori_tv": 0,
+      "ruolo": "C",
+      "team": "prof"
+   },
+   "Luciano Zannella": {
+      "goals": 0,
+      "assist": 0,
+      "ammonizioni": 0,
+      "espulsioni": 0,
+      "clean_sheet": 0,
+      "mvp_armatori_tv": 0,
+      "ruolo": "A",
+      "team": ""
+   },
+   "Gianmarco Di Manno": {
+      "goals": 0,
+      "assist": 0,
+      "ammonizioni": 0,
+      "espulsioni": 0,
+      "clean_sheet": 0,
+      "mvp_armatori_tv": 0,
+      "ruolo": "D",
+      "team": ""
+   },
+   "Vincenzo Speranza": {
+      "goals": 0,
+      "assist": 0,
+      "ammonizioni": 0,
+      "espulsioni": 0,
+      "clean_sheet": 0,
+      "mvp_armatori_tv": 0,
+      "ruolo": "D",
+      "team": "summer"
+   },
+   "Giuseppe Tatarelli": {
       "goals": 0,
       "assist": 0,
       "ammonizioni": 0,
@@ -169,17 +179,7 @@
       "ruolo": "D",
       "team": "prof"
    },
-   "Lorenzo Rizzi": {
-      "goals": 0,
-      "assist": 0,
-      "ammonizioni": 0,
-      "espulsioni": 0,
-      "clean_sheet": 0,
-      "mvp_armatori_tv": 0,
-      "ruolo": "A",
-      "team": "prof"
-   },
-   "Gianmarco Di Manno": {
+   "Mauro Capodiferro": {
       "goals": 0,
       "assist": 0,
       "ammonizioni": 0,
@@ -199,14 +199,14 @@
       "ruolo": "A",
       "team": "prof"
    },
-   "Giovanni Lo Stocco": {
+   "Gabriel De Filippis": {
       "goals": 0,
       "assist": 0,
       "ammonizioni": 0,
       "espulsioni": 0,
       "clean_sheet": 0,
       "mvp_armatori_tv": 0,
-      "ruolo": "A",
+      "ruolo": "D",
       "team": ""
    },
    "Piero Lo Stocco": {
@@ -219,7 +219,7 @@
       "ruolo": "D",
       "team": ""
    },
-   "Vasco Iacovelli": {
+   "Pasquale Antonio Tribuzio": {
       "goals": 0,
       "assist": 0,
       "ammonizioni": 0,
@@ -227,19 +227,59 @@
       "clean_sheet": 0,
       "mvp_armatori_tv": 0,
       "ruolo": "C",
-      "team": "prof"
+      "team": "summer"
    },
-   "Alessio Manzi": {
+   "Francesco Carroccia": {
       "goals": 0,
       "assist": 0,
       "ammonizioni": 0,
       "espulsioni": 0,
       "clean_sheet": 0,
       "mvp_armatori_tv": 0,
-      "ruolo": "C",
+      "ruolo": "A",
+      "team": "summer"
+   },
+   "Giovanni Lo Stocco": {
+      "goals": 0,
+      "assist": 0,
+      "ammonizioni": 0,
+      "espulsioni": 0,
+      "clean_sheet": 0,
+      "mvp_armatori_tv": 0,
+      "ruolo": "A",
       "team": ""
    },
-   "Andrea Panno": {
+   "Lorenzo Rizzi": {
+      "goals": 0,
+      "assist": 0,
+      "ammonizioni": 0,
+      "espulsioni": 0,
+      "clean_sheet": 0,
+      "mvp_armatori_tv": 0,
+      "ruolo": "A",
+      "team": "prof"
+   },
+   "Giacomo Magnafico": {
+      "goals": 0,
+      "assist": 0,
+      "ammonizioni": 0,
+      "espulsioni": 0,
+      "clean_sheet": 0,
+      "mvp_armatori_tv": 0,
+      "ruolo": "P",
+      "team": "prof"
+   },
+   "Ahmed Abdi Sacid": {
+      "goals": 0,
+      "assist": 0,
+      "ammonizioni": 0,
+      "espulsioni": 0,
+      "clean_sheet": 0,
+      "mvp_armatori_tv": 0,
+      "ruolo": "A",
+      "team": ""
+   },
+   "Alessandro Pannozzo": {
       "goals": 0,
       "assist": 0,
       "ammonizioni": 0,
@@ -247,7 +287,7 @@
       "clean_sheet": 0,
       "mvp_armatori_tv": 0,
       "ruolo": "D",
-      "team": "prof"
+      "team": "summer"
    },
    "Arcano Marrocco": {
       "goals": 0,
@@ -258,5 +298,15 @@
       "mvp_armatori_tv": 0,
       "ruolo": "C",
       "team": "prof"
+   },
+   "Daniele Lauretti": {
+      "goals": 0,
+      "assist": 0,
+      "ammonizioni": 0,
+      "espulsioni": 0,
+      "clean_sheet": 0,
+      "mvp_armatori_tv": 0,
+      "ruolo": "D",
+      "team": ""
    }
 }
