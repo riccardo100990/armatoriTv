@@ -9,16 +9,11 @@
 
 export const COMPETITIONS = [
     {
-      id: "girone-b",
-      label: "Girone B",
+      id: "girone-a",
+      label: "Girone A",
       phase: 1, // fase 1 → sempre sbloccata
-    },
-    {
-      id: "premier-league",
-      label: "Premier League",
-      phase: 2, // fase 2 → sbloccata solo quando il calendario ha partite
-    },
+    }
   ];
   
-  export const DEFAULT_COMPETITION = "premier-league";
+  export const DEFAULT_COMPETITION = "girone-a";
   export const TEAM_DA_EVIDENZIARE = "Amatori Lenola 2023";

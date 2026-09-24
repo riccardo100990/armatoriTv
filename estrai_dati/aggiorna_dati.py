@@ -1,14 +1,14 @@
-import requests
-from bs4 import BeautifulSoup
 import json
-from datetime import datetime
-import re
 import os
+import re
+from datetime import datetime, timezone
+from bs4 import BeautifulSoup
+from playwright.sync_api import sync_playwright
 
 dir_base = os.path.dirname(__file__)
 
 # girone-b / premier-league / ecc
-CAMPIONATO_CORRENTE = "premier-league"
+CAMPIONATO_CORRENTE = "girone-a"
 CLASSIFICA_URL = f"https://www.amatoricassino.it/{CAMPIONATO_CORRENTE}/classifica"
 CALENDARIO_URL = f"https://www.amatoricassino.it/{CAMPIONATO_CORRENTE}/calendario"
 
@@ -18,34 +18,77 @@ BONUS_FILE = os.path.realpath(os.path.join(dir_base, "..", "data", "rosa.json"))
 NOTE_FILE = os.path.realpath(os.path.join(dir_base, "..", "data", "note"))
 TEAM_NAME = "Amatori Lenola 2023"
 
+
 def clean_int(text):
     return int(text.strip().replace("+", ""))
 
+def fetch_pages_html():
+    """Apre un browser headless una sola volta e scarica l'HTML di classifica e calendario."""
+    print("Avvio Playwright per il recupero dati...")
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=True)
+        page = browser.new_page()
 
-def scrape_classifica():
-    response = requests.get(CLASSIFICA_URL, timeout=10)
-    response.raise_for_status()
+        # 1. Scarica HTML Classifica
+        print(f"Scaricamento classifica: {CLASSIFICA_URL}")
+        page.goto(CLASSIFICA_URL, wait_until="networkidle")
+        try:
+            page.wait_for_selector("table", timeout=5000)
+        except Exception:
+            pass
+        html_classifica = page.content()
 
-    soup = BeautifulSoup(response.text, "html.parser")
+        # 2. Scarica HTML Calendario
+        print(f"Scaricamento calendario: {CALENDARIO_URL}")
+        page.goto(CALENDARIO_URL, wait_until="networkidle")
+        html_calendario = page.content()
 
-    table = soup.select_one("table.classifica-table")
+        browser.close()
+        print("Scaricamento completato.")
+        return html_classifica, html_calendario
+
+
+def scrape_classifica(html_text):
+    soup = BeautifulSoup(html_text, "html.parser")
+
+    # Cerca il tag <table> generico se 'table.classifica-table' fallisce
+    table = soup.select_one("table.classifica-table") or soup.select_one("table")
     if not table:
-        raise RuntimeError("Tabella classifica non trovata")
+        raise RuntimeError("Nessun tag <table> trovato nella pagina della classifica.")
 
-    rows = table.select("tbody tr.team-row")
+    rows = table.select("tbody tr")
+    if not rows:
+        rows = table.find_all("tr")[1:]  # Salta l'header se tbody non è presente
 
     classifica = []
 
     for row in rows:
         tds = row.find_all("td")
+        if len(tds) < 9:
+            continue  # Salta righe di intestazione o formattazione errata
 
         # --- colonna squadra ---
         team_info = tds[0]
-        posizione = clean_int(team_info.select_one(".position-number").text)
-        nome = team_info.select_one(".team-name").text.strip()
+
+        # Recupera la posizione
+        pos_el = team_info.select_one(".position-number")
+        if pos_el:
+            posizione = clean_int(pos_el.text)
+        else:
+            match_pos = re.search(r"^\d+", team_info.text.strip())
+            posizione = int(match_pos.group(0)) if match_pos else 0
+
+        # Recupera il nome squadra
+        name_el = team_info.select_one(".team-name")
+        if name_el:
+            nome = name_el.text.strip()
+        else:
+            nome = re.sub(r"^\d+\s*", "", team_info.text.strip())
 
         logo_tag = team_info.select_one("img")
         logo = logo_tag["src"] if logo_tag else None
+        if logo and logo.startswith("/"):
+            logo = f"https://www.amatoricassino.it{logo}"
 
         # --- statistiche ---
         punti = clean_int(tds[1].text)
@@ -57,7 +100,6 @@ def scrape_classifica():
         gs = clean_int(tds[7].text)
         dr = clean_int(tds[8].text)
 
-        # classe css (champions / europa / ecc.)
         classe = " ".join(row.get("class", []))
 
         classifica.append({
@@ -76,8 +118,8 @@ def scrape_classifica():
         })
 
     output = {
-        "girone": "B",
-        "aggiornato_al": datetime.utcnow().isoformat() + "Z",
+        "girone": "A",
+        "aggiornato_al": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
         "squadre": classifica
     }
 
@@ -85,104 +127,79 @@ def scrape_classifica():
         json.dump(output, f, indent=2, ensure_ascii=False)
 
 
-def scrape_calendar():
-    team_name = "Amatori Lenola 2023"
-    response = requests.get(CALENDARIO_URL, timeout=10)
-    response.raise_for_status()
-    soup = BeautifulSoup(response.text, "html.parser")
-    played_matches = []
+def scrape_calendar(html_text, nome_squadra="Lenola"):
+    soup = BeautifulSoup(html_text, "html.parser")
     upcoming_matches = []
-    day_cards = soup.select(".site-card")
-    for card in day_cards:
-        header = card.select_one(".day-card-header")
-        if not header:
-            continue
-        # giornata
-        title = header.select_one(".day-title").get_text(strip=True)
-        giornata_match = re.search(r"Giornata\s+(\d+)", title)
-        giornata = int(giornata_match.group(1)) if giornata_match else None
-        # data
-        date_el = header.select_one(".day-meta")
-        data = None
-        if date_el:
-            data_match = re.search(r"Data:\s*([\d-]+)", date_el.get_text())
-            if data_match:
-                data = data_match.group(1)
-        rows = card.select("tbody tr.match-row")
-        for row in rows:
-            cols = row.find_all("td")
-            if len(cols) < 5:
+    played_matches = []
+
+    # Seleziona tutte le sezioni delle giornate
+    giornate = soup.select("section.am-calendario-giornata")
+
+    for giornata in giornate:
+        num_giornata_elem = giornata.select_one(".am-calendario-giornata-numero")
+        num_giornata = num_giornata_elem.get_text(strip=True) if num_giornata_elem else ""
+
+        for match in giornata.select("article.am-calendario-match"):
+            # Estrai i nomi delle squadre
+            team_spans = match.select("span.line-clamp-2")
+            if len(team_spans) < 2:
                 continue
-            squadra_casa = cols[0].get_text(strip=True)
-            risultato = cols[1].get_text(strip=True)
-            squadra_trasferta = cols[2].get_text(strip=True)
-            campo = cols[3].get_text(strip=True)
-            # filtro squadra
-            if team_name.lower() not in (
-                squadra_casa.lower() + squadra_trasferta.lower()
-            ):
+
+            home_team = team_spans[0].get_text(strip=True)
+            away_team = team_spans[1].get_text(strip=True)
+
+            # Filtro: se la squadra non è in casa o in trasferta, salta subito al prossimo ciclo
+            if nome_squadra.lower() not in home_team.lower() and nome_squadra.lower() not in away_team.lower():
                 continue
+
+            # URL dettagli partita
+            parent_a = match.find_parent("a")
+            match_url = parent_a["href"] if parent_a and parent_a.has_attr("href") else ""
+            if match_url.startswith("/"):
+                match_url = f"https://www.amatoricassino.it{match_url}"
+
+            # Data e ora
+            time_elem = match.select_one("time")
+            date_time = time_elem.get_text(strip=True) if time_elem else ""
+
+            # Campo da gioco
+            campo_elem = match.select_one("span.truncate")
+            campo = campo_elem.get_text(strip=True) if campo_elem else ""
+
+            # Stato e Risultato
+            badge_elem = match.select_one(".am-calendario-badge")
+            status = badge_elem.get_text(strip=True) if badge_elem else ""
+
+            risultato_elem = match.select_one(".am-calendario-risultato")
+            risultato = risultato_elem.get_text(strip=True) if risultato_elem else "vs"
+
+            # Formattazione per aggiorna_bonus
             match_data = {
-                "girone": "B",
-                "giornata": giornata,
-                "data": data,
-                "casa": squadra_casa,
-                "trasferta": squadra_trasferta,
-                "risultato": risultato,
+                "giornata": num_giornata,
+                "casa": home_team,
+                "trasferta": away_team,
+                "data": date_time,
                 "campo": campo,
+                "status": status,
+                "risultato": risultato,
+                "url": match_url
             }
-            # partita giocata? (risultato tipo "2 - 1")
-            score_match = re.search(r"(\d+)\s*-\s*(\d+)", risultato)
-            if score_match:
-                gol_casa = int(score_match.group(1))
-                gol_trasferta = int(score_match.group(2))
-                is_home = team_name.lower() == squadra_casa.lower()
-                is_away = team_name.lower() == squadra_trasferta.lower()
-                if gol_casa == gol_trasferta:
-                    esito = "D"
-                elif (is_home and gol_casa > gol_trasferta) or (is_away and gol_trasferta > gol_casa):
-                    esito = "W"
-                else:
-                    esito = "L"
-                match_data["esito"] = esito
-                played_matches.append(match_data)
+
+            # Popola le liste in base allo stato della partita
+            if "In programma" in status:
+                upcoming_matches.append(match_data)
             else:
-                # controlla se è un turno di riposo con data passata
-                is_riposo = "riposa" in squadra_trasferta.lower() or "riposa" in squadra_casa.lower()
-                data_passata = False
-                if data:
-                    try:
-                        match_date = datetime.strptime(data, "%d-%m-%Y")
-                        data_passata = match_date.date() < datetime.now().date()
-                    except ValueError:
-                        pass
-                if is_riposo and data_passata:
-                    match_data["esito"] = "R"
-                    match_data["bonus_updated"] = True  # nessun bonus da aggiornare per il riposo
-                    played_matches.append(match_data)
-                else:
-                    upcoming_matches.append(match_data)
+                played_matches.append(match_data)
 
-    # Preserva il flag bonus_updated per le partite già presenti nel calendario
-    # (evita di sovrascrivere True con False al re-scraping)
-    try:
-        old_calendario = load_json(CALENDARIO_OUTPUT_FILE)
-        old_played = {m["giornata"]: m for m in old_calendario.get("played", [])}
-        for m in played_matches:
-            giornata = m["giornata"]
-            if giornata in old_played and old_played[giornata].get("bonus_updated"):
-                m["bonus_updated"] = True
-    except (FileNotFoundError, json.JSONDecodeError):
-        pass  # primo run, nessun file esistente
-
-    d = {
-        "team": team_name,
-        "played": played_matches,
-        "upcoming": upcoming_matches
+    output = {
+        "girone": "A",
+        "aggiornato_al": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
+        "upcoming": upcoming_matches,
+        "played": played_matches
     }
-    # Scrittura JSON
+
     with open(CALENDARIO_OUTPUT_FILE, "w", encoding="utf-8") as f:
-        json.dump(d, f, ensure_ascii=False, indent=2)
+        json.dump(output, f, indent=2, ensure_ascii=False)
 
 
 # ── helpers ────────────────────────────────────────────────────────────────────
@@ -191,15 +208,18 @@ def load_json(path):
     with open(path, encoding="utf-8") as f:
         return json.load(f)
 
+
 def save_json(path, data):
     with open(path, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
 
+
 def get_last_match(calendario):
     played = calendario.get("played", [])
     if not played:
-        raise RuntimeError("Nessuna partita giocata trovata nel calendario.")
+        return None
     return played[-1]
+
 
 def gol_segnati(match):
     score_match = re.search(r"(\d+)\s*-\s*(\d+)", match["risultato"])
@@ -209,6 +229,7 @@ def gol_segnati(match):
     is_home = TEAM_NAME.lower() == match["casa"].lower()
     return gol_casa if is_home else gol_trasferta
 
+
 def gol_subiti(match):
     score_match = re.search(r"(\d+)\s*-\s*(\d+)", match["risultato"])
     if not score_match:
@@ -217,11 +238,13 @@ def gol_subiti(match):
     is_home = TEAM_NAME.lower() == match["casa"].lower()
     return gol_trasferta if is_home else gol_casa
 
+
 def show_players(players):
     """Mostra lista numerata dei giocatori."""
     for i, name in enumerate(players, 1):
         ruolo = players[name].get("ruolo", "?")
         print(f"  {i:>2}. [{ruolo}] {name}")
+
 
 def pick_player(players, prompt, allow_empty=False):
     """Selezione singola: numero o nome parziale. Ritorna il nome o None."""
@@ -236,7 +259,6 @@ def pick_player(players, prompt, allow_empty=False):
                 return player_list[idx]
             print("  Numero non valido.")
         else:
-            # ricerca parziale case-insensitive
             matches = [n for n in player_list if val.lower() in n.lower()]
             if len(matches) == 1:
                 return matches[0]
@@ -244,6 +266,7 @@ def pick_player(players, prompt, allow_empty=False):
                 print(f"  Ambiguo: {', '.join(matches)}. Sii più specifico.")
             else:
                 print("  Nessun giocatore trovato.")
+
 
 def pick_players_multi(players, prompt):
     """Selezione multipla: numeri o nomi separati da virgola. Ritorna lista nomi."""
@@ -271,6 +294,7 @@ def pick_players_multi(players, prompt):
                 print(f"  '{token}' non trovato, ignorato.")
     return results
 
+
 def salva_riepilogo(riepilogo):
     with open(NOTE_FILE, 'a', encoding="utf-8") as f:
         f.write(riepilogo + "\n\n")
@@ -279,11 +303,18 @@ def salva_riepilogo(riepilogo):
 # ── flusso principale ───────────────────────────────────────────────────────────
 
 def aggiorna_bonus():
-    bonus = load_json(BONUS_FILE)
-    calendario = load_json(CALENDARIO_OUTPUT_FILE)
-    match = get_last_match(calendario)
+    try:
+        bonus = load_json(BONUS_FILE)
+        calendario = load_json(CALENDARIO_OUTPUT_FILE)
+    except Exception as e:
+        print(f"\n  ⚠ Impossibile caricare i file JSON per i bonus: {e}")
+        return
 
-    # ── GUARD: bonus già aggiornati o turno di riposo ─────────────────────────
+    match = get_last_match(calendario)
+    if not match:
+        print("\n  ⚠ Nessuna partita giocata (o struttura calendario variata). Bonus non aggiornati.")
+        return
+
     if match.get("bonus_updated"):
         esito = match.get("esito", "?")
         motivo = "turno di riposo" if esito == "R" else "bonus già aggiornati per questa giornata"
@@ -303,16 +334,15 @@ def aggiorna_bonus():
     print(f"  Gol subiti: {n_subiti} → clean sheet: {'✓ SÌ' if clean_sheet else '✗ NO'}")
     print()
 
-    # Dizionario per raccogliere le modifiche da applicare alla fine
     changes = {
         "portiere": None,
-        "gol": [],      # lista di (scorer, assister_or_None)
+        "gol": [],
         "ammoniti": [],
         "espulsi": [],
         "mvp": None,
     }
 
-    # ── PORTIERE ──────────────────────────────────────────────────────────────
+    # ── PORTIERE ──
     print("── PORTIERE ─────────────────────────────────────────")
     show_players(bonus)
     changes["portiere"] = pick_player(bonus, "\nChi ha giocato in porta? ")
@@ -321,7 +351,7 @@ def aggiorna_bonus():
     else:
         print(f"  → {changes['portiere']} selezionato (nessun clean sheet)")
 
-    # ── GOL ───────────────────────────────────────────────────────────────────
+    # ── GOL ──
     print(f"\n── GOL ({n_gol} da assegnare) ────────────────────────────")
     for i in range(1, n_gol + 1):
         print(f"\n  Gol {i}/{n_gol}:")
@@ -330,20 +360,7 @@ def aggiorna_bonus():
         assister = pick_player(bonus, "  Chi ha assistito? (invio = nessuno): ", allow_empty=True)
         changes["gol"].append((scorer, assister))
 
-    # ── AMMONIZIONI / ESPULSIONI ──────────────────────────────────────────────
-    """print("\n── AMMONIZIONI ──────────────────────────────────────")
-    show_players(bonus)
-    changes["ammoniti"] = pick_players_multi(
-        bonus, "\nGiocatori ammoniti? (numeri/nomi separati da virgola, invio = nessuno): "
-    )
-    if changes["ammoniti"]:
-        print("\n── ESPULSIONI ───────────────────────────────────────")
-        print("  (solo tra gli ammoniti o dirette)")
-        changes["espulsi"] = pick_players_multi(
-            bonus, "Giocatori espulsi? (invio = nessuno): "
-        )"""
-
-    # ── AMMONIZIONI / ESPULSIONI ──────────────────────────────────────────────
+    # ── AMMONIZIONI / ESPULSIONI ──
     print("\n── AMMONIZIONI ──────────────────────────────────────")
     show_players(bonus)
     changes["ammoniti"] = pick_players_multi(
@@ -357,23 +374,23 @@ def aggiorna_bonus():
         bonus, "Giocatori espulsi? (invio = nessuno): "
     )
 
-    # Avvisa se un espulso non era tra gli ammoniti (rosso diretto)
     for name in changes["espulsi"]:
         if name not in changes["ammoniti"]:
             print(f"  ⚠ {name} espulso con rosso diretto (non era tra gli ammoniti)")
 
-    # ── MVP ───────────────────────────────────────────────────────────────────
+    # ── MVP ──
     print("\n── MVP ARMATORI TV ──────────────────────────────────")
     show_players(bonus)
     changes["mvp"] = pick_player(bonus, "\nMVP? (invio = nessuno): ", allow_empty=True)
 
-    # ── RIEPILOGO ─────────────────────────────────────────────────────────────
-    lines = []
-    lines.append("═" * 50)
-    lines.append("  RIEPILOGO")
-    lines.append("═" * 50)
-    lines.append(f"  Partita  : {match['casa']} {match['risultato']} {match['trasferta']} (G{match['giornata']} - {match['data']})")
-    lines.append(f"  Portiere : {changes['portiere']}" + (" [CLEAN SHEET]" if clean_sheet else ""))
+    # ── RIEPILOGO ──
+    lines = [
+        "═" * 50,
+        "  RIEPILOGO",
+        "═" * 50,
+        f"  Partita  : {match['casa']} {match['risultato']} {match['trasferta']} (G{match['giornata']} - {match['data']})",
+        f"  Portiere : {changes['portiere']}" + (" [CLEAN SHEET]" if clean_sheet else ""),
+    ]
     for i, (sc, ass) in enumerate(changes["gol"], 1):
         ass_str = f" (ass. {ass})" if ass else ""
         lines.append(f"  Gol {i}    : {sc}{ass_str}")
@@ -393,7 +410,7 @@ def aggiorna_bonus():
         print("  Annullato. Nessuna modifica salvata.")
         return
 
-    # ── APPLICAZIONE MODIFICHE ────────────────────────────────────────────────
+    # ── APPLICAZIONE MODIFICHE ──
     if changes["portiere"] and clean_sheet:
         bonus[changes["portiere"]]["clean_sheet"] += 1
 
@@ -414,18 +431,21 @@ def aggiorna_bonus():
 
     save_json(BONUS_FILE, bonus)
 
-    # ── SEGNA I BONUS COME AGGIORNATI NEL CALENDARIO ─────────────────────────
     match["bonus_updated"] = True
     save_json(CALENDARIO_OUTPUT_FILE, calendario)
 
     print("\n  ✓ Bonus aggiornati e salvati correttamente!")
     print("═" * 50 + "\n")
 
-    # ── SALVA RIEPILOGO IN NOTE ────────────────────────────────────────────────
     salva_riepilogo(riepilogo)
 
-
 if __name__ == "__main__":
-    scrape_classifica()
-    scrape_calendar()
+    # 1. Recupero HTML in blocco
+    html_classifica, html_calendario = fetch_pages_html()
+
+    # 2. Scraping ed esportazione dati
+    scrape_classifica(html_classifica)
+    scrape_calendar(html_calendario, nome_squadra="Lenola")
+
+    # 3. Interazione utente finale
     aggiorna_bonus()

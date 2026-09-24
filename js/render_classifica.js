@@ -11,6 +11,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   await includeHtml("classifica-target", "classifica_aggiornata.html");
   await buildTabs();
   await renderClassifica(currentCompetition);
+  const defaultCompetitionName =
+      COMPETITIONS.filter(c => c.id === DEFAULT_COMPETITION)[0].label;
+  document.querySelector("#classifica-title").textContent = defaultCompetitionName;
+
 });
 
 // ── Controlla se una competizione ha partite nel calendario ──────────────────
@@ -59,6 +63,7 @@ async function buildTabs() {
   container.querySelectorAll(".tab-btn:not([disabled])").forEach((btn) => {
     btn.addEventListener("click", async () => {
       currentCompetition = btn.dataset.competition;
+      document.querySelector("#classifica-title").textContent = btn.textContent;
 
       container.querySelectorAll(".tab-btn").forEach((b) => {
         b.classList.toggle("active", b === btn);
@@ -96,11 +101,21 @@ async function renderClassifica(competitionId) {
     const data = await res.json();
 
     tbody.innerHTML = data.squadre
-      .map(
-        (team) => `
-        <tr class="${team.classe_css} ${
-          team.squadra === TEAM_DA_EVIDENZIARE ? "highlight-team" : ""
-        }">
+        .map((team) => {
+          // Mappatura delle zone della classifica dal JSON ai colori CSS
+          let posClass = "";
+          if (team.classe_css && team.classe_css.includes("zona-alta")) {
+            posClass = "position-champions";
+          } else if (team.classe_css && team.classe_css.includes("zona-media")) {
+            posClass = "position-europa";
+          } else if (team.classe_css && team.classe_css.includes("zona-bassa")) {
+            posClass = "position-conference";
+          }
+
+          const highlightClass = team.squadra === TEAM_DA_EVIDENZIARE ? "highlight-team" : "";
+
+          return `
+        <tr class="team-row ${posClass} ${highlightClass}">
           <td>
             <div class="team-info">
               <span class="position-number">${team.posizione}</span>
@@ -108,18 +123,17 @@ async function renderClassifica(competitionId) {
               <span class="team-name">${team.squadra}</span>
             </div>
           </td>
-          <td>${team.punti}</td>
+          <td><span class="stat-cell points-cell">${team.punti}</span></td>
           <td>${team.giocate}</td>
-          <td>${team.vinte}</td>
-          <td>${team.pareggi}</td>
-          <td>${team.perse}</td>
-          <td>${team.gf}</td>
-          <td>${team.gs}</td>
-          <td>${team.dr >= 0 ? "+" : ""}${team.dr}</td>
+          <td><span class="stat-cell wins-cell">${team.vinte}</span></td>
+          <td><span class="stat-cell draws-cell">${team.pareggi}</span></td>
+          <td><span class="stat-cell losses-cell">${team.perse}</span></td>
+          <td><span class="stat-cell goals-cell">${team.gf}</span></td>
+          <td><span class="stat-cell goals-cell">${team.gs}</span></td>
+          <td><span class="stat-cell">${team.dr >= 0 ? "+" : ""}${team.dr}</span></td>
         </tr>
-      `
-      )
-      .join("");
+      `})
+        .join("");
   } catch (err) {
     tbody.innerHTML = `
       <tr>

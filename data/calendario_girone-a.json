@@ -1,0 +1,28 @@
+{
+  "team": "Amatori Lenola 2023",
+  "girone": "A",
+  "aggiornato_al": "2026-09-23T22:11:16.302404Z",
+  "upcoming": [
+    {
+      "giornata": "1",
+      "casa": "Atletico Benito",
+      "trasferta": "Amatori Lenola 2023",
+      "data": "03/10/2026 · 16:30",
+      "campo": "Colosseo - Cassino",
+      "status": "In programma",
+      "risultato": "vs",
+      "url": "https://www.amatoricassino.it/partita/1484"
+    },
+    {
+      "giornata": "2",
+      "casa": "Amatori Lenola 2023",
+      "trasferta": "AM Simonelli",
+      "data": "10/10/2026 · 15:00",
+      "campo": "Lenola",
+      "status": "In programma",
+      "risultato": "vs",
+      "url": "https://www.amatoricassino.it/partita/1495"
+    }
+  ],
+  "played": []
+}
