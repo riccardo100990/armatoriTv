@@ -1,22 +1,16 @@
 {
   "sponsors": [
     {
-      "name": "Bar Centro Valle",
-      "link": "https://www.facebook.com/profile.php/?id=100054241401930",
-      "img": "sponsor/barCentroValle.jpg",
-      "scale": 0.8
+      "name": "Edil GK",
+      "link": "[LINK_17]",
+      "img": "sponsor/gk.jpg",
+      "scale": 1.1
     },
     {
-      "name": "Bar Letizia",
-      "link": "[LINK_2]",
-      "img": "sponsor/barLetizia.jpg",
-      "scale": 0.8
-    },
-    {
-      "name": "Carroccia",
-      "link": "[LINK_3]",
-      "img": "sponsor/carroccia.jpg",
-      "scale": 0.8
+      "name": "Autoservice Balduina",
+      "link": "[LINK_17]",
+      "img": "sponsor/autoservice_balduina.jpeg",
+      "scale": 2
     },
     {
       "name": "Chalet",
@@ -25,16 +19,34 @@
       "scale": 1.5
     },
     {
-      "name": "Edil Ermes",
-      "link": "[LINK_5]",
-      "img": "sponsor/edilErmes.jpg",
+      "name": "Gairoc",
+      "link": "[]",
+      "img": "sponsor/gairoc.jpeg",
+      "scale": 1.0
+    },
+    {
+      "name": "Caporini Costruzioni",
+      "link": "[]",
+      "img": "sponsor/caporini_costruzioni.jpeg",
+      "scale": 1.0
+    },
+    {
+      "name": "Tintart",
+      "link": "http://www.tintartdecori.com/",
+      "img": "sponsor/tintart.jpg",
       "scale": 1.1
     },
     {
-      "name": "Edil Pic",
-      "link": "[LINK_6]",
-      "img": "sponsor/edilPic.jpg",
-      "scale": 1.1
+      "name": "G Cantieri",
+      "link": "[]",
+      "img": "sponsor/g-cantieri.png",
+      "scale": 1.0
+    },
+    {
+      "name": "EGS Building Solutions",
+      "link": "[]",
+      "img": "sponsor/egs.png",
+      "scale": 1.0
     },
     {
       "name": "Frizzi Bar",
@@ -49,52 +61,10 @@
       "scale": 1.1
     },
     {
-      "name": "Lo Stocco Rappresentanze",
-      "link": "https://www.pierolostocco.it/",
-      "img": "sponsor/loStoccoRappresentanze.jpg",
-      "scale": 1.1
-    },
-    {
-      "name": "Mp Tende",
-      "link": "https://www.facebook.com/p/Mp-tende-100063655986130/",
-      "img": "sponsor/mpTende.jpg",
-      "scale": 1.1
-    },
-    {
-      "name": "Petrol Gamma",
-      "link": "https://www.petrolgamma.com/",
-      "img": "sponsor/petrolGamma.jpg",
-      "scale": 1.1
-    },
-    {
-      "name": "Tabaccheria Panno",
-      "link": "[LINK_12]",
-      "img": "sponsor/tabaccheriaPanno.jpg",
-      "scale": 1.1
-    },
-    {
-      "name": "Tintart",
-      "link": "http://www.tintartdecori.com/",
-      "img": "sponsor/tintart.jpg",
-      "scale": 1.1
-    },
-    {
-      "name": "Toto Edicola",
-      "link": "https://www.facebook.com/TotoEdicola/",
-      "img": "sponsor/totoEdicola.jpg",
-      "scale": 1.1
-    },
-    {
-      "name": "Tullio",
-      "link": "[LINK_15]",
-      "img": "sponsor/tullio.jpg",
-      "scale": 1.1
-    },
-    {
-      "name": "Zi' Annarella",
-      "link": "[LINK_16]",
-      "img": "sponsor/ziAnnarella.jpg",
-      "scale": 1.1
+      "name": "Bar Letizia",
+      "link": "[LINK_2]",
+      "img": "sponsor/barLetizia.jpg",
+      "scale": 0.8
     },
     {
       "name": "Ristorante Ai Pozzi",
@@ -103,9 +73,21 @@
       "scale": 1.1
     },
     {
-      "name": "Edil GK",
-      "link": "[LINK_17]",
-      "img": "sponsor/gk.jpg",
+      "name": "Frantoio Oleario MAFAG SRL",
+      "link": "",
+      "img": "sponsor/mafag.png",
+      "scale": 1.0
+    },
+    {
+      "name": "Tullio",
+      "link": "[LINK_15]",
+      "img": "sponsor/tullio.jpg",
+      "scale": 1.1
+    },
+    {
+      "name": "Tabaccheria Panno",
+      "link": "[LINK_12]",
+      "img": "sponsor/tabaccheriaPanno.jpg",
       "scale": 1.1
     }
   ]
