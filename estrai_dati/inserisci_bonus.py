@@ -21,15 +21,8 @@ def save_json(path, data):
         json.dump(data, f, indent=2, ensure_ascii=False)
 
 
-def get_last_match(calendario):
-    played = calendario.get("played", [])
-    if not played:
-        return None
-    return played[-1]
-
-
 def gol_segnati(match):
-    score_match = re.search(r"(\d+)\s*-\s*(\d+)", match["risultato"])
+    score_match = re.search(r"(\d+)\s*-\s*(\d+)", match.get("risultato", ""))
     if not score_match:
         return 0
     gol_casa, gol_trasferta = int(score_match.group(1)), int(score_match.group(2))
@@ -38,12 +31,43 @@ def gol_segnati(match):
 
 
 def gol_subiti(match):
-    score_match = re.search(r"(\d+)\s*-\s*(\d+)", match["risultato"])
+    score_match = re.search(r"(\d+)\s*-\s*(\d+)", match.get("risultato", ""))
     if not score_match:
         return 0
     gol_casa, gol_trasferta = int(score_match.group(1)), int(score_match.group(2))
     is_home = TEAM_NAME.lower() == match["casa"].lower()
     return gol_trasferta if is_home else gol_casa
+
+
+def prompt_risultato(match):
+    """Chiede o conferma il risultato della partita."""
+    is_home = TEAM_NAME.lower() == match["casa"].lower()
+    existing_score = match.get("risultato", "vs")
+
+    # Verifica se c'è già un risultato valido (es. "3 - 1")
+    has_valid_score = bool(re.search(r"^\d+\s*-\s*\d+$", existing_score.strip()))
+
+    if has_valid_score:
+        print(f"\n  Risultato già presente nei dati: {existing_score}")
+        ans = input("  Vuoi confermare questo risultato? (S/n): ").strip().lower()
+        if ans in ("", "s", "si", "y", "yes"):
+            return existing_score
+
+    print("\n── INSERISCI IL RISULTATO DELLA PARTITA ──────────────")
+    while True:
+        try:
+            gol_lenola = int(input(f"  Gol segnati da {TEAM_NAME}: ").strip())
+            gol_avversari = int(input("  Gol subiti: ").strip())
+            if gol_lenola < 0 or gol_avversari < 0:
+                print("  I gol non possono essere negativi.")
+                continue
+
+            if is_home:
+                return f"{gol_lenola} - {gol_avversari}"
+            else:
+                return f"{gol_avversari} - {gol_lenola}"
+        except ValueError:
+            print("  Inserisci valori numerici validi.")
 
 
 def show_players(players):
@@ -115,29 +139,45 @@ def aggiorna_bonus():
         print(f"\n  ⚠ Impossibile caricare i file JSON per i bonus: {e}")
         return
 
-    match = get_last_match(calendario)
-    if not match:
-        print("\n  ⚠ Nessuna partita giocata (o struttura calendario variata). Bonus non aggiornati.")
-        return
+    played_list = calendario.get("played", [])
+    upcoming_list = calendario.get("upcoming", [])
 
-    if match.get("bonus_updated"):
-        esito = match.get("esito", "?")
-        motivo = "turno di riposo" if esito == "R" else "bonus già aggiornati per questa giornata"
-        print(f"\n  ⚠ Giornata {match['giornata']}: {motivo}. Nessuna azione necessaria.")
-        return
+    # 1. Cerca una partita in 'played' non ancora aggiornata nei bonus
+    match = None
+    match_from_upcoming = False
+
+    for m in played_list:
+        if not m.get("bonus_updated"):
+            match = m
+            break
+
+    # 2. Se non c'è in 'played', prende la prima partita da 'upcoming'
+    if not match:
+        if upcoming_list:
+            match = upcoming_list[0]
+            match_from_upcoming = True
+        else:
+            print("\n  ⚠ Nessuna partita trovata in calendario. Bonus non aggiornati.")
+            return
+
+    print("\n" + "═" * 50)
+    print(f"  AGGIORNAMENTO BONUS — Giornata {match['giornata']}")
+    print(f"  {match['casa']} vs {match['trasferta']}")
+    print(f"  Data: {match['data']}  |  Campo: {match['campo']}")
+    print("═" * 50)
+
+    # Chiede o conferma il risultato
+    match["risultato"] = prompt_risultato(match)
 
     n_gol = gol_segnati(match)
     n_subiti = gol_subiti(match)
     clean_sheet = n_subiti == 0
 
-    print("\n" + "═" * 50)
-    print(f"  AGGIORNAMENTO BONUS — Giornata {match['giornata']}")
-    print(f"  {match['casa']} {match['risultato']} {match['trasferta']}")
-    print(f"  Data: {match['data']}  |  Campo: {match['campo']}")
-    print("═" * 50)
+    print("\n" + "─" * 50)
+    print(f"  Partita: {match['casa']} {match['risultato']} {match['trasferta']}")
     print(f"  Gol segnati da {TEAM_NAME}: {n_gol}")
     print(f"  Gol subiti: {n_subiti} → clean sheet: {'✓ SÌ' if clean_sheet else '✗ NO'}")
-    print()
+    print("─" * 50)
 
     changes = {
         "portiere": None,
@@ -148,7 +188,7 @@ def aggiorna_bonus():
     }
 
     # ── PORTIERE ──
-    print("── PORTIERE ─────────────────────────────────────────")
+    print("\n── PORTIERE ─────────────────────────────────────────")
     show_players(bonus)
     changes["portiere"] = pick_player(bonus, "\nChi ha giocato in porta? ")
     if clean_sheet:
@@ -157,13 +197,16 @@ def aggiorna_bonus():
         print(f"  → {changes['portiere']} selezionato (nessun clean sheet)")
 
     # ── GOL ──
-    print(f"\n── GOL ({n_gol} da assegnare) ────────────────────────────")
-    for i in range(1, n_gol + 1):
-        print(f"\n  Gol {i}/{n_gol}:")
-        show_players(bonus)
-        scorer = pick_player(bonus, "  Chi ha segnato? ")
-        assister = pick_player(bonus, "  Chi ha assistito? (invio = nessuno): ", allow_empty=True)
-        changes["gol"].append((scorer, assister))
+    if n_gol > 0:
+        print(f"\n── GOL ({n_gol} da assegnare) ────────────────────────────")
+        for i in range(1, n_gol + 1):
+            print(f"\n  Gol {i}/{n_gol}:")
+            show_players(bonus)
+            scorer = pick_player(bonus, "  Chi ha segnato? ")
+            assister = pick_player(bonus, "  Chi ha assistito? (invio = nessuno): ", allow_empty=True)
+            changes["gol"].append((scorer, assister))
+    else:
+        print("\n── GOL (0 segnati) ──────────────────────────────────")
 
     # ── AMMONIZIONI / ESPULSIONI ──
     print("\n── AMMONIZIONI ──────────────────────────────────────")
@@ -236,7 +279,12 @@ def aggiorna_bonus():
 
     save_json(BONUS_FILE, bonus)
 
+    # Aggiorna il calendario e sposta la partita se proveniva da 'upcoming'
     match["bonus_updated"] = True
+    if match_from_upcoming:
+        calendario["upcoming"].pop(0)
+        calendario["played"].append(match)
+
     save_json(CALENDARIO_OUTPUT_FILE, calendario)
 
     print("\n  ✓ Bonus aggiornati e salvati correttamente!")
