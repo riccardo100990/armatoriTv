@@ -19,6 +19,24 @@ def clean_int(text):
     return int(text.strip().replace("+", ""))
 
 
+def clean_risultato(text):
+    """Pulisce il risultato convertendo trattini unicode (–/—) nel formato 'X - Y'."""
+    if not text:
+        return "vs"
+    text = text.strip()
+    match = re.search(r"^(\d+)\s*[\u2013\u2014\-]\s*(\d+)$", text)
+    if match:
+        return f"{match.group(1)} - {match.group(2)}"
+    return text
+
+
+def clean_data(text):
+    """Assicura che la data abbia la spaziatura corretta attorno al punto centrale."""
+    if not text:
+        return ""
+    return re.sub(r"\s*·\s*", " · ", text.strip())
+
+
 def fetch_pages_html():
     """Apre un browser headless una sola volta e scarica l'HTML di classifica e calendario."""
     print("Avvio Playwright per il recupero dati...")
@@ -124,6 +142,20 @@ def scrape_calendar(html_text, nome_squadra="Lenola"):
     upcoming_matches = []
     played_matches = []
 
+    # Mantiene lo stato esistente (es. bonus_updated e team) se il file è già presente
+    existing_data = {}
+    existing_bonus_updated = {}
+    if os.path.exists(CALENDARIO_OUTPUT_FILE):
+        try:
+            with open(CALENDARIO_OUTPUT_FILE, "r", encoding="utf-8") as f:
+                existing_data = json.load(f)
+                for m in existing_data.get("played", []) + existing_data.get("upcoming", []):
+                    key = m.get("url") or f"{m.get('giornata')}_{m.get('casa')}_{m.get('trasferta')}"
+                    if "bonus_updated" in m:
+                        existing_bonus_updated[key] = m["bonus_updated"]
+        except Exception:
+            pass
+
     giornate = soup.select("section.am-calendario-giornata")
 
     for giornata in giornate:
@@ -147,7 +179,7 @@ def scrape_calendar(html_text, nome_squadra="Lenola"):
                 match_url = f"https://www.amatoricassino.it{match_url}"
 
             time_elem = match.select_one("time")
-            date_time = time_elem.get_text(strip=True) if time_elem else ""
+            date_time = clean_data(time_elem.get_text(strip=True) if time_elem else "")
 
             campo_elem = match.select_one("span.truncate")
             campo = campo_elem.get_text(strip=True) if campo_elem else ""
@@ -156,7 +188,8 @@ def scrape_calendar(html_text, nome_squadra="Lenola"):
             status = badge_elem.get_text(strip=True) if badge_elem else ""
 
             risultato_elem = match.select_one(".am-calendario-risultato")
-            risultato = risultato_elem.get_text(strip=True) if risultato_elem else "vs"
+            raw_risultato = risultato_elem.get_text(strip=True) if risultato_elem else "vs"
+            risultato = clean_risultato(raw_risultato)
 
             match_data = {
                 "giornata": num_giornata,
@@ -169,12 +202,18 @@ def scrape_calendar(html_text, nome_squadra="Lenola"):
                 "url": match_url
             }
 
+            # Ripristina il flag bonus_updated se presente nel vecchio file
+            match_key = match_url or f"{num_giornata}_{home_team}_{away_team}"
+            if match_key in existing_bonus_updated:
+                match_data["bonus_updated"] = existing_bonus_updated[match_key]
+
             if "In programma" in status:
                 upcoming_matches.append(match_data)
             else:
                 played_matches.append(match_data)
 
     output = {
+        "team": existing_data.get("team", "Amatori Lenola 2023"),
         "girone": "A",
         "aggiornato_al": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
         "upcoming": upcoming_matches,
