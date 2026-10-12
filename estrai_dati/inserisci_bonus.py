@@ -77,13 +77,15 @@ def show_players(players):
         print(f"  {i:>2}. [{ruolo}] {name}")
 
 
-def pick_player(players, prompt, allow_empty=False):
-    """Selezione singola: numero o nome parziale. Ritorna il nome o None."""
+def pick_player(players, prompt, allow_empty=False, allow_autogol=False):
+    """Selezione singola: numero, nome parziale o 'autogol'. Ritorna il nome, 'AUTOGOL' o None."""
     player_list = list(players.keys())
     while True:
         val = input(prompt).strip()
         if not val and allow_empty:
             return None
+        if allow_autogol and val.lower() in ("autogol", "auto", "ag"):
+            return "AUTOGOL"
         if val.isdigit():
             idx = int(val) - 1
             if 0 <= idx < len(player_list):
@@ -96,7 +98,7 @@ def pick_player(players, prompt, allow_empty=False):
             elif len(matches) > 1:
                 print(f"  Ambiguo: {', '.join(matches)}. Sii più specifico.")
             else:
-                print("  Nessun giocatore trovato.")
+                print("  Nessun giocatore trovato. (Puoi scrivere 'autogol' se è un autogol avversario)")
 
 
 def pick_players_multi(players, prompt):
@@ -142,23 +144,17 @@ def aggiorna_bonus():
     played_list = calendario.get("played", [])
     upcoming_list = calendario.get("upcoming", [])
 
-    # 1. Cerca una partita in 'played' non ancora aggiornata nei bonus
     match = None
     match_from_upcoming = False
 
-    for m in played_list:
-        if not m.get("bonus_updated"):
-            match = m
-            break
-
-    # 2. Se non c'è in 'played', prende la prima partita da 'upcoming'
-    if not match:
-        if upcoming_list:
-            match = upcoming_list[0]
-            match_from_upcoming = True
-        else:
-            print("\n  ⚠ Nessuna partita trovata in calendario. Bonus non aggiornati.")
-            return
+    if upcoming_list:
+        match = upcoming_list[0]
+        match_from_upcoming = True
+    elif played_list:
+        match = played_list[-1]
+    else:
+        print("\n  ⚠ Nessuna partita trovata in calendario. Bonus non aggiornati.")
+        return
 
     print("\n" + "═" * 50)
     print(f"  AGGIORNAMENTO BONUS — Giornata {match['giornata']}")
@@ -202,8 +198,11 @@ def aggiorna_bonus():
         for i in range(1, n_gol + 1):
             print(f"\n  Gol {i}/{n_gol}:")
             show_players(bonus)
-            scorer = pick_player(bonus, "  Chi ha segnato? ")
-            assister = pick_player(bonus, "  Chi ha assistito? (invio = nessuno): ", allow_empty=True)
+            scorer = pick_player(bonus, "  Chi ha segnato? (o scrivi 'autogol'): ", allow_autogol=True)
+            if scorer == "AUTOGOL":
+                assister = None
+            else:
+                assister = pick_player(bonus, "  Chi ha assistito? (invio = nessuno): ", allow_empty=True)
             changes["gol"].append((scorer, assister))
     else:
         print("\n── GOL (0 segnati) ──────────────────────────────────")
@@ -240,8 +239,12 @@ def aggiorna_bonus():
         f"  Portiere : {changes['portiere']}" + (" [CLEAN SHEET]" if clean_sheet else ""),
     ]
     for i, (sc, ass) in enumerate(changes["gol"], 1):
-        ass_str = f" (ass. {ass})" if ass else ""
-        lines.append(f"  Gol {i}    : {sc}{ass_str}")
+        if sc == "AUTOGOL":
+            sc_str = "Autogol (Avversario)"
+        else:
+            sc_str = sc
+        ass_str = f" (ass. {ass})" if ass and ass != "AUTOGOL" else ""
+        lines.append(f"  Gol {i}    : {sc_str}{ass_str}")
     if changes["ammoniti"]:
         lines.append(f"  Ammoniti : {', '.join(changes['ammoniti'])}")
     if changes["espulsi"]:
@@ -263,6 +266,8 @@ def aggiorna_bonus():
         bonus[changes["portiere"]]["clean_sheet"] += 1
 
     for scorer, assister in changes["gol"]:
+        if scorer == "AUTOGOL":
+            continue  # L'autogol avversario non assegna gol o assist ad alcun giocatore della rosa
         if scorer:
             bonus[scorer]["goals"] += 1
         if assister:
@@ -279,7 +284,6 @@ def aggiorna_bonus():
 
     save_json(BONUS_FILE, bonus)
 
-    # Aggiorna il calendario e sposta la partita se proveniva da 'upcoming'
     match["bonus_updated"] = True
     if match_from_upcoming:
         calendario["upcoming"].pop(0)
