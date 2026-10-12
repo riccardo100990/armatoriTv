@@ -1,8 +1,139 @@
 {
   "team": "Amatori Lenola 2023",
   "girone": "A",
-  "aggiornato_al": "2026-10-07T21:02:33.662121Z",
-  "upcoming": [],
+  "aggiornato_al": "2026-10-12T20:50:15.845842Z",
+  "upcoming": [
+    {
+      "giornata": "3",
+      "casa": "A.S.D. Rinascita Monticelli",
+      "trasferta": "Amatori Lenola 2023",
+      "data": "17/10/2026 · 15:00",
+      "campo": "Monticelli",
+      "status": "In programma",
+      "risultato": "In programma",
+      "url": "https://www.amatoricassino.it/partita/1520"
+    },
+    {
+      "giornata": "4",
+      "casa": "Amatori Lenola 2023",
+      "trasferta": "SS Cassino Soccer",
+      "data": "24/10/2026 · 15:00",
+      "campo": "Lenola",
+      "status": "In programma",
+      "risultato": "In programma",
+      "url": "https://www.amatoricassino.it/partita/1537"
+    },
+    {
+      "giornata": "5",
+      "casa": "Virtus Scauri Amatori",
+      "trasferta": "Amatori Lenola 2023",
+      "data": "31/10/2026 · 15:00",
+      "campo": "Scauri",
+      "status": "In programma",
+      "risultato": "In programma",
+      "url": "https://www.amatoricassino.it/partita/1551"
+    },
+    {
+      "giornata": "6",
+      "casa": "Amatori Lenola 2023",
+      "trasferta": "F.C. Spigno",
+      "data": "07/11/2026 · 14:45",
+      "campo": "Lenola",
+      "status": "In programma",
+      "risultato": "In programma",
+      "url": "https://www.amatoricassino.it/partita/1563"
+    },
+    {
+      "giornata": "7",
+      "casa": "Real Esperia",
+      "trasferta": "Amatori Lenola 2023",
+      "data": "14/11/2026 · 17:00",
+      "campo": "Esperia",
+      "status": "In programma",
+      "risultato": "In programma",
+      "url": "https://www.amatoricassino.it/partita/1584"
+    },
+    {
+      "giornata": "8",
+      "casa": "Amatori Lenola 2023",
+      "trasferta": "Atletico Aurunci",
+      "data": "21/11/2026 · 14:45",
+      "campo": "Lenola",
+      "status": "In programma",
+      "risultato": "In programma",
+      "url": "https://www.amatoricassino.it/partita/1596"
+    },
+    {
+      "giornata": "9",
+      "casa": "ASD Felcese FC",
+      "trasferta": "Amatori Lenola 2023",
+      "data": "28/11/2026 · 14:45",
+      "campo": "Villa S.Lucia",
+      "status": "In programma",
+      "risultato": "In programma",
+      "url": "https://www.amatoricassino.it/partita/1614"
+    },
+    {
+      "giornata": "10",
+      "casa": "Amatori Lenola 2023",
+      "trasferta": "Real Galluccio",
+      "data": "05/12/2026 · 14:45",
+      "campo": "Lenola",
+      "status": "In programma",
+      "risultato": "In programma",
+      "url": "https://www.amatoricassino.it/partita/1633"
+    },
+    {
+      "giornata": "11",
+      "casa": "Amatori Lenola 2023",
+      "trasferta": "FC Castelforte Amatori",
+      "data": "12/12/2026 · 14:45",
+      "campo": "Lenola",
+      "status": "In programma",
+      "risultato": "In programma",
+      "url": "https://www.amatoricassino.it/partita/1645"
+    },
+    {
+      "giornata": "12",
+      "casa": "AC Castelnovese",
+      "trasferta": "Amatori Lenola 2023",
+      "data": "20/12/2026 · 11:00",
+      "campo": "Coreno Ausonio",
+      "status": "In programma",
+      "risultato": "In programma",
+      "url": "https://www.amatoricassino.it/partita/1662"
+    },
+    {
+      "giornata": "13",
+      "casa": "Amatori Lenola 2023",
+      "trasferta": "Solidale Formia",
+      "data": "02/01/2027 · 14:45",
+      "campo": "Lenola",
+      "status": "In programma",
+      "risultato": "In programma",
+      "url": "https://www.amatoricassino.it/partita/1676"
+    },
+    {
+      "giornata": "14",
+      "casa": "Amatori Lenola 2023",
+      "trasferta": "ASD Atletico Montecassino",
+      "data": "09/01/2027 · 14:45",
+      "campo": "Lenola",
+      "status": "In programma",
+      "risultato": "In programma",
+      "url": "https://www.amatoricassino.it/partita/1691"
+    },
+    {
+      "giornata": "15",
+      "casa": "Coreno Legends",
+      "trasferta": "Amatori Lenola 2023",
+      "data": "16/01/2027 · 14:45",
+      "campo": "Coreno Ausonio",
+      "status": "In programma",
+      "risultato": "In programma",
+      "url": "https://www.amatoricassino.it/partita/1710"
+    }
+  ],
   "played": [
     {
       "giornata": "1",
@@ -20,7 +151,7 @@
       "trasferta": "AM Simonelli",
       "data": "10/10/2026 · 15:00",
       "campo": "Lenola",
-      "status": "In programma",
+      "status": "Finale",
       "risultato": "4 - 2",
       "url": "https://www.amatoricassino.it/partita/1495",
       "bonus_updated": true
