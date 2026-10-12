@@ -1,7 +1,7 @@
 {
   "Luca Mastrobattista": {
     "goals": 0,
-    "assist": 0,
+    "assist": 1,
     "ammonizioni": 0,
     "espulsioni": 0,
     "clean_sheet": 0,
@@ -42,7 +42,7 @@
   "Vasco Iacoveli": {
     "goals": 0,
     "assist": 0,
-    "ammonizioni": 1,
+    "ammonizioni": 2,
     "espulsioni": 0,
     "clean_sheet": 0,
     "mvp_armatori_tv": 0,
@@ -70,12 +70,12 @@
     "team": ""
   },
   "Gianluigi Piccione": {
-    "goals": 0,
+    "goals": 2,
     "assist": 0,
     "ammonizioni": 1,
     "espulsioni": 0,
     "clean_sheet": 0,
-    "mvp_armatori_tv": 0,
+    "mvp_armatori_tv": 1,
     "ruolo": "A",
     "team": "summer"
   },
@@ -90,7 +90,7 @@
     "team": "prof"
   },
   "Alex Grossi": {
-    "goals": 0,
+    "goals": 1,
     "assist": 0,
     "ammonizioni": 1,
     "espulsioni": 0,
@@ -101,7 +101,7 @@
   },
   "Emanuele Guglietta": {
     "goals": 0,
-    "assist": 0,
+    "assist": 1,
     "ammonizioni": 0,
     "espulsioni": 0,
     "clean_sheet": 0,
@@ -162,7 +162,7 @@
   "Vincenzo Speranza": {
     "goals": 0,
     "assist": 0,
-    "ammonizioni": 0,
+    "ammonizioni": 1,
     "espulsioni": 0,
     "clean_sheet": 0,
     "mvp_armatori_tv": 0,
