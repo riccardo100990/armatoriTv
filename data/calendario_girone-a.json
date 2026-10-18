@@ -1,18 +1,8 @@
 {
   "team": "Amatori Lenola 2023",
   "girone": "A",
-  "aggiornato_al": "2026-10-12T20:50:15.845842Z",
+  "aggiornato_al": "2026-10-18T16:21:59.765299Z",
   "upcoming": [
-    {
-      "giornata": "3",
-      "casa": "A.S.D. Rinascita Monticelli",
-      "trasferta": "Amatori Lenola 2023",
-      "data": "17/10/2026 · 15:00",
-      "campo": "Monticelli",
-      "status": "In programma",
-      "risultato": "In programma",
-      "url": "https://www.amatoricassino.it/partita/1520"
-    },
     {
       "giornata": "4",
       "casa": "Amatori Lenola 2023",
@@ -155,6 +145,16 @@
       "risultato": "4 - 2",
       "url": "https://www.amatoricassino.it/partita/1495",
       "bonus_updated": true
+    },
+    {
+      "giornata": "3",
+      "casa": "A.S.D. Rinascita Monticelli",
+      "trasferta": "Amatori Lenola 2023",
+      "data": "17/10/2026 · 15:00",
+      "campo": "Monticelli",
+      "status": "Finale",
+      "risultato": "0 - 0",
+      "url": "https://www.amatoricassino.it/partita/1520"
     }
   ]
 }
