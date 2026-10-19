@@ -34,7 +34,7 @@
     "assist": 0,
     "ammonizioni": 0,
     "espulsioni": 0,
-    "clean_sheet": 0,
+    "clean_sheet": 1,
     "mvp_armatori_tv": 0,
     "ruolo": "P",
     "team": ""
@@ -85,7 +85,7 @@
     "ammonizioni": 0,
     "espulsioni": 0,
     "clean_sheet": 0,
-    "mvp_armatori_tv": 0,
+    "mvp_armatori_tv": 1,
     "ruolo": "D",
     "team": "prof"
   },
