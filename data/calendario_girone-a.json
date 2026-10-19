@@ -4,16 +4,6 @@
   "aggiornato_al": "2026-10-12T20:50:15.845842Z",
   "upcoming": [
     {
-      "giornata": "3",
-      "casa": "A.S.D. Rinascita Monticelli",
-      "trasferta": "Amatori Lenola 2023",
-      "data": "17/10/2026 · 15:00",
-      "campo": "Monticelli",
-      "status": "In programma",
-      "risultato": "In programma",
-      "url": "https://www.amatoricassino.it/partita/1520"
-    },
-    {
       "giornata": "4",
       "casa": "Amatori Lenola 2023",
       "trasferta": "SS Cassino Soccer",
@@ -154,6 +144,17 @@
       "status": "Finale",
       "risultato": "4 - 2",
       "url": "https://www.amatoricassino.it/partita/1495",
+      "bonus_updated": true
+    },
+    {
+      "giornata": "3",
+      "casa": "A.S.D. Rinascita Monticelli",
+      "trasferta": "Amatori Lenola 2023",
+      "data": "17/10/2026 · 15:00",
+      "campo": "Monticelli",
+      "status": "In programma",
+      "risultato": "0 - 0",
+      "url": "https://www.amatoricassino.it/partita/1520",
       "bonus_updated": true
     }
   ]
