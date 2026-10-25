@@ -4,16 +4,6 @@
   "aggiornato_al": "2026-10-19T06:45:14.718859Z",
   "upcoming": [
     {
-      "giornata": "4",
-      "casa": "Amatori Lenola 2023",
-      "trasferta": "SS Cassino Soccer",
-      "data": "24/10/2026 · 15:00",
-      "campo": "Lenola",
-      "status": "In programma",
-      "risultato": "In programma",
-      "url": "https://www.amatoricassino.it/partita/1537"
-    },
-    {
       "giornata": "5",
       "casa": "Virtus Scauri Amatori",
       "trasferta": "Amatori Lenola 2023",
@@ -155,6 +145,17 @@
       "status": "Finale",
       "risultato": "0 - 0",
       "url": "https://www.amatoricassino.it/partita/1520",
+      "bonus_updated": true
+    },
+    {
+      "giornata": "4",
+      "casa": "Amatori Lenola 2023",
+      "trasferta": "SS Cassino Soccer",
+      "data": "24/10/2026 · 15:00",
+      "campo": "Lenola",
+      "status": "In programma",
+      "risultato": "1 - 2",
+      "url": "https://www.amatoricassino.it/partita/1537",
       "bonus_updated": true
     }
   ]
