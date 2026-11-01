@@ -1,0 +1,548 @@
+/* ==========================================================================
+   FORMAZIONE AVVERSARIA - STILI (Ispirati a home.css e allo stile ATV)
+   ========================================================================== */
+
+/* Layout principale a griglia per desktop e colonna singola per mobile */
+.formazione-layout {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@media (min-width: 992px) {
+  .formazione-layout {
+    grid-template-columns: 1.1fr 1fr;
+    align-items: start;
+  }
+}
+
+/* Card personalizzate nello stile ATV */
+.atv-card {
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  padding: 1.25rem;
+  margin-bottom: 1.25rem;
+  transition: box-shadow 0.2s ease;
+}
+
+@media (min-width: 768px) {
+  .atv-card {
+    padding: 1.5rem;
+  }
+}
+
+.atv-card-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #212529;
+  margin-bottom: 0.75rem;
+  padding-left: 10px;
+  border-left: 4px solid var(--color-red, #ff1020);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.atv-card-title .badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.help-text {
+  font-size: 0.85rem;
+  color: #6c757d;
+  margin-bottom: 1rem;
+  line-height: 1.45;
+}
+
+/* --------------------------------------------------------------------------
+   STEP 1: DISTINTA GIOCATORI
+   -------------------------------------------------------------------------- */
+.roster-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 540px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+/* Scrollbar sottile */
+.roster-list::-webkit-scrollbar {
+  width: 5px;
+}
+.roster-list::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+.roster-list::-webkit-scrollbar-thumb {
+  background: #ced4da;
+  border-radius: 4px;
+}
+.roster-list::-webkit-scrollbar-thumb:hover {
+  background: #adb5bd;
+}
+
+.roster-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 6px 10px;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.roster-row:focus-within {
+  border-color: #0d6efd;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 2px rgba(13, 110, 253, 0.1);
+}
+
+.roster-row.is-assigned {
+  border-left: 4px solid #198754;
+}
+
+.roster-index {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #adb5bd;
+  min-width: 22px;
+  text-align: center;
+}
+
+.roster-input-name {
+  flex: 1;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 0.92rem;
+  background: #ffffff;
+}
+
+.roster-input-num {
+  width: 72px;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  padding: 6px 6px;
+  font-size: 0.92rem;
+  text-align: center;
+  font-weight: 700;
+  background: #ffffff;
+}
+
+.roster-input-num.dup {
+  border-color: #ff9800 !important;
+  background-color: #fff3e0 !important;
+  color: #e65100;
+}
+
+.roster-del-btn {
+  background: transparent;
+  border: 1px solid #dee2e6;
+  color: #dc3545;
+  width: 34px;
+  height: 34px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+}
+
+.roster-del-btn:hover {
+  background: #dc3545;
+  color: #ffffff;
+  border-color: #dc3545;
+}
+
+.roster-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #dee2e6;
+}
+
+.roster-actions .btn {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   STEP 2: CAMPO E SCHIERAMENTO
+   -------------------------------------------------------------------------- */
+.pitch-container {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 2 / 3;
+  margin: 0 auto 12px auto;
+  background: radial-gradient(circle, #237b3b 0%, #155724 100%);
+  border: 3px solid #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  user-select: none;
+}
+
+/* Linee del campo in erba */
+.pitch-lines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* Linea di centrocampo */
+.pitch-lines::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.5);
+  transform: translateY(-50%);
+}
+
+/* Cerchio centrale */
+.pitch-lines::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100px;
+  height: 100px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Aree di rigore (superiore e inferiore) */
+.pitch-box-top,
+.pitch-box-bottom {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  pointer-events: none;
+}
+
+.pitch-box-bottom {
+  bottom: 0;
+  width: 58%;
+  height: 18%;
+  border-bottom: none;
+}
+
+.pitch-box-top {
+  top: 0;
+  width: 58%;
+  height: 18%;
+  border-top: none;
+}
+
+/* Slot giocatore sul campo */
+.pitch-slot {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 68px;
+  cursor: pointer;
+  z-index: 10;
+  transition: transform 0.18s ease;
+}
+
+.pitch-slot:hover {
+  transform: translate(-50%, -50%) scale(1.12);
+  z-index: 25;
+}
+
+.pitch-slot:active {
+  transform: translate(-50%, -50%) scale(0.96);
+}
+
+.pitch-shirt {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  background: #ff1020;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Portiere con maglia oro/arancione per distinguerlo */
+.pitch-slot[data-slot="0"] .pitch-shirt {
+  background: #ff9800;
+  border-color: #fff;
+  color: #000;
+}
+
+/* Slot vuoto */
+.pitch-slot.empty .pitch-shirt {
+  background: rgba(0, 0, 0, 0.35) !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+  border: 2px dashed rgba(255, 255, 255, 0.7);
+  box-shadow: none;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.pitch-slot-name {
+  background: rgba(0, 0, 0, 0.85);
+  color: #ffffff;
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  margin-top: 3px;
+  max-width: 66px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  text-align: center;
+}
+
+.pitch-slot.empty .pitch-slot-name {
+  display: none;
+}
+
+.pitch-status {
+  text-align: center;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #495057;
+  margin-bottom: 8px;
+}
+
+/* --------------------------------------------------------------------------
+   PANCHINA (Automatica)
+   -------------------------------------------------------------------------- */
+.bench-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  min-height: 44px;
+}
+
+.bench-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #f1f3f5;
+  border: 1px solid #dee2e6;
+  border-radius: 20px;
+  padding: 4px 10px 4px 4px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #212529;
+}
+
+.bench-chip-num {
+  min-width: 24px;
+  height: 24px;
+  border-radius: 12px;
+  background: #343a40;
+  color: #ffeb3b;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0 4px;
+}
+
+.bench-empty {
+  font-size: 0.85rem;
+  color: #6c757d;
+  font-style: italic;
+  padding: 8px 0;
+}
+
+/* --------------------------------------------------------------------------
+   MODALE SCELTA GIOCATORE PER IL CAMPO
+   -------------------------------------------------------------------------- */
+.pick-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1050;
+  padding: 16px;
+  backdrop-filter: blur(3px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.pick-modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.pick-modal-content {
+  background: #ffffff;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 480px;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.3);
+  transform: translateY(20px);
+  transition: transform 0.2s ease;
+  overflow: hidden;
+}
+
+.pick-modal-overlay.active .pick-modal-content {
+  transform: translateY(0);
+}
+
+.pick-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 18px;
+  border-bottom: 1px solid #dee2e6;
+  background: #f8f9fa;
+}
+
+.pick-modal-header h5 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #212529;
+}
+
+.pick-modal-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: #6c757d;
+  cursor: pointer;
+  padding: 0 4px;
+}
+
+.pick-modal-close:hover {
+  color: #000;
+}
+
+.pick-modal-body {
+  padding: 14px 18px;
+  overflow-y: auto;
+}
+
+.pick-section-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #6c757d;
+  margin: 12px 0 6px;
+}
+
+.pick-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 9px 12px;
+  margin-bottom: 6px;
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #212529;
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.pick-row:hover {
+  background: #e9ecef;
+  border-color: #adb5bd;
+}
+
+.pick-row-num {
+  min-width: 28px;
+  height: 28px;
+  border-radius: 14px;
+  background: #212529;
+  color: #ffeb3b;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.pick-row-name {
+  flex: 1;
+}
+
+.pick-row-tag {
+  font-size: 0.75rem;
+  color: #6c757d;
+  font-weight: normal;
+  margin-left: auto;
+}
+
+.pick-row.clear-btn {
+  background: #fff5f5;
+  border-color: #ffc9c9;
+  color: #e03131;
+  justify-content: center;
+}
+
+.pick-row.clear-btn:hover {
+  background: #ffe3e3;
+}
+
+/* --------------------------------------------------------------------------
+   BOTTONI AZIONI FINALI (INVIA, SCARICA JSON, ETC.)
+   -------------------------------------------------------------------------- */
+.action-buttons-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.btn-hover-lift {
+  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.btn-hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.color-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 4px;
+  vertical-align: middle;
+}
