@@ -1,6 +1,6 @@
 // ====== CONFIG ======
 const APPS_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbyVwllC0Sk-FdsOV7SREkzP75k5hyMA-30MY2WL1PrBeFng85jnw9PNloULtNIm6P7vBQ/exec";
+    "https://script.google.com/macros/s/AKfycbyVwllC0Sk-FdsOV7SREkzP75k5hyMA-30MY2WL1PrBeFng85jnw9PNloULtNIm6P7vBQ/exec";
 
 const DEFAULT_ROSTER_SIZE = 15;
 const SLOTS_COUNT = 11;
@@ -140,6 +140,7 @@ function initFormazionePage() {
   // 11 slot del campo: contengono l'id del giocatore o null
   let lineup = Array(SLOTS_COUNT).fill(null);
   let currentPickSlot = null;
+  let captainId = null; // id del capitano (uno solo)
 
   // Stato accettazione privacy e azione in sospeso
   let privacyAccepted = false;
@@ -238,6 +239,15 @@ function initFormazionePage() {
       numInput.dataset.id = p.id;
       numInput.dataset.field = "num";
 
+      const capBtn = document.createElement("button");
+      capBtn.type = "button";
+      capBtn.className = "roster-cap-btn" + (p.id === captainId ? " active" : "");
+      capBtn.textContent = "C";
+      capBtn.title = "Capitano";
+      capBtn.setAttribute("aria-label", "Imposta come capitano");
+      capBtn.setAttribute("aria-pressed", String(p.id === captainId));
+      capBtn.dataset.id = p.id;
+
       const delBtn = document.createElement("button");
       delBtn.type = "button";
       delBtn.className = "roster-del-btn";
@@ -245,7 +255,7 @@ function initFormazionePage() {
       delBtn.innerHTML = '<i class="bi bi-x-lg"></i>';
       delBtn.dataset.id = p.id;
 
-      row.append(indexBadge, nameInput, numInput, delBtn);
+      row.append(indexBadge, nameInput, numInput, capBtn, delBtn);
       rosterWrap.appendChild(row);
     });
 
@@ -264,6 +274,13 @@ function initFormazionePage() {
       item.name = input.value.trim();
     } else if (field === "num") {
       item.number = toNumber(input.value);
+    }
+
+    if (captainId === id && !hasData(item)) {
+      captainId = null;
+      const b = rosterWrap.querySelector(`.roster-cap-btn[data-id="${id}"]`);
+      b?.classList.remove("active");
+      b?.setAttribute("aria-pressed", "false");
     }
 
     markDuplicates();
@@ -287,6 +304,7 @@ function initFormazionePage() {
 
   function removePlayer(id) {
     roster = roster.filter(p => p.id !== id);
+    if (captainId === id) captainId = null;
     lineup = lineup.map(slotId => (slotId === id ? null : slotId));
     if (roster.length === 0) {
       addPlayerRow(false);
@@ -316,6 +334,7 @@ function initFormazionePage() {
       number: null
     }));
     lineup = Array(SLOTS_COUNT).fill(null);
+    captainId = null;
     renderRoster();
     renderPitch();
     renderBench();
@@ -353,6 +372,17 @@ function initFormazionePage() {
         addPlayerRow(true);
       }
     }
+  });
+
+  rosterWrap.addEventListener("click", e => {
+    const cap = e.target.closest(".roster-cap-btn");
+    if (!cap) return;
+    const player = roster.find(p => p.id === cap.dataset.id);
+    if (!player || !hasData(player)) return; // serve almeno nome o numero
+    captainId = captainId === player.id ? null : player.id;
+    renderRoster();
+    renderPitch();
+    renderBench();
   });
 
   rosterWrap.addEventListener("click", e => {
@@ -425,6 +455,8 @@ function initFormazionePage() {
         nameEl.textContent = "";
         nameEl.title = "";
       }
+
+      shirt.classList.toggle("is-captain", !!player && player.id === captainId && !el.classList.contains("empty"));
     });
 
     if (startersCountEl) startersCountEl.textContent = `${filled} / ${SLOTS_COUNT}`;
@@ -476,8 +508,8 @@ function initFormazionePage() {
 
     const roleName = deduceRole(slotIdx, currentFormation);
     pickModalTitle.textContent = slotIdx === 0
-      ? "Chi gioca in porta? (Portiere)"
-      : `Chi gioca qui? (${roleName})`;
+        ? "Chi gioca in porta? (Portiere)"
+        : `Chi gioca qui? (${roleName})`;
 
     const validPlayers = roster.filter(hasData);
     const unassigned = validPlayers.filter(p => !lineup.includes(p.id));
@@ -588,16 +620,16 @@ function initFormazionePage() {
   function renderBench() {
     benchWrap.innerHTML = "";
     const benchPlayers = roster
-      .filter(p => hasData(p) && !lineup.includes(p.id))
-      .sort((a, b) => (a.number ?? 999) - (b.number ?? 999));
+        .filter(p => hasData(p) && !lineup.includes(p.id))
+        .sort((a, b) => (a.number ?? 999) - (b.number ?? 999));
 
     if (!benchPlayers.length) {
       const emptySpan = document.createElement("span");
       emptySpan.className = "bench-empty";
       const totalValid = roster.filter(hasData).length;
       emptySpan.textContent = totalValid > 0
-        ? "Tutti i giocatori compilati sono attualmente schierati in campo."
-        : "Compila la distinta per visualizzare la panchina.";
+          ? "Tutti i giocatori compilati sono attualmente schierati in campo."
+          : "Compila la distinta per visualizzare la panchina.";
       benchWrap.appendChild(emptySpan);
       return;
     }
@@ -608,6 +640,7 @@ function initFormazionePage() {
       chip.innerHTML = `
         <span class="bench-chip-num">${p.number ?? "-"}</span>
         <span>${p.name || "(senza nome)"}</span>
+        ${p.id === captainId ? '<span class="cap-tag" title="Capitano">C</span>' : ""}
       `;
       benchWrap.appendChild(chip);
     });
@@ -641,21 +674,23 @@ function initFormazionePage() {
         numeroMaglia: p.number,
         ruolo: deduceRole(slotIdx, modulo),
         titolare: true,
-        slot: slotIdx
+        slot: slotIdx,
+        capitano: p.id === captainId
       });
     });
 
     // 2. Riserve (non schierati ma in distinta con dati)
     const riserve = roster
-      .filter(p => hasData(p) && !lineup.includes(p.id))
-      .map(p => ({
-        id: p.id,
-        nome: (p.name || "").trim(),
-        numeroMaglia: p.number,
-        ruolo: "Centrocampista", // Ruolo default compatibile per panchinari
-        titolare: false,
-        slot: null
-      }));
+        .filter(p => hasData(p) && !lineup.includes(p.id))
+        .map(p => ({
+          id: p.id,
+          nome: (p.name || "").trim(),
+          numeroMaglia: p.number,
+          ruolo: "Centrocampista", // Ruolo default compatibile per panchinari
+          titolare: false,
+          slot: null,
+          capitano: p.id === captainId
+        }));
 
     // Elenco unificato dei giocatori per compatibilità con il backend Apps Script
     const giocatori = [...titolari, ...riserve];
@@ -670,8 +705,8 @@ function initFormazionePage() {
         y: coords[idx] ? coords[idx][1] : null,
         ruolo: deduceRole(idx, modulo),
         giocatore: p
-          ? { id: p.id, nome: p.name.trim(), numeroMaglia: p.number }
-          : null
+            ? { id: p.id, nome: p.name.trim(), numeroMaglia: p.number, capitano: p.id === captainId }
+            : null
       };
     });
 
@@ -703,9 +738,9 @@ function initFormazionePage() {
 
     const teamName = payload.squadraAvversaria || "squadra-avversaria";
     const safeName = teamName
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/^-+|-+$/g, "");
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-+|-+$/g, "");
     const dateStr = new Date().toISOString().slice(0, 10);
     const fileName = `formazione-${safeName}-${dateStr}.json`;
 
@@ -784,6 +819,8 @@ function initFormazionePage() {
             name: g.nome || "",
             number: g.numeroMaglia ?? null
           }));
+          const capIdx = data.giocatori.findIndex(g => g.capitano === true || g.isCaptain === true);
+          captainId = capIdx >= 0 ? roster[capIdx].id : null;
           lineup = Array(SLOTS_COUNT).fill(null);
           data.giocatori.forEach(g => {
             if (g.titolare && g.slot != null && g.slot >= 0 && g.slot < SLOTS_COUNT) {
@@ -856,8 +893,8 @@ function initFormazionePage() {
       console.log("Fetch conclusa senza errore (no-cors): richiesta inviata.");
 
       showAlert(
-        "success",
-        `<strong>Formazione inviata con successo!</strong> Grazie per la collaborazione con Armatori TV.<br>
+          "success",
+          `<strong>Formazione inviata con successo!</strong> Grazie per la collaborazione con Armatori TV.<br>
          <button type="button" id="btn-download-after-submit" class="btn btn-outline-success btn-sm mt-2">
            <i class="bi bi-download me-1"></i> Scarica una copia in JSON
          </button>`
@@ -867,8 +904,8 @@ function initFormazionePage() {
     } catch (err) {
       console.error(err);
       showAlert(
-        "danger",
-        "Errore durante l'invio. Puoi comunque cliccare su <strong>«Scarica JSON»</strong> per salvare il file e inviarcelo a armatoritv@gmail.com."
+          "danger",
+          "Errore durante l'invio. Puoi comunque cliccare su <strong>«Scarica JSON»</strong> per salvare il file e inviarcelo a armatoritv@gmail.com."
       );
     } finally {
       setLoading(false);

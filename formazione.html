@@ -76,6 +76,73 @@
         font-size: 1rem;
       }
     }
+
+    /* Distinta: nome, numero, pulsante capitano (C), elimina */
+    #roster-list .roster-row {
+      display: grid;
+      grid-template-columns: 2rem minmax(0, 1fr) 3.6rem 2.1rem 2.1rem;
+      gap: .4rem;
+      align-items: center;
+    }
+    #roster-list .roster-row .roster-input-name,
+    #roster-list .roster-row .roster-input-num {
+      width: 100%;
+      min-width: 0;
+    }
+    .roster-cap-btn {
+      width: 2.1rem;
+      height: 2.1rem;
+      padding: 0;
+      border-radius: 50%;
+      border: 2px solid #adb5bd;
+      background: transparent;
+      color: #6c757d;
+      font-weight: 800;
+      font-size: .85rem;
+      line-height: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background .15s, border-color .15s, color .15s;
+    }
+    .roster-cap-btn:hover { border-color: #e0a800; color: #b58100; }
+    .roster-cap-btn.active {
+      background: #ffc107;
+      border-color: #ffc107;
+      color: #212529;
+    }
+    /* Segno C sulla maglia in campo e sul chip in panchina */
+    .pitch-shirt.is-captain { position: relative; overflow: visible; }
+    .pitch-shirt.is-captain::after {
+      content: "C";
+      position: absolute;
+      top: -6px;
+      right: -6px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #ffc107;
+      color: #212529;
+      font-size: 11px;
+      font-weight: 800;
+      line-height: 18px;
+      text-align: center;
+      box-shadow: 0 0 0 2px #fff;
+    }
+    .cap-tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+      margin-left: .35rem;
+      border-radius: 50%;
+      background: #ffc107;
+      color: #212529;
+      font-size: 11px;
+      font-weight: 800;
+    }
   </style>
 </head>
 <body>
