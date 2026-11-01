@@ -4,16 +4,6 @@
   "aggiornato_al": "2026-10-25T16:59:08.293612Z",
   "upcoming": [
     {
-      "giornata": "5",
-      "casa": "Virtus Scauri Amatori",
-      "trasferta": "Amatori Lenola 2023",
-      "data": "31/10/2026 · 15:00",
-      "campo": "Scauri",
-      "status": "In programma",
-      "risultato": "In programma",
-      "url": "https://www.amatoricassino.it/partita/1551"
-    },
-    {
       "giornata": "6",
       "casa": "Amatori Lenola 2023",
       "trasferta": "F.C. Spigno",
@@ -156,6 +146,17 @@
       "status": "Finale",
       "risultato": "1 - 2",
       "url": "https://www.amatoricassino.it/partita/1537",
+      "bonus_updated": true
+    },
+    {
+      "giornata": "5",
+      "casa": "Virtus Scauri Amatori",
+      "trasferta": "Amatori Lenola 2023",
+      "data": "31/10/2026 · 15:00",
+      "campo": "Scauri",
+      "status": "In programma",
+      "risultato": "1 - 3",
+      "url": "https://www.amatoricassino.it/partita/1551",
       "bonus_updated": true
     }
   ]
