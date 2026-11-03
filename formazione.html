@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>La tua formazione | La tv degli Armatori</title>
+  <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+          crossorigin="anonymous"
+  />
+  <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+  />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/home.css" />
+  <link rel="stylesheet" href="css/header.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+  <link rel="stylesheet" href="css/formazione.css" />
+  <style>
+    /* Barra azioni finali: mobile-first */
+    #formazione-form .action-buttons-wrap {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: .6rem;
+    }
+    #formazione-form .action-buttons-wrap .btn {
+      margin: 0;
+      min-height: 48px;
+      border-radius: 12px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .4rem;
+    }
+    /* Pulsante principale a tutta larghezza */
+    #formazione-form .action-buttons-wrap .action-primary {
+      grid-column: 1 / -1;
+      min-height: 54px;
+      font-size: 1.05rem;
+    }
+    /* Azioni secondarie: icona sopra, testo sotto */
+    #formazione-form .action-buttons-wrap .action-secondary {
+      flex-direction: column;
+      gap: .15rem;
+      padding: .55rem .25rem;
+      font-size: .8rem;
+      line-height: 1.15;
+      text-align: center;
+    }
+    #formazione-form .action-buttons-wrap .action-secondary i {
+      font-size: 1.2rem;
+      margin: 0 !important;
+    }
+    @media (min-width: 576px) {
+      #formazione-form .action-buttons-wrap {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+      #formazione-form .action-buttons-wrap .action-primary {
+        font-size: 1rem;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+      #formazione-form .action-buttons-wrap .action-secondary {
+        flex-direction: row;
+        gap: .4rem;
+        padding: .5rem 1rem;
+        font-size: .95rem;
+      }
+      #formazione-form .action-buttons-wrap .action-secondary i {
+        font-size: 1rem;
+      }
+    }
+
+    /* Distinta: nome, numero, pulsante capitano (C), elimina */
+    #roster-list .roster-row {
+      display: grid;
+      grid-template-columns: 2rem minmax(0, 1fr) 3.6rem 2.1rem 2.1rem;
+      gap: .4rem;
+      align-items: center;
+    }
+    #roster-list .roster-row .roster-input-name,
+    #roster-list .roster-row .roster-input-num {
+      width: 100%;
+      min-width: 0;
+    }
+    .roster-cap-btn {
+      width: 2.1rem;
+      height: 2.1rem;
+      padding: 0;
+      border-radius: 50%;
+      border: 2px solid #adb5bd;
+      background: transparent;
+      color: #6c757d;
+      font-weight: 800;
+      font-size: .85rem;
+      line-height: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background .15s, border-color .15s, color .15s;
+    }
+    .roster-cap-btn:hover { border-color: #e0a800; color: #b58100; }
+    .roster-cap-btn.active {
+      background: #ffc107;
+      border-color: #ffc107;
+      color: #212529;
+    }
+    /* Segno C sulla maglia in campo e sul chip in panchina */
+    .pitch-shirt.is-captain { position: relative; overflow: visible; }
+    .pitch-shirt.is-captain::after {
+      content: "C";
+      position: absolute;
+      top: -6px;
+      right: -6px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #ffc107;
+      color: #212529;
+      font-size: 11px;
+      font-weight: 800;
+      line-height: 18px;
+      text-align: center;
+      box-shadow: 0 0 0 2px #fff;
+    }
+    .cap-tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+      margin-left: .35rem;
+      border-radius: 50%;
+      background: #ffc107;
+      color: #212529;
+      font-size: 11px;
+      font-weight: 800;
+    }
+  </style>
+</head>
+<body>
+<div id="header-placeholder">Caricamento Header...</div>
+
+<main class="container my-4 my-lg-5" style="max-width: 1080px;">
+  <!-- HERO TITLE (Stile home.css) -->
+  <section class="home-hero text-center pt-2 pb-4">
+    <h1 class="page-title mb-2">
+      La tua formazione
+      <span class="home-title-accent">Distinta e schieramento tattico per la diretta Armatori TV</span>
+    </h1>
+  </section>
+
+  <form id="formazione-form" novalidate>
+    <!-- Honeypot anti-spam per bot -->
+    <div style="position: absolute; left: -9999px" aria-hidden="true">
+      <label>Non compilare
+        <input type="text" name="website" id="website" tabindex="-1" autocomplete="off" />
+      </label>
+    </div>
+
+    <!-- CARD DATI GENERALI -->
+    <section class="atv-card">
+      <h2 class="atv-card-title">Dati Generali Squadra</h2>
+      <div class="row g-3">
+        <div class="col-md-5">
+          <label for="squadra" class="form-label fw-bold small text-uppercase text-secondary">
+            Nome della tua squadra *
+          </label>
+          <input
+                  type="text"
+                  id="squadra"
+                  class="form-control"
+                  placeholder="Es. FC Fondi, Gaeta..."
+                  required
+                  maxlength="100"
+          />
+          <div class="invalid-feedback">Inserisci il nome della squadra.</div>
+        </div>
+
+        <div class="col-md-3">
+          <label for="modulo" class="form-label fw-bold small text-uppercase text-secondary">
+            Modulo Tattico *
+          </label>
+          <select id="modulo" class="form-select" required>
+            <option value="4-4-2">4-4-2</option>
+            <option value="4-3-3" selected>4-3-3</option>
+            <option value="3-5-2">3-5-2</option>
+            <option value="4-2-3-1">4-2-3-1</option>
+            <option value="3-4-3">3-4-3</option>
+            <option value="5-3-2">5-3-2</option>
+            <option value="4-5-1">4-5-1</option>
+          </select>
+        </div>
+
+        <div class="col-md-4">
+          <label for="mister" class="form-label fw-bold small text-uppercase text-secondary">
+            Allenatore / Mister (facoltativo)
+          </label>
+          <input
+                  type="text"
+                  id="mister"
+                  class="form-control"
+                  placeholder="Nome del Mister"
+                  maxlength="80"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- SEZIONE A 2 COLONNE: DISTINTA (SX) E SCHIERAMENTO SUL CAMPO (DX) -->
+    <div class="formazione-layout">
+
+      <!-- COLONNA 1: DISTINTA GIOCATORI + PANCHINA -->
+      <div>
+        <!-- Distinta -->
+        <section class="atv-card">
+          <div class="atv-card-title">
+            <span>1 · Distinta Giocatori</span>
+            <span id="roster-count-badge" class="badge bg-secondary">0 compilati</span>
+          </div>
+
+          <div id="roster-list" class="roster-list">
+            <!-- Righe dei 15 giocatori generate via JS -->
+          </div>
+
+          <div id="players-error" class="text-danger small mt-2 d-none">
+            <i class="bi bi-exclamation-triangle-fill me-1"></i> Inserisci almeno un giocatore nella distinta.
+          </div>
+
+          <div class="roster-actions">
+            <button type="button" id="btn-add-player" class="btn btn-outline-primary btn-sm">
+              <i class="bi bi-person-plus-fill me-1"></i> Aggiungi riga
+            </button>
+            <button type="button" id="btn-sort-roster" class="btn btn-outline-secondary btn-sm">
+              <i class="bi bi-sort-numeric-down me-1"></i> Ordina per numero
+            </button>
+            <button type="button" id="btn-clear-roster" class="btn btn-outline-danger btn-sm ms-auto">
+              <i class="bi bi-trash me-1"></i> Svuota distinta
+            </button>
+          </div>
+        </section>
+
+        <!-- Panchina automatica -->
+        <section class="atv-card">
+          <div class="atv-card-title">
+            <span>Panchina</span>
+            <span id="bench-count-badge" class="badge bg-secondary">0 riserve</span>
+          </div>
+          <div id="bench-list" class="bench-container">
+            <span class="bench-empty">Compila la distinta per visualizzare la panchina.</span>
+          </div>
+        </section>
+      </div>
+
+      <!-- COLONNA 2: SCHIERAMENTO IN CAMPO (PITCH) -->
+      <div>
+        <section class="atv-card">
+          <div class="atv-card-title">
+            <span>2 · Schieramento in Campo</span>
+            <span id="pitch-formation-badge" class="badge bg-primary">4-3-3</span>
+          </div>
+
+          <!-- Campo verde grafico interattivo -->
+          <div id="pitch-container" class="pitch-container">
+            <div class="pitch-lines"></div>
+            <div class="pitch-box-top"></div>
+            <div class="pitch-box-bottom"></div>
+            <!-- Gli 11 slot vengono generati e posizionati via JS -->
+          </div>
+
+          <div id="pitch-count-info" class="pitch-status">
+            Titolari in campo: <strong id="starters-count">0 / 11</strong>
+          </div>
+
+          <div class="d-flex flex-wrap gap-2 justify-content-between pt-2 border-top">
+            <button type="button" id="btn-autofill-pitch" class="btn btn-outline-success btn-sm">
+              <i class="bi bi-magic me-1"></i> Schiera primi 11
+            </button>
+            <button type="button" id="btn-clear-pitch" class="btn btn-outline-secondary btn-sm">
+              <i class="bi bi-x-circle me-1"></i> Svuota campo
+            </button>
+          </div>
+        </section>
+      </div>
+
+    </div>
+
+    <!-- CARD AZIONI FINALI (INVIA, SCARICA JSON, MODALE PRIVACY) -->
+    <section class="atv-card mt-3">
+      <h2 class="atv-card-title">Conferma e Invio Formazione</h2>
+
+      <p class="small text-secondary mb-3">
+        <i class="bi bi-shield-check text-success me-1"></i>
+        Procedendo con l'invio della formazione o il download dei dati si accetta la nostra
+        <a href="#" id="link-open-privacy" class="text-decoration-underline fw-semibold">Privacy Policy</a>.
+      </p>
+
+      <!-- Barra pulsanti d'azione -->
+      <div class="action-buttons-wrap">
+        <button type="submit" id="submit-btn" class="btn btn-primary action-primary btn-hover-lift">
+          <span class="spinner-border spinner-border-sm d-none" id="spinner" aria-hidden="true"></span>
+          <i class="bi bi-send-fill" id="submit-icon"></i>
+          Invia Formazione
+        </button>
+
+        <button type="button" id="btn-download-json" class="btn btn-outline-success action-secondary btn-hover-lift">
+          <i class="bi bi-download"></i>
+          Scarica JSON
+        </button>
+
+        <button type="button" id="btn-copy-json" class="btn btn-outline-secondary action-secondary btn-hover-lift" title="Copia JSON negli appunti">
+          <i class="bi bi-clipboard"></i>
+          Copia JSON
+        </button>
+
+        <label class="btn btn-outline-secondary action-secondary btn-hover-lift mb-0" title="Carica un JSON precedentemente salvato">
+          <i class="bi bi-upload"></i>
+          Carica JSON
+          <input type="file" id="input-import-json" accept=".json,application/json" style="display: none;" />
+        </label>
+      </div>
+
+      <div id="form-alert" class="mt-4" role="alert" aria-live="polite"></div>
+    </section>
+  </form>
+</main>
+
+<!-- MODALE PRIVACY POLICY -->
+<div class="modal fade" id="privacyModal" tabindex="-1" aria-labelledby="privacyModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content shadow border-0" style="border-radius: 14px; overflow: hidden;">
+      <div class="modal-header bg-light">
+        <h5 class="modal-title fw-bold" id="privacyModalLabel">
+          <i class="bi bi-shield-lock-fill text-primary me-2"></i>Informativa sulla Privacy
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Chiudi"></button>
+      </div>
+      <div class="modal-body py-4">
+        <p class="mb-3">
+          Procedendo con l'invio della formazione o con il salvataggio dei dati, dichiari di aver preso visione e di accettare la nostra
+          <a href="privacy.html" target="_blank" rel="noopener" class="fw-semibold text-decoration-underline">Privacy Policy</a>.
+        </p>
+        <div class="alert alert-light border small mb-0 text-secondary">
+          <i class="bi bi-info-circle text-primary me-1"></i>
+          I dati inseriti (nomi e numeri di maglia dei convocati, modulo e schieramento tattico) verranno utilizzati esclusivamente per la produzione delle grafiche TV e della diretta streaming di <strong>Armatori TV</strong>.
+        </div>
+      </div>
+      <div class="modal-footer bg-light">
+        <button type="button" class="btn btn-outline-secondary btn-sm px-3" data-bs-dismiss="modal">Chiudi</button>
+        <button type="button" id="btn-confirm-privacy" class="btn btn-primary btn-sm px-4">
+          <i class="bi bi-check-lg me-1"></i> Accetta e procedi
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODALE SCELTA GIOCATORE PER LO SLOT -->
+<div id="awayPickModal" class="pick-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="pickModalTitle">
+  <div class="pick-modal-content">
+    <div class="pick-modal-header">
+      <h5 id="pickModalTitle">Scegli il giocatore</h5>
+      <button type="button" id="pickModalClose" class="pick-modal-close" aria-label="Chiudi">&times;</button>
+    </div>
+    <div id="pickModalList" class="pick-modal-body">
+      <!-- Voci caricate dinamicamente in base allo slot e allo stato della distinta -->
+    </div>
+  </div>
+</div>
+
+<div id="footer-placeholder">Caricamento Footer...</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script type="module">
+  import { includeHtml } from "./js/utils/include.js";
+  import { setActiveNavLink } from "./js/navbar-active.js";
+
+  document.addEventListener("DOMContentLoaded", async () => {
+    await includeHtml("header-placeholder", "header.html");
+    await includeHtml("footer-placeholder", "footer.html");
+    setActiveNavLink();
+
+    // Mostra subito la modale della privacy policy all'apertura della pagina
+    const privacyEl = document.getElementById("privacyModal");
+    if (privacyEl && window.bootstrap) {
+      bootstrap.Modal.getOrCreateInstance(privacyEl).show();
+    }
+  });
+</script>
+<script src="js/formazione.js"></script>
+</body>
+</html>
