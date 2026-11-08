@@ -135,7 +135,7 @@
     "ammonizioni": 0,
     "espulsioni": 0,
     "clean_sheet": 0,
-    "mvp_armatori_tv": 0,
+    "mvp_armatori_tv": 1,
     "ruolo": "C",
     "team": "prof"
   },
@@ -162,7 +162,7 @@
   "Vincenzo Speranza": {
     "goals": 0,
     "assist": 0,
-    "ammonizioni": 1,
+    "ammonizioni": 2,
     "espulsioni": 0,
     "clean_sheet": 0,
     "mvp_armatori_tv": 0,
