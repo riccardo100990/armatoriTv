@@ -1,18 +1,8 @@
 {
   "team": "Amatori Lenola 2023",
   "girone": "A",
-  "aggiornato_al": "2026-11-08T18:14:50.411969Z",
+  "aggiornato_al": "2026-11-15T19:15:01.379464Z",
   "upcoming": [
-    {
-      "giornata": "7",
-      "casa": "Real Esperia",
-      "trasferta": "Amatori Lenola 2023",
-      "data": "14/11/2026 · 17:00",
-      "campo": "Esperia",
-      "status": "In programma",
-      "risultato": "In programma",
-      "url": "https://www.amatoricassino.it/partita/1584"
-    },
     {
       "giornata": "8",
       "casa": "Amatori Lenola 2023",
@@ -159,6 +149,16 @@
       "risultato": "0 - 1",
       "url": "https://www.amatoricassino.it/partita/1563",
       "bonus_updated": true
+    },
+    {
+      "giornata": "7",
+      "casa": "Real Esperia",
+      "trasferta": "Amatori Lenola 2023",
+      "data": "15/11/2026 · 10:30",
+      "campo": "Esperia",
+      "status": "Finale",
+      "risultato": "5 - 0",
+      "url": "https://www.amatoricassino.it/partita/1584"
     }
   ]
 }
