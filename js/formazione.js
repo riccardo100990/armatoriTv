@@ -1,6 +1,6 @@
 // ====== CONFIG ======
 const APPS_SCRIPT_URL =
-    "https://script.google.com/macros/s/AKfycbyVwllC0Sk-FdsOV7SREkzP75k5hyMA-30MY2WL1PrBeFng85jnw9PNloULtNIm6P7vBQ/exec";
+    "https://script.google.com/macros/s/AKfycbwxvZ8SqLcbYyMNgjvKl8rC9az-8cvMxjp6qYbIHq_Xo1-XpIoTde--NX6qf4KjsUdl/exec";
 
 const DEFAULT_ROSTER_SIZE = 15;
 const SLOTS_COUNT = 11;
